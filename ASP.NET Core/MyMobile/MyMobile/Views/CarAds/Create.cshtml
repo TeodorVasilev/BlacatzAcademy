@@ -1,0 +1,65 @@
+﻿@model CreateCarAdViewModel
+   
+<h4>Въвеждане на описанието на обявата</h4>  
+<form method="post" action="Store">
+    <label>Основна категория</label>
+    <select name="CategoryId" class="form-control">
+        <option></option>
+        @foreach(var category in Model.Categories)
+        {
+            <option value="@category.Id">@category.Type</option>
+        }
+    </select>
+    <label>Марка</label>
+    <select name="MakeId" class="form-control">
+        <option></option>
+        @foreach(var make in Model.Makes)
+        {
+            <option value="@make.Id">@make.Name</option>
+        }
+    </select>
+    <label>Модел</label>
+    <select name="ModelId" class="form-control">
+        <option></option>
+        @foreach(var carModel in Model.Models)
+        {
+            <option value="@carModel.Id">@carModel.Name</option>
+        }
+    </select>
+    <!--<label>Модификация</label>
+    <input type="text" name="Modification"/>-->
+    <label>Състояние</label>
+        @foreach(var condition in Model.Conditions)
+        {
+            <input type="radio" name="ConditionId" value="@condition.Id"/>
+            <label for="@condition.Id">@condition.Type</label>
+        }
+    <label>Цена</label>
+    <input type="text" name="UserPrice" />
+    <br/>
+    <label>Валута</label>
+    <select name="CurrencyId" class="form-control">
+        <option></option>
+        @foreach(var currency in Model.Currencies)
+        {
+            <option value="@currency.Id">@currency.Name</option>
+        }
+    </select>
+     <label>Регион</label>
+     <select name="RegionId" class="form-control">
+         <option></option>
+        @foreach (var region in Model.Regions)
+        {
+            <option value="@region.Id">@region.Name</option>
+        }
+    </select>
+        <label>Населено място</label>
+        <select name="TownId" class="form-control">
+            <option></option>
+            @foreach(var town in Model.Towns)
+                {
+                    <option value="@town.Id">@town.Name</option>
+                }
+        </select>
+        <input type="submit" />
+</form>

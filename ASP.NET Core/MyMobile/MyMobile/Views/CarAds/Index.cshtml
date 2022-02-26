@@ -1,0 +1,21 @@
+﻿@model CarAdViewModel
+
+<h4>Обяви за автомобили и джипове</h4>
+<table>
+    <tbody>
+        @foreach (var car in Model.CarAds)
+        {
+             <tr style="border: 1px solid black">
+                 <td>
+                     @car.Name
+                     <br/>
+                     @car.DefaultPriceBgn лв
+                     <br/>
+                     @car.Town.Name
+                     <br/>
+                     @car.Condition.Type
+                 </td>
+             </tr>
+        }
+    </tbody>
+</table>
