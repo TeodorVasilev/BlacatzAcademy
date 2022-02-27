@@ -26,14 +26,18 @@
             <option value="@carModel.Id">@carModel.Name</option>
         }
     </select>
-    <!--<label>Модификация</label>
-    <input type="text" name="Modification"/>-->
+    <label>Модификация</label>
+    <input type="text" name="Modification"/>
     <label>Състояние</label>
         @foreach(var condition in Model.Conditions)
         {
             <input type="radio" name="ConditionId" value="@condition.Id"/>
             <label for="@condition.Id">@condition.Type</label>
         }
+    <br/>
+    <label>Мощност [к.с.]</label>
+    <input type="text" name="HorsePower"/>
+    <br/>
     <label>Цена</label>
     <input type="text" name="UserPrice" />
     <br/>
@@ -45,6 +49,10 @@
             <option value="@currency.Id">@currency.Name</option>
         }
     </select>
+    <br/>
+    <label>Пробег</label>
+    <input type="text" name="Mileage"/><span> В километри</span>
+    <br/>
      <label>Регион</label>
      <select name="RegionId" class="form-control">
          <option></option>

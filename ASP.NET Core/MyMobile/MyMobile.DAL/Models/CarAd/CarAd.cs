@@ -8,6 +8,9 @@ namespace MyMobile.DAL.Models.CarAd
         public int Id { get; set; }
         //NAME = Make.Name + Model.Name + Engine.Modification
         public string Name { get; set; }
+        public string Modification { get; set; }
+        public int HorsePower { get; set; }
+        public int Mileage { get; set; }
         public decimal DefaultPriceBgn { get; set; }
         public decimal UserPrice { get; set; }
 

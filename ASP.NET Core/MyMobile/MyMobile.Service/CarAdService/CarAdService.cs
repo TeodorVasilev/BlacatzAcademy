@@ -12,7 +12,7 @@ namespace MyMobile.Service.CarAdService
             using (var context = new MyMobileContext())
             {
                 ad.DefaultPriceBgn = CalculateDefaultPrice(ad.CurrencyId, ad.UserPrice);
-                ad.Name = SetName(ad.MakeId, ad.ModelId);
+                ad.Name = SetName(ad.MakeId, ad.ModelId, ad.Modification);
                 context.CarAds.Add(ad);
                 context.SaveChanges();
             }
@@ -51,7 +51,7 @@ namespace MyMobile.Service.CarAdService
             return carAds;
         }
 
-        public string SetName(int makeId, int modelId)
+        public string SetName(int makeId, int modelId, string modification)
         {
             var makeName = "";
             var modelName = "";
@@ -62,7 +62,7 @@ namespace MyMobile.Service.CarAdService
                 modelName = context.Models.Where(m => m.Id == modelId).FirstOrDefault().Name;
             }
 
-            var adName = $"{makeName} {modelName}";
+            var adName = $"{makeName} {modelName} {modification}";
 
             return adName;
         }

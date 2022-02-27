@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyMobile.DAL.Data;
 
@@ -10,9 +11,10 @@ using MyMobile.DAL.Data;
 namespace MyMobile.DAL.Migrations
 {
     [DbContext(typeof(MyMobileContext))]
-    partial class MyMobileContextModelSnapshot : ModelSnapshot
+    [Migration("20220227143423_AddCarAdProperties")]
+    partial class AddCarAdProperties
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
