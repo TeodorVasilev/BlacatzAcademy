@@ -28,6 +28,14 @@
     </select>
     <label>Модификация</label>
     <input type="text" name="Modification"/>
+    <label>Тип двигател</label>
+    <select name="EngineId" class="form-control">
+        <option></option>
+        @foreach(var engine in Model.Engines)
+        {
+            <option value="@engine.Id">@engine.Type</option>
+        }
+    </select>
     <label>Състояние</label>
         @foreach(var condition in Model.Conditions)
         {
@@ -38,6 +46,23 @@
     <label>Мощност [к.с.]</label>
     <input type="text" name="HorsePower"/>
     <br/>
+    <label>Скоростна кутия</label>
+    <select name="GearboxId" class="form-control">
+        <option></option>
+        @foreach(var gearbox in Model.Gearboxes)
+        {
+            <option value="@gearbox.Id">@gearbox.Type</option>
+        }
+    </select>
+    <br/>
+    <label>Категория</label>
+    <select name="VehicleCategoryId" class="form-control">
+        <option></option>
+        @foreach(var vehicleCategory in Model.VehicleCategories)
+        {
+            <option value="@vehicleCategory.Id">@vehicleCategory.Name</option>
+        }
+    </select>
     <label>Цена</label>
     <input type="text" name="UserPrice" />
     <br/>
@@ -52,6 +77,15 @@
     <br/>
     <label>Пробег</label>
     <input type="text" name="Mileage"/><span> В километри</span>
+    <br/>
+    <label>Цвят</label>
+    <select name="ColorId" class="form-control">
+        <option></option>
+        @foreach(var color in Model.Colors)
+        {
+            <option value="@color.Id">@color.Name</option>
+        }
+    </select>
     <br/>
      <label>Регион</label>
      <select name="RegionId" class="form-control">
@@ -68,6 +102,37 @@
                 {
                     <option value="@town.Id">@town.Name</option>
                 }
-        </select>
-        <input type="submit" />
+    </select>
+    <br/>
+    <label>Интериор</label> 
+        <ul>
+            @foreach(var interior in Model.Interiors)
+            {   
+                <li>
+                    <input value="@interior.Id" type="checkbox" name="CarAdInteriors">
+                    <label >@interior.Name</label>
+                </li>
+            }
+        </ul>
+    <label>Комфорт</label> 
+        <ul>
+            @foreach(var comfort in Model.Comforts)
+            {   
+                <li>
+                    <input value="@comfort.Id" type="checkbox" name="CarAdComforts">
+                    <label >@comfort.Name</label>
+                </li>
+            }
+        </ul>
+    <label>Безопасност</label> 
+        <ul>
+            @foreach(var security in Model.Securities)
+            {   
+                <li>
+                    <input value="@security.Id" type="checkbox" name="CarAdSecurities">
+                    <label>@security.Name</label>
+                </li>
+            }
+        </ul>
+    <input type="submit" />
 </form>

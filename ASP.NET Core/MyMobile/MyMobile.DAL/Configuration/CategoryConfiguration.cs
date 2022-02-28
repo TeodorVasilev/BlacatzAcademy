@@ -15,21 +15,20 @@ namespace MyMobile.DAL.Configuration
                     new Category 
                     {
                         Id = 1,
-                        Type = "Лек автомобил"
+                        Type = "Aвтомобили и джипове"
                     },
 
                     new Category
                     {
                         Id = 2,
-                        Type = "Джип"
+                        Type = "Бусове"
                     },
 
                     new Category
                     {
                         Id = 3,
-                        Type = "Бус"
+                        Type = "Камиони"
                     }
-
                 );
         }
     }

@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyMobile.DAL.Data;
 
@@ -10,9 +11,10 @@ using MyMobile.DAL.Data;
 namespace MyMobile.DAL.Migrations
 {
     [DbContext(typeof(MyMobileContext))]
-    partial class MyMobileContextModelSnapshot : ModelSnapshot
+    [Migration("20220228151609_AddTables")]
+    partial class AddTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -277,75 +279,6 @@ namespace MyMobile.DAL.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MyMobile.DAL.Models.CarAd.CarArgs.CarAdComfort", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("CarAdId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ComfortId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CarAdId");
-
-                    b.HasIndex("ComfortId");
-
-                    b.ToTable("CarAdComforts");
-                });
-
-            modelBuilder.Entity("MyMobile.DAL.Models.CarAd.CarArgs.CarAdInterior", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("CarAdId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("InteriorId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CarAdId");
-
-                    b.HasIndex("InteriorId");
-
-                    b.ToTable("CarAdInteriors");
-                });
-
-            modelBuilder.Entity("MyMobile.DAL.Models.CarAd.CarArgs.CarAdSecurity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("CarAdId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SecurityId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CarAdId");
-
-                    b.HasIndex("SecurityId");
-
-                    b.ToTable("CarAdSecurities");
-                });
-
             modelBuilder.Entity("MyMobile.DAL.Models.CarAd.CarArgs.Color", b =>
                 {
                     b.Property<int>("Id")
@@ -387,55 +320,6 @@ namespace MyMobile.DAL.Migrations
                         {
                             Id = 5,
                             Name = "Бордо"
-                        });
-                });
-
-            modelBuilder.Entity("MyMobile.DAL.Models.CarAd.CarArgs.Comfort", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Comforts");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Навигация"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Темпомат"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Стерео уредба"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Подгряване на седалките"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Name = "Климатик"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Name = "Климатроник"
                         });
                 });
 
@@ -509,40 +393,6 @@ namespace MyMobile.DAL.Migrations
                         {
                             Id = 3,
                             Type = "Полуавтоматична"
-                        });
-                });
-
-            modelBuilder.Entity("MyMobile.DAL.Models.CarAd.CarArgs.Interior", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Interiors");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Кожен салон"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Велурен салон"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Десен волан"
                         });
                 });
 
@@ -659,55 +509,6 @@ namespace MyMobile.DAL.Migrations
                             Id = 8,
                             MakeId = 5,
                             Name = "Terano"
-                        });
-                });
-
-            modelBuilder.Entity("MyMobile.DAL.Models.CarAd.CarArgs.Security", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Securities");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "GPS система за проследяване"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Автоматичен контрол на стабилността"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Антиблокираща система"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Въздушни възглавници"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Name = "Парктроник"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Name = "Система за защита от пробуксуване"
                         });
                 });
 
@@ -852,63 +653,6 @@ namespace MyMobile.DAL.Migrations
                     b.Navigation("Region");
                 });
 
-            modelBuilder.Entity("MyMobile.DAL.Models.CarAd.CarArgs.CarAdComfort", b =>
-                {
-                    b.HasOne("MyMobile.DAL.Models.CarAd.CarAd", "CarAd")
-                        .WithMany("CarAdComforts")
-                        .HasForeignKey("CarAdId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MyMobile.DAL.Models.CarAd.CarArgs.Comfort", "Comfort")
-                        .WithMany("CarAdComforts")
-                        .HasForeignKey("ComfortId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("CarAd");
-
-                    b.Navigation("Comfort");
-                });
-
-            modelBuilder.Entity("MyMobile.DAL.Models.CarAd.CarArgs.CarAdInterior", b =>
-                {
-                    b.HasOne("MyMobile.DAL.Models.CarAd.CarAd", "CarAd")
-                        .WithMany("CarAdInteriors")
-                        .HasForeignKey("CarAdId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MyMobile.DAL.Models.CarAd.CarArgs.Interior", "Interior")
-                        .WithMany("CarAdInteriors")
-                        .HasForeignKey("InteriorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("CarAd");
-
-                    b.Navigation("Interior");
-                });
-
-            modelBuilder.Entity("MyMobile.DAL.Models.CarAd.CarArgs.CarAdSecurity", b =>
-                {
-                    b.HasOne("MyMobile.DAL.Models.CarAd.CarAd", "CarAd")
-                        .WithMany("CarAdSecurities")
-                        .HasForeignKey("CarAdId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MyMobile.DAL.Models.CarAd.CarArgs.Security", "Security")
-                        .WithMany("CarAdSecurities")
-                        .HasForeignKey("SecurityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("CarAd");
-
-                    b.Navigation("Security");
-                });
-
             modelBuilder.Entity("MyMobile.DAL.Models.CarAd.CarArgs.Model", b =>
                 {
                     b.HasOne("MyMobile.DAL.Models.CarAd.CarArgs.Make", "Make")
@@ -918,15 +662,6 @@ namespace MyMobile.DAL.Migrations
                         .IsRequired();
 
                     b.Navigation("Make");
-                });
-
-            modelBuilder.Entity("MyMobile.DAL.Models.CarAd.CarAd", b =>
-                {
-                    b.Navigation("CarAdComforts");
-
-                    b.Navigation("CarAdInteriors");
-
-                    b.Navigation("CarAdSecurities");
                 });
 
             modelBuilder.Entity("MyMobile.DAL.Models.CarAd.CarAdArgs.Category", b =>
@@ -961,11 +696,6 @@ namespace MyMobile.DAL.Migrations
                     b.Navigation("CarAds");
                 });
 
-            modelBuilder.Entity("MyMobile.DAL.Models.CarAd.CarArgs.Comfort", b =>
-                {
-                    b.Navigation("CarAdComforts");
-                });
-
             modelBuilder.Entity("MyMobile.DAL.Models.CarAd.CarArgs.Engine", b =>
                 {
                     b.Navigation("CarAds");
@@ -974,11 +704,6 @@ namespace MyMobile.DAL.Migrations
             modelBuilder.Entity("MyMobile.DAL.Models.CarAd.CarArgs.Gearbox", b =>
                 {
                     b.Navigation("CarAds");
-                });
-
-            modelBuilder.Entity("MyMobile.DAL.Models.CarAd.CarArgs.Interior", b =>
-                {
-                    b.Navigation("CarAdInteriors");
                 });
 
             modelBuilder.Entity("MyMobile.DAL.Models.CarAd.CarArgs.Make", b =>
@@ -991,11 +716,6 @@ namespace MyMobile.DAL.Migrations
             modelBuilder.Entity("MyMobile.DAL.Models.CarAd.CarArgs.Model", b =>
                 {
                     b.Navigation("CarAds");
-                });
-
-            modelBuilder.Entity("MyMobile.DAL.Models.CarAd.CarArgs.Security", b =>
-                {
-                    b.Navigation("CarAdSecurities");
                 });
 
             modelBuilder.Entity("MyMobile.DAL.Models.CarAd.CarArgs.VehicleCategory", b =>

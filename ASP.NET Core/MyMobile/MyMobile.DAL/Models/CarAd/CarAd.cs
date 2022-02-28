@@ -28,5 +28,17 @@ namespace MyMobile.DAL.Models.CarAd
         public Make Make { get; set; }
         public int ModelId { get; set; }
         public Model Model { get; set; }
+        public int EngineId { get; set; }
+        public Engine Engine { get; set; }
+        public int GearboxId { get; set; }
+        public Gearbox Gearbox { get; set; }
+        public int VehicleCategoryId { get; set; }
+        public VehicleCategory VehicleCategory { get; set; }
+        public int ColorId { get; set; }
+        public Color Color { get; set; }
+
+        public ICollection<CarAdInterior> CarAdInteriors { get; set; }
+        public ICollection<CarAdComfort> CarAdComforts { get; set; }
+        public ICollection<CarAdSecurity> CarAdSecurities { get; set; }
     }
 }

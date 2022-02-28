@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyMobile.DAL.Models.CarAd;
+using MyMobile.DAL.Models.CarAd.CarAdArgs;
+using MyMobile.DAL.Models.CarAd.CarArgs;
 using MyMobile.Models;
 using MyMobile.Service.CarAdService;
 using MyMobile.Service.CarService;
@@ -27,6 +29,13 @@ namespace MyMobile.Controllers
             var townService = new TownService();
             var makeService = new MakeService();
             var modelService = new ModelService();
+            var vehicleCategoryService = new VehicleCategoryService();
+            var engineService = new EngineService();
+            var gearboxService = new GearboxService();
+            var colorService = new ColorService();
+            var interiorService = new InteriorService();
+            var comfortService = new ComfortService();
+            var securityService = new SecurityService();
 
             var createViewModel = new CreateCarAdViewModel()
             {
@@ -36,7 +45,14 @@ namespace MyMobile.Controllers
                 Regions = regionService.GetRegions(),
                 Towns = townService.GetTowns(),
                 Makes = makeService.GetMakes(),
-                Models = modelService.GetModels()
+                Models = modelService.GetModels(),
+                VehicleCategories = vehicleCategoryService.GetVehicleCategories(),
+                Engines = engineService.GetEngines(),
+                Gearboxes = gearboxService.GetGearboxes(),
+                Colors = colorService.GetColors(),
+                Interiors = interiorService.GetInteriors(),
+                Comforts = comfortService.GetComforts(),
+                Securities = securityService.GetSecurities()
             };
 
 
@@ -44,10 +60,36 @@ namespace MyMobile.Controllers
         }
 
         [HttpPost]
-        public IActionResult Store(CarAd carAd)
+        public IActionResult Store(CarStoreViewModel formData)
         {
-            var adService = new CarAdService();
-            adService.Create(carAd);
+            CarAd carAd = new CarAd();
+            carAd.HorsePower = formData.HorsePower;
+            carAd.Modification = formData.Modification;
+            carAd.Mileage = formData.Mileage;
+            carAd.UserPrice = formData.UserPrice;
+            carAd.CategoryId = formData.CategoryId;
+            carAd.CurrencyId = formData.CurrencyId;
+            carAd.ConditionId =formData.ConditionId;
+            carAd.RegionId = formData.RegionId;
+            carAd.TownId = formData.TownId ;
+            carAd.MakeId = formData.MakeId ;
+            carAd.ModelId = formData.ModelId ;
+            carAd.ColorId = formData.ColorId ;
+            carAd.EngineId = formData.EngineId ;
+            carAd.GearboxId = formData.GearboxId ;
+            carAd.VehicleCategoryId = formData.VehicleCategoryId ;
+            carAd.CarAdInteriors = formData.CarAdInteriors
+                .Select(c => new CarAdInterior() { InteriorId = c })
+                .ToList();
+            carAd.CarAdComforts = formData.CarAdComforts
+                .Select(c => new CarAdComfort() { ComfortId = c })
+                .ToList();
+            carAd.CarAdSecurities = formData.CarAdSecurities
+                .Select(c => new CarAdSecurity() { SecurityId = c })
+                .ToList();
+
+            var carAdService = new CarAdService();
+            carAdService.Create(carAd);
 
             return Content("Обявата Ви е успешно публикувана");
         }

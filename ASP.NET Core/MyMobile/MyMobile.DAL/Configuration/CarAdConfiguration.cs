@@ -43,6 +43,22 @@ namespace MyMobile.DAL.Configuration
                 .WithMany(m => m.CarAds)
                 .HasForeignKey(ca => ca.ModelId)
                 .OnDelete(DeleteBehavior.NoAction);
+            builder
+                .HasOne<VehicleCategory>(ca => ca.VehicleCategory)
+                .WithMany(vc => vc.CarAds)
+                .HasForeignKey(ca => ca.VehicleCategoryId);
+            builder
+                .HasOne<Engine>(ca => ca.Engine)
+                .WithMany(e => e.CarAds)
+                .HasForeignKey(ca => ca.EngineId);
+            builder
+                .HasOne<Gearbox>(ca => ca.Gearbox)
+                .WithMany(g => g.CarAds)
+                .HasForeignKey(ca => ca.GearboxId);
+            builder
+                .HasOne<Color>(ca => ca.Color)
+                .WithMany(c => c.CarAds)
+                .HasForeignKey(ca => ca.ColorId);
         }
     }
 }

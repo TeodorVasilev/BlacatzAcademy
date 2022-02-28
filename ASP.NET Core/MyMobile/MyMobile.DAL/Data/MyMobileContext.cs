@@ -16,6 +16,16 @@ namespace MyMobile.DAL.Data
         public DbSet<Town> Towns { get; set; }
         public DbSet<Make> Makes { get; set; }
         public DbSet<Model> Models { get; set; }
+        public DbSet<VehicleCategory> VehicleCategories { get; set; }
+        public DbSet<Engine> Engines { get; set; }
+        public DbSet<Gearbox> Gearboxes { get; set; }
+        public DbSet<Color> Colors { get; set; }
+        public DbSet<Interior> Interiors { get; set; }
+        public DbSet<CarAdInterior> CarAdInteriors { get; set; }
+        public DbSet<Comfort> Comforts { get; set; }
+        public DbSet<CarAdComfort> CarAdComforts { get; set; }
+        public DbSet<Security> Securities { get; set; }
+        public DbSet<CarAdSecurity> CarAdSecurities { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -35,7 +45,16 @@ namespace MyMobile.DAL.Data
             modelBuilder.ApplyConfiguration(new CurrencyConfiguration());
             modelBuilder.ApplyConfiguration(new MakeConfiguration());
             modelBuilder.ApplyConfiguration(new ModelConfiguration());
-            
+            modelBuilder.ApplyConfiguration(new VehicleCategoryConfiguration());
+            modelBuilder.ApplyConfiguration(new EngineConfiguration());
+            modelBuilder.ApplyConfiguration(new GearboxConfiguration());
+            modelBuilder.ApplyConfiguration(new ColorConfiguration());
+            modelBuilder.ApplyConfiguration(new InteriorConfiguration());
+            modelBuilder.ApplyConfiguration(new CarAdInteriorConfiguration());
+            modelBuilder.ApplyConfiguration(new ComfortConfiguration());
+            modelBuilder.ApplyConfiguration(new CarAdComfortConfiguration());
+            modelBuilder.ApplyConfiguration(new SecurityConfiguration());
+            modelBuilder.ApplyConfiguration(new CarAdSecurityConfiguration());
         }
     }
 }

@@ -46,6 +46,7 @@ namespace MyMobile.Service.CarAdService
                     .Include(c => c.Region)
                     .Include(c => c.Town)
                     .ToList();
+                //include new properties
             }
 
             return carAds;
@@ -73,12 +74,12 @@ namespace MyMobile.Service.CarAdService
 
             using (var context = new MyMobileContext())
             {
-                currency = context.Currencies.FirstOrDefault(c => c.Id == currencyId);
+                currency = context.Currencies.Where(c => c.Id == currencyId).FirstOrDefault();
+
+                decimal defaultPriceBgn = userPrice * currency.CourseToDefault;
+
+                return defaultPriceBgn;
             }
-
-            decimal defaultPriceBgn = userPrice * currency.CourseToDefault;
-
-            return defaultPriceBgn;
         }
     }
 }
