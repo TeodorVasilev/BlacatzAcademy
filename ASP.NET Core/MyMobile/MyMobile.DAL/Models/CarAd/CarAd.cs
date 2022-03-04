@@ -13,6 +13,9 @@ namespace MyMobile.DAL.Models.CarAd
         public int Mileage { get; set; }
         public decimal DefaultPriceBgn { get; set; }
         public decimal UserPrice { get; set; }
+        public int ManufactureMonth { get; set; } //
+        public int ManufactureYear { get; set; } //
+        public DateTime DateAdded { get; set; }
 
         public int CategoryId { get; set; }
         public Category Category { get; set; }

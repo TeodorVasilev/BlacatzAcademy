@@ -36,6 +36,7 @@ namespace MyMobile.Controllers
             var interiorService = new InteriorService();
             var comfortService = new ComfortService();
             var securityService = new SecurityService();
+            var dateService = new ManufactureDateService();
 
             var createViewModel = new CreateCarAdViewModel()
             {
@@ -52,7 +53,9 @@ namespace MyMobile.Controllers
                 Colors = colorService.GetColors(),
                 Interiors = interiorService.GetInteriors(),
                 Comforts = comfortService.GetComforts(),
-                Securities = securityService.GetSecurities()
+                Securities = securityService.GetSecurities(),
+                ManufactureMonths = dateService.GetMonths(),
+                ManufactureYears = dateService.GetYears()
             };
 
 
@@ -67,6 +70,8 @@ namespace MyMobile.Controllers
             carAd.Modification = formData.Modification;
             carAd.Mileage = formData.Mileage;
             carAd.UserPrice = formData.UserPrice;
+            carAd.ManufactureYear = formData.ManufactureYear; //
+            carAd.ManufactureMonth = formData.ManufactureMonth; //
             carAd.CategoryId = formData.CategoryId;
             carAd.CurrencyId = formData.CurrencyId;
             carAd.ConditionId =formData.ConditionId;

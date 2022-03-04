@@ -1,48 +1,52 @@
 ﻿@model CreateCarAdViewModel
    
-<h4>Въвеждане на описанието на обявата</h4>  
+<h4>Въвеждане на описанието на обявата</h4>
+<div">
 <form method="post" action="Store">
-    <label>Основна категория</label>
-    <select name="CategoryId" class="form-control">
-        <option></option>
-        @foreach(var category in Model.Categories)
-        {
-            <option value="@category.Id">@category.Type</option>
-        }
-    </select>
-    <label>Марка</label>
-    <select name="MakeId" class="form-control">
-        <option></option>
-        @foreach(var make in Model.Makes)
-        {
-            <option value="@make.Id">@make.Name</option>
-        }
-    </select>
-    <label>Модел</label>
-    <select name="ModelId" class="form-control">
-        <option></option>
-        @foreach(var carModel in Model.Models)
-        {
-            <option value="@carModel.Id">@carModel.Name</option>
-        }
-    </select>
-    <label>Модификация</label>
-    <input type="text" name="Modification"/>
-    <label>Тип двигател</label>
-    <select name="EngineId" class="form-control">
-        <option></option>
-        @foreach(var engine in Model.Engines)
-        {
-            <option value="@engine.Id">@engine.Type</option>
-        }
-    </select>
-    <label>Състояние</label>
-        @foreach(var condition in Model.Conditions)
-        {
-            <input type="radio" name="ConditionId" value="@condition.Id"/>
-            <label for="@condition.Id">@condition.Type</label>
-        }
-    <br/>
+    <div>
+        <label>Основна категория</label>
+        <select name="CategoryId" class="form-control">
+            <option></option>
+            @foreach(var category in Model.Categories)
+            {
+                <option value="@category.Id">@category.Type</option>
+            }
+        </select>
+    </div>
+    <div>
+        <label>Марка</label>
+        <select name="MakeId" class="form-control">
+            <option></option>
+            @foreach(var make in Model.Makes)
+            {
+                <option value="@make.Id">@make.Name</option>
+            }
+        </select>
+        <label>Модел</label>
+        <select name="ModelId" class="form-control">
+            <option></option>
+            @foreach(var carModel in Model.Models)
+            {
+                <option value="@carModel.Id">@carModel.Name</option>
+            }
+        </select>
+        <label>Модификация</label>
+        <input type="text" name="Modification"/>
+        <label>Тип двигател</label>
+        <select name="EngineId" class="form-control">
+            <option></option>
+            @foreach(var engine in Model.Engines)
+            {
+                <option value="@engine.Id">@engine.Type</option>
+            }
+        </select>
+        <label>Състояние</label>
+            @foreach(var condition in Model.Conditions)
+            {
+                <input type="radio" name="ConditionId" value="@condition.Id"/>
+                <label for="@condition.Id">@condition.Type</label>
+            }
+    </div>
     <label>Мощност [к.с.]</label>
     <input type="text" name="HorsePower"/>
     <br/>
@@ -72,6 +76,23 @@
         @foreach(var currency in Model.Currencies)
         {
             <option value="@currency.Id">@currency.Name</option>
+        }
+    </select>
+    <br/>
+    <label>Дата на производство</label>
+    <select name="ManufactureMonth" class="form-control">
+        <option></option>
+        @foreach(var month in Model.ManufactureMonths)
+        {
+            <option value="@month">@month</option>
+        }
+    </select>
+    <br/>
+    <select name="ManufactureYear" class="form-control">
+        <option></option>
+        @foreach(var year in Model.ManufactureYears)
+        {
+            <option value="@year">@year</option>
         }
     </select>
     <br/>
@@ -136,3 +157,4 @@
         </ul>
     <input type="submit" />
 </form>
+</div>

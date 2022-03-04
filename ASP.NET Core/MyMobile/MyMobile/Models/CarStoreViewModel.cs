@@ -6,6 +6,8 @@
         public int Mileage { get; set; }
         public int HorsePower { get; set; }
         public decimal UserPrice { get; set; }
+        public int ManufactureMonth { get; set; }
+        public int ManufactureYear { get; set; }
         public int CategoryId { get; set; }
         public int ConditionId { get; set; }
         public int CurrencyId { get; set; }

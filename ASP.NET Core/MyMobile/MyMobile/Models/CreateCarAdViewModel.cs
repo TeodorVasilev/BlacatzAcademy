@@ -20,6 +20,8 @@ namespace MyMobile.Models
             this.Colors = new List<Color>();
             this.Interiors = new List<Interior>();
             this.Comforts = new List<Comfort>();
+            this.ManufactureMonths = new List<int>();
+            this.ManufactureYears = new List<int>();
         }
 
         public List<Category> Categories { get; set; }
@@ -36,5 +38,7 @@ namespace MyMobile.Models
         public List<Interior> Interiors { get; set; }
         public List<Comfort> Comforts { get; set;}
         public List<Security> Securities { get; set; }
+        public List<int> ManufactureMonths { get; set; } //
+        public List<int> ManufactureYears { get; set; } //
     }
 }

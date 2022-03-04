@@ -13,6 +13,7 @@ namespace MyMobile.Service.CarAdService
             {
                 ad.DefaultPriceBgn = CalculateDefaultPrice(ad.CurrencyId, ad.UserPrice);
                 ad.Name = SetName(ad.MakeId, ad.ModelId, ad.Modification);
+                ad.DateAdded = DateTime.Now;
                 context.CarAds.Add(ad);
                 context.SaveChanges();
             }
