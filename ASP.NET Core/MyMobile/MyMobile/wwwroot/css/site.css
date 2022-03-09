@@ -19,4 +19,37 @@ body {
 
 ul {
     list-style-type: none;
+    margin: 0px;
+    padding: 0px 0px 0px 1px;
+}
+
+li{
+    margin: 0px;
+    padding: 0px 0px 0px 1px;
+}
+/*
+table {
+    width: 940px;
+    font-size 13px;
+}
+
+th {
+    color: #09f;
+}
+
+td, th{
+    padding: 0px 5px;
+}
+
+.create-form{
+    width: 990px;
+    padding 5px;
+}
+*/
+.table-container{
+    display:flex;
+}
+
+table{
+   width: 30%;
 }

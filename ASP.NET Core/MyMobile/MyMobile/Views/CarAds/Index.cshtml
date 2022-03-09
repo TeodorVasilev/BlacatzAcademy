@@ -18,6 +18,12 @@
                      @car.Town.Name
                      <br/>
                      @car.Condition.Type
+                     <br/>
+                     @foreach(var comfort in car.CarAdComforts) //fix get
+                     {
+                         @comfort.Comfort.Name
+                         <br/>
+                     }
                  </td>
              </tr>
         }

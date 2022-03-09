@@ -18,6 +18,7 @@ namespace MyMobile.DAL.Data
         public DbSet<Model> Models { get; set; }
         public DbSet<VehicleCategory> VehicleCategories { get; set; }
         public DbSet<Engine> Engines { get; set; }
+        public DbSet<Eurostandard> Eurostandards { get; set; }
         public DbSet<Gearbox> Gearboxes { get; set; }
         public DbSet<Color> Colors { get; set; }
         public DbSet<Interior> Interiors { get; set; }
@@ -47,6 +48,7 @@ namespace MyMobile.DAL.Data
             modelBuilder.ApplyConfiguration(new ModelConfiguration());
             modelBuilder.ApplyConfiguration(new VehicleCategoryConfiguration());
             modelBuilder.ApplyConfiguration(new EngineConfiguration());
+            modelBuilder.ApplyConfiguration(new EurostandardConfiguration());
             modelBuilder.ApplyConfiguration(new GearboxConfiguration());
             modelBuilder.ApplyConfiguration(new ColorConfiguration());
             modelBuilder.ApplyConfiguration(new InteriorConfiguration());

@@ -33,6 +33,8 @@ namespace MyMobile.DAL.Models.CarAd
         public Model Model { get; set; }
         public int EngineId { get; set; }
         public Engine Engine { get; set; }
+        public int EurostandardId { get; set; }
+        public Eurostandard Eurostandard { get; set; }
         public int GearboxId { get; set; }
         public Gearbox Gearbox { get; set; }
         public int VehicleCategoryId { get; set; }

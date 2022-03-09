@@ -33,6 +33,7 @@ namespace MyMobile.Models
         public List<Model> Models { get; set; } //TODO from Make.Models
         public List<VehicleCategory> VehicleCategories { get; set; }
         public List<Engine> Engines { get; set; }
+        public List<Eurostandard> Eurostandards { get;set; }
         public List<Gearbox> Gearboxes { get; set; }
         public List<Color> Colors { get; set; }
         public List<Interior> Interiors { get; set; }

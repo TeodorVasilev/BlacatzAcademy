@@ -17,6 +17,7 @@
         public int ModelId { get; set; }
         public int VehicleCategoryId { get; set; }
         public int EngineId { get; set; }
+        public int EurostandardId { get; set; }
         public int GearboxId { get; set; }
         public int ColorId { get; set; }
         public ICollection<int> CarAdInteriors { get; set; }

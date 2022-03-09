@@ -31,6 +31,7 @@ namespace MyMobile.Controllers
             var modelService = new ModelService();
             var vehicleCategoryService = new VehicleCategoryService();
             var engineService = new EngineService();
+            var eurostandardService = new EurostandardService();
             var gearboxService = new GearboxService();
             var colorService = new ColorService();
             var interiorService = new InteriorService();
@@ -49,6 +50,7 @@ namespace MyMobile.Controllers
                 Models = modelService.GetModels(),
                 VehicleCategories = vehicleCategoryService.GetVehicleCategories(),
                 Engines = engineService.GetEngines(),
+                Eurostandards = eurostandardService.GetEurostandards(),
                 Gearboxes = gearboxService.GetGearboxes(),
                 Colors = colorService.GetColors(),
                 Interiors = interiorService.GetInteriors(),
@@ -81,6 +83,7 @@ namespace MyMobile.Controllers
             carAd.ModelId = formData.ModelId ;
             carAd.ColorId = formData.ColorId ;
             carAd.EngineId = formData.EngineId ;
+            carAd.EurostandardId = formData.EurostandardId ;
             carAd.GearboxId = formData.GearboxId ;
             carAd.VehicleCategoryId = formData.VehicleCategoryId ;
             carAd.CarAdInteriors = formData.CarAdInteriors

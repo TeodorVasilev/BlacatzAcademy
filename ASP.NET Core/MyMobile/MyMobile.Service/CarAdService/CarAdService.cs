@@ -46,8 +46,16 @@ namespace MyMobile.Service.CarAdService
                     .Include(c => c.Currency)
                     .Include(c => c.Region)
                     .Include(c => c.Town)
+                    .Include(c => c.Color)
+                    .Include(c => c.Engine)
+                    .Include(c => c.Eurostandard)
+                    .Include(c => c.Gearbox)
+                    .Include(c => c.VehicleCategory)
+                    .Include(c => c.CarAdComforts)
+                    .ThenInclude(e => e.Comfort)
                     .ToList();
-                //include new properties
+                //include all properties and then fix the looks
+                //pages and stuff in controller
             }
 
             return carAds;
