@@ -1,0 +1,61 @@
+body{
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.sidenav{
+    background-color: #605d5d;;
+    height: 100%;
+    width: 180px;
+    float: left;
+}
+
+.sidenav a{
+    display: block;
+    padding: 15px 15px;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+}
+
+.sidenav a:hover{
+    background-color: #09f;
+}
+
+.logform{
+    text-align: right;
+    float: left;
+    margin-left: 370px;
+    margin-top: 230px;
+}
+
+.table-container{
+    float: left;
+    width: 50%;
+    margin-top: 200px;
+    margin-left: 240px;
+}
+
+.inside-table{
+    width: 100%;
+}
+
+.inside-table tr{
+    border: 1px solid black;
+}
+
+.main-table{
+    width: 100%;
+}
+
+table, td, th{
+    border: 1px solid black;
+    font-weight: unset;
+    border-collapse: collapse;
+}
+
+.msg{
+    float: left;
+    margin-top: 20px;
+    margin-left: 170px;
+}
