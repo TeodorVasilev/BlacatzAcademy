@@ -1,8 +1,10 @@
 ﻿@model CreateCarAdViewModel
    @*todo: fix the form design*@
 <h4>Въвеждане на описанието на обявата</h4>
-<form method="post" action="Store">
-             <table>
+<div class="form-container">
+    <form method="post" action="Store">
+        <div class="top-table">
+            <table style="margin-bottom: 20px;">
              <tr>
                  <th>
                      <label for="CategoryId">Основна категория</label>
@@ -10,24 +12,30 @@
              </tr>
              <tr>
                  <td>           
-                     <select name="CategoryId" class="form-control">
-                     <option></option>
-                     @foreach(var category in Model.Categories)
-                     {
-                         <option value="@category.Id">@category.Type</option>
-                     }
+                    <select name="CategoryId" class="form-control">
+                        <option></option>
+                        @foreach(var category in Model.Categories)
+                        {
+                            <option value="@category.Id">@category.Type</option>
+                        }
+                    </select>
                  </td>
-             </tr>
-         </table>
-    <div class="table-container">
-         <table>
+              </tr>
+           </table>
+        </div>
+    <div class="mid-table-container" style="border: 2px solid red;">
+        <div class="mid-table-1" style="border: 1px solid purple;">
+            <table>
              <tr>
                  <th>Марка</th>
                  <th>Модел</th>
              </tr>
              <tr>
                  <td>
-                     <select name="MakeId" class="form-control">
+                     @*
+                         fix font-size for select width for fields and space between
+                     *@
+                     <select style="font-size: 12px;" name="MakeId" class="form-control">
                      <option></option>
                      @foreach(var make in Model.Makes)
                      {
@@ -81,22 +89,10 @@
                      </select>
                  </td>
              </tr>
-             <tr>
-                 <th>Цвят</th>
-             </tr>
-             <tr>
-                 <td colspan="2">
-                     <select name="ColorId" class="form-control">
-                     <option></option>
-                     @foreach(var color in Model.Colors)
-                     {
-                         <option value="@color.Id">@color.Name</option>
-                     }
-                     </select>
-                 </td>
-             </tr>
          </table>
-         <table>
+        </div>
+        <div class="mid-table-2" style="border: 1px solid green;">
+            <table>
              <tr>
                  <th>Модификация</th>
                  <th>Тип двигател</th>
@@ -152,32 +148,10 @@
                          </select>
                  </td>
              </tr>
-             <tr>
-                 <th>Регион</th>
-                 <th>Населено място</th>
-             </tr>
-             <tr>
-                 <td>
-                     <select name="RegionId" class="form-control">
-                     <option></option>
-                     @foreach (var region in Model.Regions)
-                     {
-                        <option value="@region.Id">@region.Name</option>
-                     }   
-                     </select>
-                 </td>
-                 <td>
-                     <select name="TownId" class="form-control">
-                     <option></option>
-                     @foreach(var town in Model.Towns)
-                         {
-                             <option value="@town.Id">@town.Name</option>
-                         }
-                     </select>
-                 </td>
-             </tr>
          </table>
-         <table>
+        </div>
+        <div class="mid-table-3" style="border: 1px solid brown">
+            <table>
              <tr>
                  <th>Състояние</th>
              </tr>
@@ -213,8 +187,53 @@
                  </td>
              </tr>
          </table>
+        </div>
     </div>
-    <div class="features-list">
+    <div class="bot-tables" style="clear: both; border: 2px solid blue;">
+        <table class="bot-table-1" style="border: 1px solid black; float: left; width: 33%;">
+            <tr>
+                <th>Цвят</th>
+            </tr>
+            <tr>
+                 <td>
+                     <select name="ColorId" class="form-control">
+                     <option></option>
+                     @foreach(var color in Model.Colors)
+                     {
+                         <option value="@color.Id">@color.Name</option>
+                     }
+                     </select>
+                 </td>
+            </tr>
+        </table>
+        <table class="bot-table-2" style="border: 1px solid red; float: left; width:33%;">
+            <tr>
+                 <th>Регион</th>
+                 <th>Населено място</th>
+            </tr>
+            <tr>
+                <td>
+                     <select name="RegionId" class="form-control">
+                     <option></option>
+                     @foreach (var region in Model.Regions)
+                     {
+                        <option value="@region.Id">@region.Name</option>
+                     }   
+                     </select>
+                 </td>
+                 <td>
+                     <select name="TownId" class="form-control">
+                     <option></option>
+                     @foreach(var town in Model.Towns)
+                         {
+                             <option value="@town.Id">@town.Name</option>
+                         }
+                     </select>
+                 </td>
+            </tr>
+        </table>
+    </div>
+    <div class="features-list" style="clear:both;">
                  <table>
              <tr>
                  <th>Безопасност</th>
@@ -260,3 +279,44 @@
          <input type="submit" />
     </div>
 </form>
+</div>
+@*
+    this in mid/bot table
+    <tr>
+                 <th>Цвят</th>
+             </tr>
+             <tr>
+                 <td colspan="2">
+                     <select name="ColorId" class="form-control">
+                     <option></option>
+                     @foreach(var color in Model.Colors)
+                     {
+                         <option value="@color.Id">@color.Name</option>
+                     }
+                     </select>
+                 </td>
+             </tr>
+              <tr>
+                 <th>Регион</th>
+                 <th>Населено място</th>
+             </tr>
+             <tr>
+                 <td>
+                     <select name="RegionId" class="form-control">
+                     <option></option>
+                     @foreach (var region in Model.Regions)
+                     {
+                        <option value="@region.Id">@region.Name</option>
+                     }   
+                     </select>
+                 </td>
+                 <td>
+                     <select name="TownId" class="form-control">
+                     <option></option>
+                     @foreach(var town in Model.Towns)
+                         {
+                             <option value="@town.Id">@town.Name</option>
+                         }
+                     </select>
+                 </td>
+             </tr>*@

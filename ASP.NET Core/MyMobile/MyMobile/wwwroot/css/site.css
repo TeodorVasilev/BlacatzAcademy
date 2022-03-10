@@ -46,10 +46,39 @@ td, th{
     padding 5px;
 }
 */
-.table-container{
-    display:flex;
+.mid-table-container{
+    overflow:hidden;
 }
 
-table{
-   width: 30%;
+.mid-table-1{
+    width: 33%;
+    float: left;
+    justify-content: space-evenly;
+}
+/*
+.mid-table-1 select, input {
+    width: 145px;
+}
+*/
+.mid-table-2{
+    width: 33%;
+    float: left;
+}
+
+.mid-table-3{
+    width: 33%;
+    float: left;
+}
+
+.form-container{
+    border: 1px solid #0099FF;
+    border-top: 2px solid #0099FF;
+    padding: 20px;
+}
+
+select{
+    width: 189px;
+    height: 30px;
+    border: 1px solid;
+    font-size: 12px;
 }
