@@ -1,8 +1,143 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+﻿@model HomePageViewModel
+<h4>Търсене в обявите</h4>
+<div class="form-container">
+    <form method="get" action="Listings\Search">
+        <table>
+            <tr>
+                <th>
+                    <label for="CategoryId">Основна категория</label>
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    <select style="width:220px; height:26px;" name="CategoryId" class="form-control">
+                        <option></option>
+                        @foreach (var category in Model.AdQuickSearchViewModel.Categories)
+                        {
+                            <option value="@category.Id">@category.Type</option>
+                        }
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <div class="mid-table-container">
+            <div class="mid-table-1">
+                <table>
+                    <tr>
+                        <th class="pub-titles">Марка</th>
+                        <th class="pub-titles">Модел</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select name="MakeId" class="form-control">
+                                <option></option>
+                                @foreach (var make in Model.AdQuickSearchViewModel.Makes)
+                                {
+                                    <option value="@make.Id">@make.Name</option>
+                                }
+                            </select>
+                        </td>
+                        <td>
+                            <select name="ModelId" class="form-control">
+                                <option></option>
+                                @foreach (var carModel in Model.AdQuickSearchViewModel.Models)
+                                {
+                                    <option value="@carModel.Id">@carModel.Name</option>
+                                }
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="pub-titles">Максимална цена</th>
+                        <th class="pub-titles">Година</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" name="MaximalPrice" class="form-control-input" />
+                        </td>
+                        <td>
+                            <select name="Year" class="form-control">
+                                <option></option>
+                                @foreach (var year in Model.AdQuickSearchViewModel.Years)
+                                {
+                                    <option value="@year">@year</option>
+                                }
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="pub-titles">Тип двигател</th>
+                        <th class="pub-titles">Скоростна кутия</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select name="EngineId" class="form-control">
+                                <option></option>
+                                @foreach (var engine in Model.AdQuickSearchViewModel.Engines)
+                                {
+                                    <option value="@engine.Id">@engine.Type</option>
+                                }
+                            </select>
+                        </td>
+                        <td>
+                            <select name="GearboxId" class="form-control">
+                                <option></option>
+                                @foreach (var gearbox in Model.AdQuickSearchViewModel.Gearboxes)
+                                {
+                                    <option value="@gearbox.Id">@gearbox.Type</option>
+                                }
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="mid-table-2">
+                <table>
+                    <tr>
+                        <th class="pub-titles">Регион</th>
+                        <th class="pub-titles">Населено място</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select name="RegionId" class="form-control">
+                                <option></option>
+                                @foreach (var region in Model.AdQuickSearchViewModel.Regions)
+                                {
+                                    <option value="@region.Id">@region.Name</option>
+                                }
+                            </select>
+                        </td>
+                        <td>
+                            <select name="TownId" class="form-control">
+                                <option></option>
+                                @foreach (var town in Model.AdQuickSearchViewModel.Towns)
+                                {
+                                    <option value="@town.Id">@town.Name</option>
+                                }
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="pub-titles" colspan="2">Подреждане на резултатите по</th>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <select name="SortingId" style="width: 301px;" class="form-control">
+                                <option value="1">Марка/Модел/Цена</option>
+                                <option value="2">Цена</option>
+                                <option value="3">Дата на производство</option>
+                                <option value="4">Пробег</option>
+                                <option value="5">Най-новите обяви</option>
+                                <option value="6">Най-новите обяви от посл. 2 дни</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <input style="margin-top: 33px;" type="submit" value="ТЪРСИ" />
+        </div>
+    </form>
+</div>
+<h4 style="margin-bottom: 0; padding-bottom: 4px;">Най-новите обяви за Автомобили и Джипове</h4>
+<div class="listings-container" style="border: 1px solid #0099FF; border-top: 3px solid #0099FF;">
 </div>

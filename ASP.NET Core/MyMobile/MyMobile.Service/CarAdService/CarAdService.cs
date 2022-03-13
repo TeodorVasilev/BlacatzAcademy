@@ -7,6 +7,35 @@ namespace MyMobile.Service.CarAdService
 {
     public class CarAdService
     {
+        public CarAd GetCarAd(int id)
+        {
+            CarAd carAd = new CarAd();
+
+            using(var context = new MyMobileContext())
+            {
+                carAd = context.CarAds.Where(ca => ca.Id == id)
+                                      .Include(c => c.Category)
+                                      .Include(c => c.Condition)
+                                      .Include(c => c.Currency)
+                                      .Include(c => c.Region)
+                                      .Include(c => c.Town)
+                                      .Include(c => c.Color)
+                                      .Include(c => c.Engine)
+                                      .Include(c => c.Eurostandard)
+                                      .Include(c => c.Gearbox)
+                                      .Include(c => c.VehicleCategory)
+                                      .Include(c => c.CarAdComforts)
+                                      .ThenInclude(e => e.Comfort)
+                                      .Include(c => c.CarAdInteriors)
+                                      .ThenInclude(e => e.Interior)
+                                      .Include(c => c.CarAdSecurities)
+                                      .ThenInclude(e => e.Security)
+                                      .FirstOrDefault();
+            }
+
+            return carAd;
+        }
+
         public void Create(CarAd ad)
         {
             using (var context = new MyMobileContext())
@@ -33,34 +62,7 @@ namespace MyMobile.Service.CarAdService
                 context.CarAds.Remove(carAd);
             }
         }
-
-        public List<CarAd> GetCarAds()
-        {
-            var carAds = new List<CarAd>();
-
-            using (var context = new MyMobileContext())
-            {
-                carAds = context.CarAds
-                    .Include(c => c.Category)
-                    .Include(c => c.Condition)
-                    .Include(c => c.Currency)
-                    .Include(c => c.Region)
-                    .Include(c => c.Town)
-                    .Include(c => c.Color)
-                    .Include(c => c.Engine)
-                    .Include(c => c.Eurostandard)
-                    .Include(c => c.Gearbox)
-                    .Include(c => c.VehicleCategory)
-                    .Include(c => c.CarAdComforts)
-                    .ThenInclude(e => e.Comfort)
-                    .ToList();
-                //include all properties and then fix the looks
-                //pages and stuff in controller
-            }
-
-            return carAds;
-        }
-
+        
         public string SetName(int makeId, int modelId, string modification)
         {
             var makeName = "";

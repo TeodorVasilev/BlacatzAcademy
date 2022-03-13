@@ -1,0 +1,59 @@
+﻿.navbar-container {
+    margin: auto;
+    width: 100%;
+    height: 100px;
+}
+/*try to add the left side blue line to logo*/
+.main-logo {
+    border: 3px solid black;
+    width: 150px;
+    height: 35px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 29px;
+    font-weight: bolder;
+}
+
+.navbar-brand {
+    text-decoration: none;
+    color: black;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+    .navbar-brand span {
+        color: #0099FF;
+    }
+
+.navbar-menu {
+    margin-top: 25px;
+}
+
+.bottom-line {
+    background-color: #328fc5;
+    height: 6px;
+    width: 100%
+}
+
+.navbar-menu a {
+    width: 85px;
+    height: 34px;
+    font-size 15px;
+    margin: 0px 1px 0px 0px;
+    padding: 4px 11px 0px;
+    border-radius: 7px 7px 0px 0px;
+    color: white;
+    background-color: #605D5D;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+    .navbar-menu a:hover {
+        background-color: #328fc5;
+        padding-bottom: 6px;
+    }
+    /*fix the active link to be like when hovering*/
+    .navbar-menu a:active {
+        background-color: #328fc5;
+        padding-bottom: 6px;
+    }

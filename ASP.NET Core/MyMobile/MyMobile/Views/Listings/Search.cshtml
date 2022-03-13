@@ -1,0 +1,56 @@
+﻿@model CarAdViewModel
+
+<h4 style="margin-bottom: 0;">Обяви за автомобили и джипове</h4>
+<div class="search-details-container" style="width: 100%; height: 100px; background: lightgray; border-top: 3px solid #0099FF;">
+</div>
+<div class="page-deatails-container" style="width: 100%; height: 35px; background: gray;">
+</div>
+<div class="results-container" style="border-top: 1px solid #0099FF; margin-top: 10px; font-family: Verdana, Geneva, Tahoma, sans-serif;">
+    @foreach (var carAd in Model.CarAds)
+    {
+        <div class="result-container" style="overflow: hidden; padding: 0px 0 10px 0; background-image: linear-gradient(white, lightgray);">
+            <div class="img-container" style="padding: 5px; width: 273px; float: left;">
+                <img style="padding: 5px; border: 1px solid gray; background: white;" src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Image not foud" width="250">
+            </div>
+            <div class="details-container" style="float: left;">
+                @*how to hide too long text with ...*@
+                <div class="name-price" style="width: 500px; height:35px; padding-top: 5px;">
+                    <div style="font-size:21px; font-weight: bold; float: left;"><a style="text-decoration: none;" name="carAdId" asp-controller="CarAds" asp-action="CarAd" asp-route-id="@carAd.Id">@carAd.Name</a></div>
+                    <div style="font-size:25px; font-weight:bold; float: right;">@carAd.DefaultPriceBgn лв.</div>
+                </div>
+                <div class="details" style="font-size: 13px;">
+                    <table>
+                        <tr>
+                            <td>Мощност [к.с.]</td>
+                            <td>@carAd.HorsePower</td>
+                        </tr>
+                        <tr>
+                            <td>Дата на произв.</td>
+                            <td>@carAd.ManufactureMonth<span>/</span>@carAd.ManufactureYear<span>г.</span></td>
+                        </tr>
+                        <tr>
+                            <td>Регион:</td>
+                            <td>@carAd.Region.Name<span>, гр. </span>@carAd.Town.Name</td>
+                        </tr>
+                        <tr>
+                            <td>Пробег:</td>
+                            <td>@carAd.Mileage<span>км</span></td>
+                        </tr>
+                        <tr>
+                            <td>Цвят:</td>
+                            <td>@carAd.Color.Name</td>
+                        </tr>
+                        <tr>
+                            <td>Тип двигател:</td>
+                            <td>@carAd.Engine.Type</td>
+                        </tr>
+                        <tr>
+                            <td>Скоростна кутия:</td>
+                            <td>@carAd.Gearbox.Type</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+</div>

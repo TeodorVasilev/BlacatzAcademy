@@ -10,14 +10,16 @@ namespace MyMobile.Controllers
 {
     public class CarAdsController : Controller
     {
-        public IActionResult Index()
+        public IActionResult CarAd(int id)
         {
             var carAdService = new CarAdService();
-            var carAdsViewModel = new CarAdViewModel();
+            var carAdViewModel = new CarAdViewModel();
 
-            carAdsViewModel.CarAds = carAdService.GetCarAds();
+            var carAd = carAdService.GetCarAd(id);
 
-            return View(carAdsViewModel);
+            carAdViewModel.CarAd = carAd;
+            
+            return View(carAdViewModel);
         }
 
         public IActionResult Create()

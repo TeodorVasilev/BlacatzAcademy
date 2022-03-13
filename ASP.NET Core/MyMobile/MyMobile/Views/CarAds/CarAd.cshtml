@@ -1,0 +1,47 @@
+﻿@model CarAdViewModel
+
+<div class="ad-container">
+    <h1>@Model.CarAd.Name</h1>
+    <div class="image-container" style="width:490px; height:340px; float:left;">
+        <img style="width:490px; height:340px" src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="" />
+    </div>
+    <div class="description-container" style="width:480px; height:340px; float:right; border: 1px solid blue;">
+        <table>
+            <tr>
+                <td>Мощност [к.с.]</td>
+                <td>@Model.CarAd.HorsePower</td>
+            </tr>
+            <tr>
+                <td>Дата на произв.</td>
+                <td>@Model.CarAd.ManufactureMonth<span>/</span>@Model.CarAd.ManufactureYear<span>г.</span></td>
+            </tr>
+            <tr>
+                <td>Регион:</td>
+                <td>@Model.CarAd.Region.Name<span>, гр. </span>@Model.CarAd.Town.Name</td>
+            </tr>
+            <tr>
+                <td>Пробег:</td>
+                <td>@Model.CarAd.Mileage<span>км</span></td>
+            </tr>
+            <tr>
+                <td>Цвят:</td>
+                <td>@Model.CarAd.Color.Name</td>
+            </tr>
+            <tr>
+                <td>Тип двигател:</td>
+                <td>@Model.CarAd.Engine.Type</td>
+            </tr>
+            <tr>
+                <td>Скоростна кутия:</td>
+                <td>@Model.CarAd.Gearbox.Type</td>
+            </tr>
+        </table>
+    </div>
+    <div style="clear: both;"></div>
+    <div class="features-lists">
+
+    </div>
+    <div class="additional-info">
+
+    </div>
+</div>

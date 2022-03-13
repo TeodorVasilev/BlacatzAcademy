@@ -10,5 +10,7 @@ namespace MyMobile.Models
         }
 
         public List<CarAd> CarAds { get; set; }
+
+        public CarAd CarAd { get; set; }
     }
 }

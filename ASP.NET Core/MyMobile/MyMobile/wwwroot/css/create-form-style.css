@@ -1,0 +1,117 @@
+﻿h4 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.form-container {
+    border: 1px solid #0099FF;
+    border-top: 3px solid #0099FF;
+    font-size: 12px;
+    padding: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.top-table {
+    float: left;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.mid-table-container {
+    overflow: hidden;
+    text-align: left;
+    clear:both;
+}
+
+.pub-titles{
+    padding-top: 10px;
+}
+
+.form-control {
+    width: 145px;
+    height: 26px;
+}
+
+.form-control-input{
+    width: 137px;
+    height: 20px;
+}
+
+
+/*
+.mid-table-container input {
+    width: 137px;
+    height: 20px;
+}
+
+.mid-table-container select {
+    width: 145px;
+    height: 26px;
+}
+*/
+
+.mid-table-1 {
+    width: 33%;
+    height: 180px;
+    float: left;
+}
+
+.mid-table-2 {
+    width: 33%;
+    height: 180px;
+    float: left;
+}
+
+/*fix positioning*/
+
+.mid-table-3 {
+    border: 1px solid red;
+    width: 33%;
+    height: 180px;
+    float: right;
+}
+
+.radio-input {
+    width: 18px; 
+    height: 18px;
+    border: 1px solid black;
+}
+
+.radio-boxes{
+    display: inline-block;
+    text-align: left;
+}
+
+
+.bot-tables {
+    clear: both;
+    overflow: hidden;
+    text-align:left;
+}
+/*fix positioning*/
+.bot-tables select {
+    width: 145px;
+    height: 26px;
+}
+
+.bot-table-1{
+    width:33%;
+    float:left;
+}
+
+.bot-table-2{
+    border: 1px solid red;
+    width: 33%;
+    float:left;
+}
+
+.features-list{
+    clear: both;
+    text-align:left;
+}
+/*fix bullets aligning*/
+.features-list ul{
+    list-style-type: none;
+    text-align: left;
+    padding-left: 0;
+}
+
