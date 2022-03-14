@@ -1,0 +1,39 @@
+﻿.ad-container{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+
+}
+
+.image-container {
+    width: 490px;
+    height: 340px;
+    float: left;
+}
+
+.image-container img {
+    width: 490px;
+    height: 340px
+}
+
+.description-container {
+    width: 480px;
+    height: 340px;
+    float: right;
+    border: 1px solid blue;
+}
+
+.features-lists {
+    border: 1px solid black;
+}
+
+.features-lists table {
+    text-align:left;
+}
+
+.features-lists table th td {
+    min-width: 202px;
+}
+
+.features-lists table td ul {
+    padding-left: 16px;
+    margin-right: 10px;
+}

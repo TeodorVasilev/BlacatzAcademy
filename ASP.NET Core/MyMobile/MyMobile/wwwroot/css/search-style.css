@@ -1,0 +1,54 @@
+﻿.search-header {
+    margin-bottom: 0;
+}
+
+.search-details-container {
+    width: 100%;
+    height: 100px;
+    background: lightgray;
+    border-top: 3px solid #0099FF;
+}
+
+.page-details-container {
+    width: 100%;
+    height: 35px;
+    background: gray;
+}
+
+.results-container {
+    border-top: 1px solid #0099FF;
+    margin-top: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.result-container {
+    overflow: hidden;
+    padding: 0px 0 10px 0;
+    background-image: linear-gradient(white, lightgray);
+}
+
+.listing-img-container {
+    padding: 5px;
+    width: 273px;
+    float: left;
+}
+
+.listing-img-container img {
+    padding: 5px;
+    border: 1px solid gray;
+    background: white;
+}
+
+.listing-details-container {
+    float: left
+}
+
+.name-price {
+    width: 500px;
+    height: 35px;
+    padding-top: 5px;
+}
+
+.listing-details {
+    font-size: 13px;
+}

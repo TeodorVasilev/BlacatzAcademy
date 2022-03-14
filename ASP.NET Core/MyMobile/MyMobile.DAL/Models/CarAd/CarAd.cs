@@ -1,9 +1,10 @@
-﻿using MyMobile.DAL.Models.CarAd.CarAdArgs;
+﻿using MyMobile.DAL.Interfaces.Models;
+using MyMobile.DAL.Models.CarAd.CarAdArgs;
 using MyMobile.DAL.Models.CarAd.CarArgs;
 
 namespace MyMobile.DAL.Models.CarAd
 {
-    public class CarAd
+    public class CarAd : IEntityWithId
     {
         public int Id { get; set; }
         //NAME = Make.Name + Model.Name + Engine.Modification

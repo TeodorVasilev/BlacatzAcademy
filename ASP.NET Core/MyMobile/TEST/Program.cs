@@ -51,19 +51,5 @@ using(var context = new MyMobileContext())
     //        $"{item.DefaultPriceBgn}" + 
     //        $"{item.Currency.Name}");
     //}
-
-    //int rows = int.Parse(Console.ReadLine());
-    //int cols = int.Parse(Console.ReadLine());
-    //int num = 1;
-    //
-    //for (int i = 0; i < rows; i++)
-    //{
-    //    for (int k = 0; k < cols; k++)
-    //    {
-    //        Console.Write(num + " ");
-    //        num++;
-    //    }
-    //    Console.WriteLine();
-    //}
 }
 

@@ -111,15 +111,7 @@ namespace MyMobile.Service.CarAdService
                     .Include(c => c.Town)
                     .Include(c => c.Color)
                     .Include(c => c.Engine)
-                    .Include(c => c.Eurostandard)
-                    .Include(c => c.Gearbox)
-                    .Include(c => c.VehicleCategory)
-                    .Include(c => c.CarAdComforts)
-                    .ThenInclude(e => e.Comfort)
-                    .Include(c => c.CarAdInteriors)
-                    .ThenInclude(e => e.Interior)
-                    .Include(c => c.CarAdSecurities)
-                    .ThenInclude(e => e.Security);
+                    .Include(c => c.Gearbox);
 
                 string str = query.ToQueryString();
                 carAds = query.ToList();
