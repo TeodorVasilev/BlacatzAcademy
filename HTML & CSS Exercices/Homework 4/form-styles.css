@@ -1,0 +1,72 @@
+.form-container{
+    float: left;
+    width: 430px;
+    height: 435px;
+    margin-left: 550px;
+    margin-top: 60px;
+    box-shadow: 8px 12px 8px 9px rgba(8, 8, 8, 0.26);
+}
+
+.headline{
+    float: left;
+    margin: 0;
+    padding: 15px;
+}
+
+h1{
+    margin: 0;
+}
+
+.form-box{
+    float: left;
+    padding: 15px;
+}
+
+.form-table-1{
+    width: 380px;
+}
+
+.form-table-1 td{
+    width: 120px;
+    font-size: 20px;
+}
+
+.form-table-1 input{
+    width: 242px;
+    height: 24px;
+    font-size: 20px;
+}
+
+.form-table-2{
+    font-size: 20px;
+}
+
+.form-table-2 .button-label{
+    width: 122px;
+}
+
+.form-table-2 input{
+    margin: 0;
+}
+
+.form-table-3{
+    font-size: 20px;
+}
+
+.form-table-3 .button-label{
+    width: 122px;
+}
+
+.select-years{
+    height: 22px;
+    font-size: 18px;
+}
+
+.submit-button{
+    margin-top: 30px;
+}
+
+.submit-button input{
+    font-size: 20px;
+    width: 133px;
+}
