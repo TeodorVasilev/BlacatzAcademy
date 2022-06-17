@@ -1,0 +1,7 @@
+﻿.roles-table td{
+    border-bottom: 1px solid #ddd;
+}
+
+.roles-table tr:hover{
+    background-color: #098f;
+}

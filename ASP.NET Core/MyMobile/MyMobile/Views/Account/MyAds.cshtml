@@ -1,0 +1,43 @@
+﻿@using MyMobile.DAL.Models.ViewModels.Pages
+@model MyAdsViewModel
+<div>
+    <a asp-area="" asp-controller="Listings" asp-action="Create">Добави обява</a>
+    <a asp-area="" asp-controller="Account" asp-action="Settings">Настройки</a>
+</div>
+<div>
+    <h4 style="margin-bottom: 0; padding-bottom: 4px;">Списък и управление на публикуваните от Вас обяви</h4>
+    <div class="listings-container" style="border: 1px solid #0099FF; border-top: 3px solid #0099FF;">
+        <table>
+            @foreach (var carAd in @Model.CarAdViewModel.CarAds)
+            {
+                <tr>
+                    <td>
+                        <a class="item" name="carAdId" asp-controller="Listings" asp-action="Listing" asp-route-id="@carAd.Id">
+                            <table style="border-bottom: 1px solid #ccc; margin-right: 10px;">
+                                <tr>
+                                    <td>
+                                        <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Image not found" width="180px" height="129px">
+                                    </td>
+                                    <td class="item-details">
+                                        <span class="make">@carAd.Name</span>
+                                        <br>
+                                        <br>
+                                        <span class="price">@carAd.DefaultPriceBgn<span>лв</span></span>
+                                        <br>
+                                        <span class="others">@carAd.Mileage<span>км</span></span>
+                                        <br>
+                                        <span class="others">@carAd.Town.Name</span>
+                                        <br>
+                                        @*fix date created*@
+                                        <span class="date">@carAd.DateAdded.ToString("HH:mm") на @carAd.DateAdded.ToString("dd.MM.yyyy")</span>
+                                        <br>
+                                        <a asp-controller="Listings" asp-action="Edit" asp-route-id="@carAd.Id">Редактирай</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>

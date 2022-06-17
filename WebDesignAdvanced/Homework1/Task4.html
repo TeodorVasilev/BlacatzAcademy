@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 4</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .box {
+            box-sizing: border-box;
+            padding: 10px;
+            width: 33%;
+            background: silver;
+            height: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            font-size: 30px;
+        }
+
+        @media(min-width: 768px) and (max-width:1024px) {
+            .box{
+                margin-bottom: 20px;
+                font-size: 20px;
+                width: 49%;
+            }
+
+            .w100{
+                width: 100%;
+            }
+
+            .container{
+                flex-wrap: wrap;
+            }
+        }
+
+        @media(max-width:768px){
+            .box{
+                width: 100%;
+                margin-bottom: 20px;
+                font-size: 16px;
+            }
+
+            .container{
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box w100">
+            <div>
+                <h2>Title</h2>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos necessitatibus sunt totam enim
+                    esse at. Alias expedita minus, dolores adipisci aliquam modi tempora magni facere iure culpa,
+                    repellat sapiente amet?
+                </p>
+            </div>
+        </div>
+        <div class="box">
+            <div>
+                <h2>Title</h2>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos necessitatibus sunt totam enim
+                    esse at. Alias expedita minus, dolores adipisci aliquam modi tempora magni facere iure culpa,
+                    repellat sapiente amet?
+                </p>
+            </div>
+        </div>
+        <div class="box">
+            <div>
+                <h2>Title</h2>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos necessitatibus sunt totam enim
+                    esse at. Alias expedita minus, dolores adipisci aliquam modi tempora magni facere iure culpa,
+                    repellat sapiente amet?
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

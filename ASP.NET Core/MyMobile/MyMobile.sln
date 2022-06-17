@@ -3,13 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMobile", "MyMobile\MyMobile.csproj", "{09442C72-F8CB-4F65-BBCF-3381FC3FAABB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyMobile", "MyMobile\MyMobile.csproj", "{09442C72-F8CB-4F65-BBCF-3381FC3FAABB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMobile.DAL", "MyMobile.DAL\MyMobile.DAL.csproj", "{67DFB1A3-51D0-485B-A816-95A2044C6D0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyMobile.DAL", "MyMobile.DAL\MyMobile.DAL.csproj", "{67DFB1A3-51D0-485B-A816-95A2044C6D0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMobile.Service", "MyMobile.Service\MyMobile.Service.csproj", "{84BBFDFC-7EC5-4A68-95E7-D8C51B2522AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyMobile.Service", "MyMobile.Service\MyMobile.Service.csproj", "{84BBFDFC-7EC5-4A68-95E7-D8C51B2522AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TEST", "TEST\TEST.csproj", "{6C235C6F-30EA-4296-A4D0-4F9D6D31F902}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TEST", "TEST\TEST.csproj", "{6C235C6F-30EA-4296-A4D0-4F9D6D31F902}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{091827F4-236B-4FDC-8891-E7290C9468F2}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

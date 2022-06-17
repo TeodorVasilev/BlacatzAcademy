@@ -1,40 +1,73 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using MyMobile.DAL.Models.CarAd;
-using MyMobile.Models;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using MyMobile.DAL.Data;
+using MyMobile.DAL.Models.Identity;
+using MyMobile.DAL.Models.ViewModels.Create;
+using MyMobile.DAL.Models.ViewModels.Listings;
+using MyMobile.Service.AccountService;
 using MyMobile.Service.CarAdService;
+using MyMobile.Service.ListingsPageServices;
 
 namespace MyMobile.Controllers
 {
     public class ListingsController : Controller
     {
-        public IActionResult Search(AdQuickSearchStoreViewModel formData)
+        private readonly IUserService _userService;
+
+        public ListingsController(IUserService userService)
+        {
+            _userService = userService;
+        }
+
+        public IActionResult Search(QuickSearchStoreViewModel formData, int? page)
+        {
+            var listingsPageService = new ListingsPageService();
+            return View(listingsPageService.LoadListings(formData, page));
+        }
+
+        public IActionResult Listing(int id)
+        {
+            var listingsPageService = new ListingsPageService();
+            return View(listingsPageService.LoadListing(id));
+        }
+
+        public IActionResult Create()
+        {
+            var listingPageService = new ListingsPageService();
+            return View(listingPageService.LoadCreateForm());
+        }
+
+        [Authorize]
+        public IActionResult Edit(int id)
+        {
+            var listingPageService = new ListingsPageService();
+            return View(listingPageService.LoadeEditListingPage(id));
+        }
+
+        public IActionResult EditStore(int id, StoreListingViewModel formData)
         {
             var listingService = new ListingService();
-            var carAdViewModel = new CarAdViewModel();
+            listingService.Update(id, formData);
+            return RedirectToAction("MyAds", "Account");
+        }
 
-            decimal maximalPrice = 0;
-            int sortingId = 0;
-
-            var carAd = new CarAd()
+        public IActionResult Store(StoreListingViewModel formData)
+        {
+            var listingsPageService = new ListingsPageService();
+            if (User.Identity.IsAuthenticated)
             {
-                CategoryId = formData.CategoryId,
-                MakeId = formData.MakeId,
-                ModelId = formData.ModelId,
-                EngineId = formData.EngineId,
-                GearboxId = formData.GearboxId,
-                ConditionId = formData.ConditionId,
-                ManufactureYear = formData.Year,
-                RegionId = formData.RegionId,
-                TownId = formData.TownId,
-                UserPrice = formData.MaximalPrice //fix property
-            };
+                formData.userId = _userService.GetUserId();
+                listingsPageService.StoreListing(formData);
+                return RedirectToAction("MyAds", "Account");
+            }
+            else
+            {
+                listingsPageService.StoreListing(formData);
+            }
+            //fix method if condition and redirection when adding new listing as logged user or as unlogeduser
 
-            maximalPrice = formData.MaximalPrice;
-            sortingId = formData.SortingId;
-
-            carAdViewModel.CarAds = listingService.GetCarAds(carAd, sortingId, maximalPrice);
-
-            return View(carAdViewModel);
+            return RedirectToAction("Index","Home");
         }
     }
 }

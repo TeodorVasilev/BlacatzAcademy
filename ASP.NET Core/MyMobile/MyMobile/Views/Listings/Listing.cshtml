@@ -1,0 +1,86 @@
+﻿@model MyMobile.DAL.Models.ViewModels.Listings.ListingViewModel
+
+<div class="ad-container">
+    <h1>@Model.Listing.Name</h1>
+    <div class="image-container">
+        <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="" />
+    </div>
+    <div class="description-container">
+        <table>
+            <tr>
+                <td>Дата на произв.</td>
+                <td>@Model.Listing.ManufactureMonth<span>/</span>@Model.Listing.ManufactureYear<span>г.</span></td>
+            </tr>
+            <tr>
+                <td>Тип двигател:</td>
+                <td>@Model.Listing.Engine.Type</td>
+            </tr>
+            <tr>
+                <td>Мощност [к.с.]</td>
+                <td>@Model.Listing.HorsePower</td>
+            </tr>
+            <tr>
+                <td>Евростандарт:</td>
+                <td>@Model.Listing.Eurostandard.Name</td>
+            </tr>
+            <tr>
+                <td>Скоростна кутия:</td>
+                <td>@Model.Listing.Gearbox.Type</td>
+            </tr>
+            <tr>
+                <td>Категория:</td>
+                <td>@Model.Listing.VehicleCategory.Name</td>
+            </tr>
+            <tr>
+                <td>Пробег:</td>
+                <td>@Model.Listing.Mileage<span>км</span></td>
+            </tr>
+            <tr>
+                <td>Цвят:</td>
+                <td>@Model.Listing.Color.Name</td>
+            </tr>
+            <tr>
+                <td>Регион:</td>
+                <td>@Model.Listing.Region.Name<span>, гр. </span>@Model.Listing.Town.Name</td>
+            </tr>
+        </table>
+    </div>
+    <div style="clear: both;"></div>
+    <div class="features-lists">
+        <table>
+            <tr>
+                <th>Безопасност</th>
+                <th>Комфорт</th>
+                <th>Интериор</th>
+            </tr>
+            <tr>
+                <td>
+                    <ul>
+                        @foreach (var item in Model.Listing.CarAdSecurities)
+                        {
+                            <li>@item.Security.Name</li>
+                        }
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        @foreach (var item in Model.Listing.CarAdComforts)
+                        {
+                            <li>@item.Comfort.Name</li>
+                        }
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        @foreach (var item in Model.Listing.CarAdInteriors)
+                        {
+                            <li>@item.Interior.Name</li>
+                        }
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="additional-info">
+    </div>
+</div>

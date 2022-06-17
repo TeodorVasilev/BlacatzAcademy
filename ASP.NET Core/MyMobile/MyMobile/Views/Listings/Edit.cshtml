@@ -1,0 +1,368 @@
+﻿@model MyMobile.DAL.Models.ViewModels.Listings.EditListingViewModel
+
+<div class="ad-container">
+    <h1>@Model.ListingViewModel.Listing.Name</h1>
+    <div class="image-container">
+        <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="" />
+    </div>
+    <div class="description-container">
+        <table>
+            <tr>
+                <td>Дата на произв.</td>
+                <td>@Model.ListingViewModel.Listing.ManufactureMonth<span>/</span>@Model.ListingViewModel.Listing.ManufactureYear<span>г.</span></td>
+            </tr>
+            <tr>
+                <td>Тип двигател:</td>
+                <td>@Model.ListingViewModel.Listing.Engine.Type</td>
+            </tr>
+            <tr>
+                <td>Мощност [к.с.]</td>
+                <td>@Model.ListingViewModel.Listing.HorsePower</td>
+            </tr>
+            <tr>
+                <td>Евростандарт:</td>
+                <td>@Model.ListingViewModel.Listing.Eurostandard.Name</td>
+            </tr>
+            <tr>
+                <td>Скоростна кутия:</td>
+                <td>@Model.ListingViewModel.Listing.Gearbox.Type</td>
+            </tr>
+            <tr>
+                <td>Категория:</td>
+                <td>@Model.ListingViewModel.Listing.VehicleCategory.Name</td>
+            </tr>
+            <tr>
+                <td>Пробег:</td>
+                <td>@Model.ListingViewModel.Listing.Mileage<span>км</span></td>
+            </tr>
+            <tr>
+                <td>Цвят:</td>
+                <td>@Model.ListingViewModel.Listing.Color.Name</td>
+            </tr>
+            <tr>
+                <td>Регион:</td>
+                <td>@Model.ListingViewModel.Listing.Region.Name<span>, гр. </span>@Model.ListingViewModel.Listing.Town.Name</td>
+            </tr>
+        </table>
+    </div>
+    <div style="clear: both;"></div>
+    <div class="features-lists">
+        <table>
+            <tr>
+                <th>Безопасност</th>
+                <th>Комфорт</th>
+                <th>Интериор</th>
+            </tr>
+            <tr>
+                <td>
+                    <ul>
+                        @foreach (var item in Model.ListingViewModel.Listing.CarAdSecurities)
+                        {
+                            <li>@item.Security.Name</li>
+                        }
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        @foreach (var item in Model.ListingViewModel.Listing.CarAdComforts)
+                        {
+                            <li>@item.Comfort.Name</li>
+                        }
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        @foreach (var item in Model.ListingViewModel.Listing.CarAdInteriors)
+                        {
+                            <li>@item.Interior.Name</li>
+                        }
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="additional-info">
+    </div>
+</div>
+<div class="form-container">
+    <form method="post" asp-area="" asp-controller="Listings" asp-action="EditStore" asp-route-id="@Model.ListingViewModel.Listing.Id">
+        <div class="top-table">
+            @*remove inline styles*@
+            <table>
+                <tr>
+                    <th>
+                        <label for="CategoryId">Основна категория</label>
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <select style="width:220px; height:26px;" name="CategoryId" class="form-control">
+                            <option></option>
+                            @foreach (var category in Model.CreateListingViewModel.Categories)
+                            {
+                                <option value="@category.Id">@category.Type</option>
+                            }
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="mid-table-container">
+            <div class="mid-table-1">
+                <table>
+                    <tr>
+                        <th class="pub-titles">Марка</th>
+                        <th class="pub-titles">Модел</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            @*
+                                fix font-size for select width for fields and space between
+                            *@
+                            <select name="MakeId" class="form-control">
+                                <option></option>
+                                @foreach (var make in Model.CreateListingViewModel.Makes)
+                                {
+                                    <option value="@make.Id">@make.Name</option>
+                                }
+                            </select>
+                        </td>
+                        <td>
+                            <select name="ModelId" class="form-control">
+                                <option></option>
+                                @foreach (var carModel in Model.CreateListingViewModel.Models)
+                                {
+                                    <option value="@carModel.Id">@carModel.Name</option>
+                                }
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="pub-titles" >Мощност [к.с.]</th>
+                        <th class="pub-titles" >Евростандарт</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" name="HorsePower" class="form-control-input"/>
+                        </td>
+                        <td>
+                            <select name="EurostandardId" class="form-control">
+                                <option></option>
+                                @foreach (var eurostandard in Model.CreateListingViewModel.Eurostandards)
+                                {
+                                    <option value="@eurostandard.Id">@eurostandard.Name</option>
+                                }
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="pub-titles" >Цена</th>
+                        <th class="pub-titles" >Валута</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" name="UserPrice" class="form-control-input"/>
+                        </td>
+                        <td>
+                            <select name="CurrencyId" class="form-control">
+                                <option></option>
+                                @foreach (var currency in Model.CreateListingViewModel.Currencies)
+                                {
+                                    <option value="@currency.Id">@currency.Name</option>
+                                }
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="mid-table-2">
+                <table>
+                    <tr>
+                        <th class="pub-titles" >Модификация</th>
+                        <th class="pub-titles" >Тип двигател</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" name="Modification" class="form-control-input"/>
+                        </td>
+                        <td>
+                            <select name="EngineId" class="form-control">
+                                <option></option>
+                                @foreach (var engine in Model.CreateListingViewModel.Engines)
+                                {
+                                    <option value="@engine.Id">@engine.Type</option>
+                                }
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="pub-titles" >Скоростна кутия</th>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            @*inline styles*@
+                            <select style="width: 301px;" name="GearboxId" class="form-control">
+                                <option></option>
+                                @foreach (var gearbox in Model.CreateListingViewModel.Gearboxes)
+                                {
+                                    <option value="@gearbox.Id">@gearbox.Type</option>
+                                }
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="pub-titles" >Дата на производство</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select name="ManufactureMonth" class="form-control">
+                                <option></option>
+                                @for (int i = 1; i <= 12; i++)
+                                {
+                                    <option value="@i">@i</option>
+                                }
+                            </select>
+                        </td>
+                        <td>
+                            <select name="ManufactureYear" class="form-control">
+                                <option></option>
+                                @for (int i = DateTime.Now.Year; i > 1950; i--)
+                                {
+                                    <option value="@i">@i</option>
+                                }
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="mid-table-3">
+                <table>
+                    <tr>
+                        <th class="pub-titles" >Състояние</th>
+                    </tr>
+                    <tr>
+                        <td class="radio-labels">
+                            @foreach (var condition in Model.CreateListingViewModel.Conditions)
+                            {
+                                <input class="radio-input" type="radio" name="ConditionId" value="@condition.Id" />
+                                <label class="radio-boxes" for="@condition.Id">@condition.Type</label>
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="pub-titles" >Категория</th>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            @*inline styles*@
+                            <select style="width: 301px;" name="VehicleCategoryId" class="form-control">
+                                <option></option>
+                                @foreach (var vehicleCategory in Model.CreateListingViewModel.VehicleCategories)
+                                {
+                                    <option value="@vehicleCategory.Id">@vehicleCategory.Name</option>
+                                }
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="pub-titles" >Пробег</th>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input  class="form-control-input" type="text" name="Mileage" /><span> В километри</span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="bot-tables">@*float*@
+            <table class="bot-table-1">
+                <tr>
+                    <th>Цвят</th>
+                </tr>
+                <tr>
+                    <td>
+                        <select style="width: 293px;" name="ColorId" class="form-control">
+                            <option></option>
+                            @foreach (var color in Model.CreateListingViewModel.Colors)
+                            {
+                                <option value="@color.Id">@color.Name</option>
+                            }
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <table class="bot-table-2">
+                <tr>
+                    <th class="pub-titles" >Регион</th>
+                    <th class="pub-titles" >Населено място</th>
+                </tr>
+                <tr>
+                    <td>
+                        <select name="RegionId" class="form-control">
+                            <option></option>
+                            @foreach (var region in Model.CreateListingViewModel.Regions)
+                            {
+                                <option value="@region.Id">@region.Name</option>
+                            }
+                        </select>
+                    </td>
+                    <td>
+                        <select name="TownId" class="form-control">
+                            <option></option>
+                            @foreach (var town in Model.CreateListingViewModel.Towns)
+                            {
+                                <option value="@town.Id">@town.Name</option>
+                            }
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="features-list">
+            <table>
+                <tr>
+                    <th class="pub-titles" >Безопасност</th>
+                    <th class="pub-titles" >Комфорт</th>
+                    <th class="pub-titles" >Интериор</th>
+                </tr>
+                <tr>
+                    <td>
+                        <ul>
+                            @foreach (var security in Model.CreateListingViewModel.Securities)
+                            {
+                                <li>
+                                    <input value="@security.Id" type="checkbox" name="CarAdSecurities">
+                                    <label>@security.Name</label>
+                                </li>
+                            }
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            @foreach (var comfort in Model.CreateListingViewModel.Comforts)
+                            {
+                                <li>
+                                    <input value="@comfort.Id" type="checkbox" name="CarAdComforts">
+                                    <label>@comfort.Name</label>
+                                </li>
+                            }
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            @foreach (var interior in Model.CreateListingViewModel.Interiors)
+                            {
+                                <li>
+                                    <input value="@interior.Id" type="checkbox" name="CarAdInteriors">
+                                    <label>@interior.Name</label>
+                                </li>
+                            }
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+            <input type="submit" />
+        </div>
+    </form>
+</div>

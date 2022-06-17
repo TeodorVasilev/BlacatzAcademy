@@ -1,0 +1,32 @@
+﻿@using MyMobile.DAL.Models.ViewModels.Administration
+@model ListRolesViewModel
+
+<h2>List of roles</h2>
+<a asp-action="CreateRole" asp-controller="Administration">Add role</a>
+<table class="roles-table">
+    <tr>
+        <td>
+            Id
+        </td>
+        <td>
+            RoleName
+        </td>
+    </tr>
+@foreach (var role in @Model.Roles)
+{
+    <tr>
+        <td>
+            @role.Id
+        </td>
+        <td>
+            @role.Name
+        </td>
+        <td>
+            <a asp-action="EditRole" asp-controller="Administration" asp-route-id="@role.Id">Edit</a>
+        </td>
+         <td>
+            <a href="">Delete</a>
+        </td>
+    </tr>
+}
+</table>

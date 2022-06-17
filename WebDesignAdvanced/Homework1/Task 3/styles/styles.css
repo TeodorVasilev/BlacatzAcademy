@@ -1,0 +1,289 @@
+html{
+    font-family: 'Indie Flower', cursive;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: white
+}
+
+.box {
+    height: 200px;
+    width: 200px;
+    background-color: silver;
+}
+
+:root{
+    --main-color: linear-gradient(45deg, lightgray 0 50%, #09f 100%);
+}
+
+/*MAIN CONTAINER*/
+.main-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    row-gap: 2rem;
+}
+
+/*MAIN CONTAINER END*/
+
+/*NAVBAR*/
+.navbar {
+    width: 95%;
+    height: 2.5rem;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    background: var(--main-color);
+    box-shadow: 2.5px 2.5px 5px aqua;
+}
+
+.nav-inner {
+    width: 85.25%;
+    margin-left: 5.25%;
+    display: flex;
+    align-items: center;
+}
+
+.logo{
+    font-family: 'Permanent Marker', cursive;
+    color: #09f;
+}
+
+.menu ul{
+    display: flex;
+}
+
+.menu ul li {
+    list-style-type: none;
+    display: inline;
+    padding: 15px;
+}
+
+.menu ul li a{
+    text-decoration: none;
+    color: #09f;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.menu ul li a:hover{
+    opacity: 0.6;
+}
+
+.login {
+    margin-left: auto;
+    display: flex;
+}
+
+.login button{
+    font-family: 'Indie Flower', cursive;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: transparent;
+    width: 120px;
+    color: white;
+    border: 2px solid white;
+    margin-left: 10px;
+}
+
+.login button:hover{
+    opacity: 0.6;
+}
+
+/*NAVBAR END*/
+
+/*PRODUCT*/
+.product {
+    width: 100%;
+    height: 30rem;
+    display: flex;
+    justify-content: center;
+    background: url("/images/product-background.jpg") center, no-repeat;
+    background-size: cover;
+}
+
+.product-inner {
+    width: 81%;
+    display: flex;
+    align-items: center;
+}
+
+.product-description{
+    height: 400px;
+    display: flex;
+    align-items: center;
+}
+
+.product-description-inner{
+    width: 30%;
+    text-shadow: 0.5px 0.5px 0.5px;
+}
+
+.product-description-inner p span{
+    color: #09f;
+}
+
+.product-description-inner h2{
+    font-size: 30px;
+    color: #09f;
+}
+
+.product-description-inner p{
+ font-size: 18px;
+ font-weight: bold;
+ color: white;
+}
+
+.product-description-inner button{
+    font-family: 'Indie Flower', cursive;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: transparent;
+    width: 160px;
+    color: white;
+    border: 2px solid white;
+}
+
+.product-description-inner button:hover{
+    opacity: 0.6;
+}
+
+/*PRODUCT END*/
+
+/*SECTION BOXES*/
+.section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    column-gap: 2rem;
+    border-top :2px solid aqua;
+    padding-top: 2rem;
+}
+
+.section-inner{
+    display: flex;
+    width: 81%;
+    column-gap: 2rem;
+    justify-content: center;
+}
+
+.section-box {
+    width: 33%;
+    height: 300px;
+}
+
+.section-box-image img{
+    width: 100%;
+    height: 214px;
+}
+
+.section-box-description h4{
+    margin: 0;
+    padding: 0;
+}
+
+.section-box-description p{
+    margin: 0;
+    padding: 0;
+}
+
+/*SECTION BOXES END*/
+
+/*BOTTOM SECTION BOXES*/
+.bot-section{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    row-gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.bot-section-inner{
+    width: 81%;
+    height: 300px;
+    display: flex;
+    column-gap: 2rem;
+}
+
+.bot-section-inner-2{
+    width: 81%;
+    height: 300px;
+    display: flex;
+    flex-direction: row-reverse;
+    column-gap: 2rem;
+}
+
+.bot-box{
+    width: 50%;
+    height: 290px;
+    display: flex;
+    align-items: center;
+}
+
+.bot-box-image{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.bot-box-image img{
+    width: 100%;
+    height: 290px;
+}
+
+.bot-box-description h2{
+    font-size: 30px;
+}
+
+.bot-box-description{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+
+/* width */
+.bot-box-description::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  .bot-box-description::-webkit-scrollbar-track {
+    background: white; 
+  }
+   
+  /* Handle */
+  .bot-box-description::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  .bot-box-description::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
+.bot-box-description p{
+    font-size: 20px;
+    width: 100%;
+}
+
+.bot-box-description button{
+    font-family: 'Indie Flower', cursive;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: transparent;
+    width: 160px;
+    color: black;
+    border: 2px solid black;
+}
+
+.bot-box-description button:hover{
+    opacity: 0.6;
+}
+/*BOTTOM SECTION BOXES END*/

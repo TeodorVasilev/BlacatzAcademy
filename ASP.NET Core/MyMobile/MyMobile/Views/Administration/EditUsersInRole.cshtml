@@ -1,0 +1,36 @@
+﻿@using MyMobile.DAL.Models.ViewModels.Administration
+@model List<UserRoleViewModel>
+
+@{
+    var roleId = ViewBag.roleId;
+}
+
+<h1>Add or remove users in role</h1>
+
+<div>
+    <form method="post" asp-action="EditUsersInRole" asp-controller="Administration" asp-route-roleId="@ViewBag.roleId">
+        <table>
+            @if (Model.Any())
+            {
+                @for(int i = 0; i < Model.Count; i++)
+                {
+                    <tr>
+                        <td>
+                            <input type="readonly" asp-for="@Model[i].UserId" />
+                        </td>
+                        <td>
+                            <input type="readonly" asp-for="@Model[i].Username" />
+                        </td>
+                        <td>
+                            <input asp-for="@Model[i].IsSelected" />
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+        <div>
+            <input type="submit" value="Update" />
+            <a class="btn btn-primary" style="width:auto" asp-action="EditRole" asp-controller="Administration" asp-route-id="@ViewBag.roleId">Cancel</a>
+        </div>
+    </form>
+</div>

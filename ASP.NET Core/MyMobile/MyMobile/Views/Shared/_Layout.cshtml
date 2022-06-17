@@ -9,28 +9,60 @@
     <link rel="stylesheet" href="~/css/create-form-style.css" />
     <link rel="stylesheet" href="~/css/car-ad-style.css" />
     <link rel="stylesheet" href="~/css/search-style.css" />
+    <link rel="stylesheet" href="~/css/home-page-ads-style.css" />
+    <link rel="stylesheet" href="~/css/register.css" />
+    <link rel="stylesheet" href="~/css/list-roles-style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
 <body>
     <div style="width: 990px;">
         <header>
             <nav class="navbar">
-                <div class="navbar-container">
+                <div class="logo-login-container">
                     <div class="main-logo">
                         <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">my<span>.</span>mobile</a>
                     </div>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <div>
+                            <a asp-area="" asp-controller="Account" asp-action="AccountPage">@User.Identity.Name</a>
+                            <a asp-area="" asp-controller="Account" asp-action="Logout">изход</a>
+                        </div>
+                        <div>
+                            @if(User.IsInRole("SuperAdmin"))
+                            {
+                                <a href>Administration Panel</a>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="login-links-container">
+                            <div class="login-links-left">
+                                <a class="login" asp-area="" asp-controller="Account" asp-action="Register">Вход</a>
+                                <span class="slash">|</span>
+                                <a class="register" asp-area="" asp-controller="Account" asp-action="Register">Нова регистрация</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="navbar-container">
+                    @*fix*@
+
+                    @*fix*@
                     @*/todo: add links and buttons login; new registration; update ad; add ad*@
-                    <div class="navbar-menu">
+                    <div id="navbar-menu" class="navbar-menu">
                         <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Начало</a>
-                        <a class="nav-link" asp-area="" asp-controller="CarAds" asp-action="Create">Публикуване</a>
-                        <a href="">Търсене</a>
-                        <a href="">Новини</a>
-                        <a href="">Rent-a-car</a>
-                        <a href="">Средни цени</a>
-                        <a href="">Дилъри</a>
-                        <a style="margin-left: 38.3px" href="">Моите обяви</a>
+                        <a class="nav-link" asp-area="" asp-controller="Listings" asp-action="Create">Публикуване</a>
+                        <a class="nav-link" href="#">Търсене</a>
+                        <a class="nav-link" href="#">Новини</a>
+                        <a class="nav-link" href="#">Rent-a-car</a>
+                        <a class="nav-link" href="#">Средни цени</a>
+                        <a class="nav-link" href="#">Дилъри</a>
+                        <a class="nav-link" style="margin-left: 37.8px;" asp-area="" asp-controller="Account" asp-action="MyAds">Моите обяви</a>
                     </div>
                     <div class="bottom-line"></div>
                 </div>
@@ -48,6 +80,11 @@
             </div>
         </footer>
     </div>
+    <script>
+        $(document).ready(function(){
+            $('.navbar-menu').find('[href="'+window.location.pathname+'"]').closest('a').addClass('active');
+        });
+    </script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

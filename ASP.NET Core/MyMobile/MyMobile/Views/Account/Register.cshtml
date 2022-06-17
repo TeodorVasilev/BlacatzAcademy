@@ -1,0 +1,79 @@
+﻿<div class="main-container">
+    <div class="login-register-links-container">
+        <a onclick="ToggleLogin();" class="login" @*asp-area="" asp-controller="Account" asp-action="Register"*@ href="#">Вход</a>
+        <a onclick="ToggleRegister();" class="register" @*asp-area="" asp-controller="Account" asp-action="Register"*@ href="#">Регистрация</a>
+    </div>
+    <div class="register-container">
+        <div class="form-box" id="login">
+            <h4>Вход:</h4>
+            <table>
+                <form method="post" asp-controller="Account" asp-action="LoginStore">
+                <tr>
+                    <td>
+                        <input type="text" placeholder="E-mail" name="Username" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="password" placeholder="Парола" name="Password" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" value="Вход" />
+                    </td>
+                </tr>
+                </form>
+            </table>
+        </div>
+        <div class="form-box" id="register">
+            <h4>Регистрация с Email и парола:</h4>
+            <table>
+                <form method="post" asp-controller="Account" asp-action="Register">
+                <tr>
+                    <td>
+                        <input type="text" placeholder="E-mail" name="Email" />
+                        <p class="email-validation-msg">На посочения E-mail ще получите линк за потвърждение на регистрацията.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="password" placeholder="Парола" name="Password" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="password" placeholder="Повтори паролата" name="ConfirmPassword" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" value="" />
+                        <label class="checkbox-text">Съгласен съм с общите условия.</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" value="Регистрация с E-mail" />
+                    </td>
+                </tr>
+                </form>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+    function ToggleRegister(){
+        var login = document.getElementById('login');
+        var register = document.getElementById('register');
+        login.style.opacity = "0";
+        register.style.opacity = "1";
+    }
+
+    function ToggleLogin(){
+        var login = document.getElementById('login');
+        var register = document.getElementById('register');
+        register.style.opacity = "0";
+        login.style.opacity = "1";
+    }
+</script>

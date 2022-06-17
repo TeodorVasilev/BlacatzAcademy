@@ -3,12 +3,13 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using MyMobile.DAL.Models.CarAd;
 using MyMobile.DAL.Models.CarAd.CarAdArgs;
 using MyMobile.DAL.Models.CarAd.CarArgs;
+using MyMobile.DAL.Models.Identity;
 
 namespace MyMobile.DAL.Configuration
 {
-    public class CarAdConfiguration : IEntityTypeConfiguration<CarAd>
+    public class CarAdConfiguration : IEntityTypeConfiguration<Listing>
     {
-        public void Configure(EntityTypeBuilder<CarAd> builder)
+        public void Configure(EntityTypeBuilder<Listing> builder)
         {
             builder.HasKey(ca => ca.Id);
 
@@ -59,6 +60,10 @@ namespace MyMobile.DAL.Configuration
                 .HasOne<Color>(ca => ca.Color)
                 .WithMany(c => c.CarAds)
                 .HasForeignKey(ca => ca.ColorId);
+            builder
+                .HasOne<AppUser>(ca => ca.AppUser)
+                .WithMany(au => au.CarAds)
+                .HasForeignKey(ca => ca.AppUserId);
         }
     }
 }

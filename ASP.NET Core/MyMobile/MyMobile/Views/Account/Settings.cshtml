@@ -1,0 +1,16 @@
+﻿@using MyMobile.DAL.Models.ViewModels.Account
+@model SettingsViewModel
+
+<h4>Потребителски настройки</h4>
+<div>
+    <form method="post" asp-action="SettingsStore" asp-controller="Account">
+        @*add filled in existing firstName lastName adress in the input fields*@
+        <label>Име</label>
+        <input type="text" name="FirstName" value="@Model.FirstName"/>
+        <label>Фамилия</label>
+        <input type="text" name="LastName" value="@Model.LastName"/>
+        <label>Населено място</label>
+        <input type="text" name="Address" value="@Model.Address"/>
+        <input type="submit" value="ЗАПАЗИ ПРОМЕНИТЕ"/>
+    </form>
+</div>

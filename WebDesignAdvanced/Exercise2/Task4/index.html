@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        :root {
+            --main-color: orange;
+        }
+
+        body {
+            background: #eee;
+        }
+
+        h1,p{
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            background: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .box a{
+            color: black;
+            text-decoration: none;
+            border-bottom: 3px solid black;
+            display: inline-block;
+            margin-top: 1.5rem;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-auto-rows: 2.5rem;
+            gap: 0.8rem 0.8rem;
+        }
+
+        h1{
+            font-size: 3.7rem;
+            text-align: center;
+        }
+
+        .header-intro-text{
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .box1 {
+            grid-column: 2;
+            grid-row: 1/11;
+        }
+
+        .box2 {
+            grid-row: 3/13;
+            grid-column: 3;
+        }
+
+        .box3 {
+            grid-row: 5/15;
+            grid-column: 4;
+        }
+
+        .box1,
+        .box2,
+        .box3 {
+            border-radius: 1.5rem;
+        }
+
+        .box img {
+            width: 100%;
+        }
+
+        .box4 {
+            grid-row: 4/9;
+            grid-column: 1/6;
+            background: var(--main-color);
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>Nature is great</h1>
+        <p class="header-intro-text">Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.</p>
+    </div>
+    <div class="container">
+        <div class="box box1">
+            <img src="/Task4/images/4-1.jpg" alt="">
+            <h2>Spring</h2>
+            <p>
+                Lorem ipsum dolor, sit amet
+                consectetur adipisicing elit.
+                Commodi, sunt.consectetur adipisicing elit.
+                Commodi, sunt.
+            </p>
+            <a href="">READ MORE</a>
+        </div>
+        <div class="box box2">
+            <img src="/Task4/images/4-3.jpg" alt="">
+            <h2>Summer</h2>
+            <p>
+                Lorem ipsum dolor, sit amet consectetur
+                adipisicing elit. Commodi, sunt.consectetur adipisicing elit.
+                Commodi, sunt.
+            </p>
+            <a href="">READ MORE</a>
+        </div>
+        <div class="box box3">
+            <img src="/Task4/images/4-2.jpg" alt="">
+            <h2>Winter</h2>
+            <p>
+                Lorem ipsum dolor, sit amet consectetur
+                adipisicing elit. Commodi, sunt.consectetur adipisicing elit.
+                Commodi, sunt.
+            </p>
+
+            <a href="">READ MORE</a>
+        </div>
+        <div class="box box4"></div>
+    </div>
+</body>
+
+</html>

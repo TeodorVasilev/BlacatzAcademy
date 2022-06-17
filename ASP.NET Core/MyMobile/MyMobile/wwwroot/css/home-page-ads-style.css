@@ -1,0 +1,37 @@
+﻿.item {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-decoration: none;
+    color: black;
+}
+
+.item:hover {
+    color: #0099FF;
+}
+
+.item table tr .item-details {
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 210px;
+}
+
+.make{
+    font-weight:bold;
+    text-decoration:underline;
+}
+
+.price{
+    font-size:20px;
+    font-weight:bold;
+    color:black;
+}
+
+.others{
+    color:black;
+}
+
+.date{
+    color: gray;
+    font-size: 12px;
+}

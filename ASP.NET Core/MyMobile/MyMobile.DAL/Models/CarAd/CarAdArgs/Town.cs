@@ -7,6 +7,6 @@
 
         public int RegionId { get; set; }
         public Region Region { get; set; }
-        public ICollection<CarAd> CarAds { get; set; }
+        public ICollection<Listing> CarAds { get; set; }
     }
 }

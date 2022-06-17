@@ -1,12 +1,34 @@
-﻿@model CarAdViewModel
-
+﻿@model MyMobile.DAL.Models.ViewModels.Pages.SearchPageViewModel
+@*make new view model*@
 <h4 class="search-header">Обяви за автомобили и джипове</h4>
 <div class="search-details-container">
+    <div class="search-details" style="font-family: Verdana,Verdana, Geneva, Tahoma, sans-serif; font-size: 11px;">
+        @*
+            the search filters here if there are no filters only the default
+            set default values
+            fix object not set when click to other page
+        *@
+        <b>Резултат от Вашето търсене на:</b>
+        <span style="display:block;">
+            Рубрика:
+            @if (Model.SearchDetailsViewModel != null && Model.SearchDetailsViewModel.Category != null)
+                {
+                    <b>@Model.SearchDetailsViewModel.Category.Type</b>
+                } @*todo*@
+        </span>
+        <span>, </span>
+        <span>
+            Състояние:
+        </span>
+        <span>
+            Подредени по:
+        </span>
+    </div>
 </div>
 <div class="page-details-container">
 </div>
 <div class="results-container">
-    @foreach (var carAd in Model.CarAds)
+    @foreach (var carAd in Model.ListingViewModel.CarAds)
     {
         <div class="result-container">
             <div class="listing-img-container">
@@ -15,7 +37,7 @@
             <div class="listing-details-container">
                 @*how to hide too long text with ...*@
                 <div class="name-price">
-                    <div style="font-size:21px; font-weight: bold; float: left;"><a style="text-decoration: none;" name="carAdId" asp-controller="CarAds" asp-action="CarAd" asp-route-id="@carAd.Id">@carAd.Name</a></div>
+                    <div style="font-size:21px; font-weight: bold; float: left;"><a style="text-decoration: none;" name="carAdId" asp-controller="Listings" asp-action="Listing" asp-route-id="@carAd.Id">@carAd.Name</a></div>
                     <div style="font-size:25px; font-weight:bold; float: right;">@carAd.DefaultPriceBgn лв.</div>
                 </div>
                 <div class="listing-details" style="font-size: 13px;">
@@ -52,5 +74,22 @@
                 </div>
             </div>
         </div>
+    }
+    @for (int i = 1; i <= Model.ListingViewModel.TotalPages; i++)
+    {
+        /*CategoryId=1&MakeId=&ModelId=&MaximalPrice=&Year=&EngineId=&GearboxId=&RegionId=&TownId=&SortingId=1*/
+        @*send search details data*@
+        <a href="/Listings/Search?CategoryId=@Model.QuickSearchStoreViewModel.CategoryId
+                &MakeId=@Model.QuickSearchStoreViewModel.MakeId&
+                &ModelId=@Model.QuickSearchStoreViewModel.ModelId
+                &MaximalPrice=@Model.QuickSearchStoreViewModel.MaximalPrice
+                &Year=@Model.QuickSearchStoreViewModel.Year
+                &EngineId=@Model.QuickSearchStoreViewModel.EngineId
+                &GearboxId=@Model.QuickSearchStoreViewModel.GearboxId
+                &RegionId=@Model.QuickSearchStoreViewModel.RegionId
+                &TownId=@Model.QuickSearchStoreViewModel.TownId
+                &SortingId=@Model.QuickSearchStoreViewModel.SortingId
+                &page=@i">@i</a>
+        /*<a name="page" asp-controller="Listings" asp-action="Search" asp-route-page="@i">@i</a>*/
     }
 </div>

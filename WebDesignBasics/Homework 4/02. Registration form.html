@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="index-styles.css">
+    <link rel="stylesheet" href="form-styles.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02. Registration form</title>
+</head>
+<body>
+    <main>
+        <div class="side-nav">
+            <a href="index.html">Home</a>
+            <a href="01. Edit styles.html">01. Edit styles</a>
+            <a href="02. Registration form.html">02. Registration form</a>
+            <a href="03. Create page.html">03. Create page</a>
+        </div>
+        <div class="form-container">
+            <div class="headline">
+                <h1>Форма за регистрация</h1>
+            </div>
+            <div class="form-box">
+                <form>
+                    <!-- input text -->
+                    <div class="form-table-1">
+                        <table>
+                            <tr>
+                                <td>
+                                    <label for="name">Име</label>
+                                </td>
+                                <td>
+                                    <input id="name" name="name" type="text" placeholder="Въведи име">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="second-name">Презиме</label>
+                                </td>
+                                <td>
+                                    <input id="second-name" name="second-name" type="text" placeholder="Въведи презиме">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="family">Фамилия</label></td>
+                                <td>
+                                    <input id="family" name="family" type="text" placeholder="Въведи фамилия">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="email">Email</label></td>
+                                <td>
+                                    <input id="email" name="email" type="text" placeholder="Въведи email">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="telephone">Телефон</label></td>
+                                <td>
+                                    <input id="telephone" name="telephone" type="text" placeholder="Въведи телефон">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!-- input text end -->
+                    <!-- input radio and checkboxes -->
+                    <div class="form-table-2">
+                        <table>
+                            <tr>
+                                <td class="button-label"><label for="gender">Пол</label></td>
+                                <td>
+                                    <input type="radio" name="gender" value="male"> <label for="">Мъж</label>
+                                    <input type="radio" name="gender" value="female"> <label for="">Жена</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="button-label"><label for="conditions">Приемам условията</label></td>
+                                <td>
+                                    <input type="checkbox" name="conditions[]" value="gdpr"> <label for="">ГДПР</label>
+                                    <input type="checkbox" name="conditions[]" value="cconditions"> <label for="">Общи условия</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="button-label"><label for="years">Години</label></td>
+                                <td>
+                                    <select class="select-years" name="years" id="years">
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                        <option value="20">20</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!-- input radio, select and checkboxes end -->
+                    <div class="submit-button">
+                        <input type="submit" value="Регистрация">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

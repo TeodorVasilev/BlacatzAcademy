@@ -6,6 +6,6 @@
         public string Name { get; set; }
         public decimal CourseToDefault { get; set; }
 
-        public ICollection<CarAd> CarAds { get; set; }
+        public ICollection<Listing> CarAds { get; set; }
     }
 }

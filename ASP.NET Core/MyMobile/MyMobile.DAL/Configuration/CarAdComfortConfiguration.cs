@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using MyMobile.DAL.Models.CarAd;
+using MyMobile.DAL.Models.CarAd.CarAdArgs;
 using MyMobile.DAL.Models.CarAd.CarArgs;
 
 namespace MyMobile.DAL.Configuration
@@ -12,7 +13,7 @@ namespace MyMobile.DAL.Configuration
             builder.HasKey(cac => cac.Id);
 
             builder
-                .HasOne<CarAd>(cac => cac.CarAd)
+                .HasOne<Listing>(cac => cac.CarAd)
                 .WithMany(ca => ca.CarAdComforts)
                 .HasForeignKey(cac => cac.CarAdId);
             builder

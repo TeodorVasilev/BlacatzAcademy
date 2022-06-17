@@ -1,12 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MyMobile.DAL.Data;
-using MyMobile.DAL.Models.CarAd;
+using MyMobile.DAL.Models.CarAd.CarAdArgs;
+using MyMobile.DAL.Models.Identity;
+using MyMobile.DAL.Models.ViewModels.Create;
 
 namespace MyMobile.Service.CarAdService
 {
     public class ListingService
     {
-        public IQueryable<CarAd> FilterQuery(IQueryable<CarAd> query, CarAd carAd, int sortingId, decimal maximalPrice)
+        private int perPage = 2;
+        public IQueryable<Listing> FilterQuery(IQueryable<Listing> query, Listing carAd, int sortingId, decimal maximalPrice)
         {
             if (carAd.CategoryId != 0)
             {
@@ -93,10 +96,34 @@ namespace MyMobile.Service.CarAdService
             return query;
         }
 
-        public List<CarAd> GetCarAds(CarAd carAd, int sortingId, decimal maximalPrice)
+        public double GetTotalPages(Listing carAd, int sortingId, decimal maximalPrice)
         {
-            var carAds = new List<CarAd>();
+            using (var context = new MyMobileContext())
+            {
+                //var townsServer = new TownService();
+                //var towns = townsServer.GetTowns();
+                var town = context.Towns.ToList();
+                var townById = context.Towns.Where(x => x.Id == 1).FirstOrDefault();
+                //repository pattern
+                var query = context.CarAds.AsQueryable();
+                query = FilterQuery(query, carAd, sortingId, maximalPrice);
 
+                double totalCars = query.Count();
+                //85
+                //8.5 -> 9
+                double pages = totalCars / this.perPage;
+                pages = Math.Ceiling(pages);
+
+                return pages;
+            }
+
+            return 0;
+        }
+
+        public List<Listing> GetCarAds(Listing carAd, int sortingId, decimal maximalPrice, int? curPage)
+        {
+            var carAds = new List<Listing>();
+            int page = curPage != null ? curPage.Value : 1;
             using (var context = new MyMobileContext())
             {
                 //SELECT * FROM Cars WHERE makeId = 5
@@ -111,18 +138,22 @@ namespace MyMobile.Service.CarAdService
                     .Include(c => c.Town)
                     .Include(c => c.Color)
                     .Include(c => c.Engine)
-                    .Include(c => c.Gearbox);
+                    .Include(c => c.Gearbox)
+                    .Skip((page - 1) * this.perPage)
+                    .Take(this.perPage);
 
-                string str = query.ToQueryString();
+                string str = query
+
+                    .ToQueryString();
                 carAds = query.ToList();
             }
 
             return carAds;
         }
 
-        public List<CarAd> GetCarAds()
+        public List<Listing> GetNewestCarAds()
         {
-            var carAds = new List<CarAd>();
+            var carAds = new List<Listing>();
 
             using (var context = new MyMobileContext())
             {
@@ -139,12 +170,143 @@ namespace MyMobile.Service.CarAdService
                     .Include(c => c.VehicleCategory)
                     .Include(c => c.CarAdComforts)
                     .ThenInclude(e => e.Comfort)
+                    .OrderByDescending(c => c.DateAdded)
+                    .Take(6)
                     .ToList();
                 //include all properties and then fix the looks
                 //pages and stuff in controller
             }
 
             return carAds;
+        }
+
+        public List<Listing> GetUserListings(int id)
+        {
+            var carAds = new List<Listing>();
+
+            using (var context = new MyMobileContext())
+            {
+                carAds = context.CarAds.Where(ca => ca.AppUserId == id)
+                    .Include(c => c.Category)
+                    .Include(c => c.Condition)
+                    .Include(c => c.Currency)
+                    .Include(c => c.Region)
+                    .Include(c => c.Town)
+                    .Include(c => c.Color)
+                    .Include(c => c.Engine)
+                    .Include(c => c.Eurostandard)
+                    .Include(c => c.Gearbox)
+                    .Include(c => c.VehicleCategory)
+                    .Include(c => c.CarAdComforts)
+                    .ThenInclude(e => e.Comfort)
+                    .OrderByDescending(c => c.DateAdded)
+                    .ToList();
+            }
+
+            return carAds;
+        }
+
+        public Listing GetListingById(int id)
+        {
+            Listing carAd = new Listing();
+
+            using (var context = new MyMobileContext())
+            {
+                carAd = context.CarAds.Where(ca => ca.Id == id)
+                                      .Include(c => c.Category)
+                                      .Include(c => c.Condition)
+                                      .Include(c => c.Currency)
+                                      .Include(c => c.Region)
+                                      .Include(c => c.Town)
+                                      .Include(c => c.Color)
+                                      .Include(c => c.Engine)
+                                      .Include(c => c.Eurostandard)
+                                      .Include(c => c.Gearbox)
+                                      .Include(c => c.VehicleCategory)
+                                      .Include(c => c.CarAdComforts)
+                                      .ThenInclude(e => e.Comfort)
+                                      .Include(c => c.CarAdInteriors)
+                                      .ThenInclude(e => e.Interior)
+                                      .Include(c => c.CarAdSecurities)
+                                      .ThenInclude(e => e.Security)
+                                      .FirstOrDefault();
+            }
+
+            return carAd;
+        }
+
+        public void Create(Listing ad)
+        {
+            using (var context = new MyMobileContext())
+            {
+                ad.DefaultPriceBgn = CalculateDefaultPrice(ad.CurrencyId, ad.UserPrice);
+                ad.Name = SetName(ad.MakeId, ad.ModelId, ad.Modification);
+                ad.DateAdded = DateTime.Now;
+                context.CarAds.Add(ad);
+                //context.UserAds.Add(new UserAds() { AppUserId = ad.AppUserId, CarAdId = ad.Id });
+                context.SaveChanges();
+            }
+        }
+
+        public void Update(int id, StoreListingViewModel formData)
+        {
+
+            //add all properties fix view model properties and make this to be saved only when something is changed
+
+            using (var context = new MyMobileContext())
+            {
+                var carAd = context.CarAds.Where(ca => ca.Id == id).FirstOrDefault();
+
+                if(formData.MakeId != null)
+                {
+                    carAd.MakeId = (int)formData.MakeId;
+                }
+
+                carAd.DefaultPriceBgn = CalculateDefaultPrice(carAd.CurrencyId, carAd.UserPrice);
+                carAd.Name = SetName(carAd.MakeId, carAd.ModelId, carAd.Modification);
+
+                context.SaveChanges();
+            }
+        }
+
+        public void Delete(int id)
+        {
+            using (var context = new MyMobileContext())
+            {
+                var carAd = context.CarAds.FirstOrDefault(c => c.Id == id);
+
+                context.CarAds.Remove(carAd);
+            }
+        }
+
+        public string SetName(int makeId, int modelId, string modification)
+        {
+            var makeName = "";
+            var modelName = "";
+
+            using (var context = new MyMobileContext())
+            {
+                makeName = context.Makes.Where(m => m.Id == makeId).FirstOrDefault().Name;
+                modelName = context.Models.Where(m => m.Id == modelId).FirstOrDefault().Name;
+            }
+
+            var adName = $"{makeName} {modelName} {modification}";
+
+            return adName;
+        }
+
+        public decimal CalculateDefaultPrice(int currencyId, decimal userPrice)
+        {
+            var currency = new Currency();
+
+            using (var context = new MyMobileContext())
+            {
+                currency = context.Currencies.Where(c => c.Id == currencyId).FirstOrDefault();
+
+                decimal defaultPriceBgn = userPrice * currency.CourseToDefault;
+
+                return defaultPriceBgn;
+            }
         }
     }
 }

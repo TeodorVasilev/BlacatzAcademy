@@ -1,0 +1,11 @@
+﻿@using MyMobile.DAL.Models.ViewModels.Administration
+@model CreateRoleViewModel
+
+<h2>Create Role</h2>
+<div>
+    <form method="post" asp-controller="Administration" asp-action="CreateRoleStore">
+        <label>Role Name:</label>
+        <input type="text" name="RoleName"/>
+        <input type="submit" value="Create"/>
+    </form>
+</div>

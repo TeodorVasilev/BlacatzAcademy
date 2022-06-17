@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile First Aproach</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+
+        .container{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .box{
+            width: 48%;
+            height: 200px;
+            background: silver;
+            margin-bottom: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+        }
+
+        .mw100{
+            width: 100%;
+        }
+
+        .mw25{
+            width: 25%;
+        }
+
+        .mw70{
+            width: 70%;
+        }
+
+        @media(min-width: 1024px){
+            .box{
+                width: 30%;
+            }
+
+            .dw100{
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box dw100">1</div>
+        <div class="box">2</div>
+        <div class="box mw100">3</div>
+        <div class="box mw25">4</div>
+        <div class="box dw100 mw70">5</div>
+    </div>
+</body>
+</html>

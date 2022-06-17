@@ -5,6 +5,6 @@
         public int Id { get; set; }
         public string Type { get; set; }
 
-        public ICollection<CarAd> CarAds { get; set; }
+        public ICollection<Listing> CarAds { get; set; }
     }
 }

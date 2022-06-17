@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Task 6</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        :root {
+            --linear-background: linear-gradient(90deg, #76d5c0 1%,
+                    #21d0c5 45%, #00d4ff 100%);
+
+            --section-padding: 15px;
+
+            --main-color: #21d0c5;
+        }
+
+        /*BASE STYLES*/
+
+        .section-padding {
+            padding: var(--section-padding);
+        }
+
+        .image-section {
+            display: none;
+        }
+
+        /*NAV*/
+        ul {
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu ul {
+            display: flex;
+            background: var(--linear-background);
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .menu ul li {
+            list-style-type: none;
+        }
+
+        .menu .menu-item a {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+        }
+
+        .close {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 9px;
+        }
+
+        .close div {
+            width: 50%;
+        }
+
+        .bars {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding-right: 30px;
+            font-size: 30px;
+            color: white;
+        }
+
+        .menu-item {
+            margin-bottom: 25px;
+        }
+
+        .logo {
+            width: 100%;
+        }
+
+        /*NAV END*/
+        /*TOP SECTION*/
+        .top-section {
+            border-top: 1px solid rgba(240, 240, 240, 0.4);
+            background: var(--linear-background);
+            padding-bottom: 30px;
+        }
+
+        .top-section h1 {
+            color: white;
+            font-size: 50px;
+        }
+
+        .top-section p {
+            color: white;
+            font-size: 20px;
+        }
+
+        .top-section button,
+        .about-section button {
+            border: unset;
+            border-radius: 20px;
+            padding: 8px 8px;
+        }
+
+        /*TOP SECTION END*/
+        /*SERVICES*/
+        .services-section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .box {
+            min-height: 250px;
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            box-shadow: 0px 0px 3px rgba(240, 240, 240, 1);
+        }
+
+        .box i {
+            color: var(--main-color);
+            font-size: 50px;
+            border: 1px solid rgba(0, 0, 0, 0.4);
+            padding: 15px;
+            border-radius: 50%;
+        }
+
+        /*SERVICES END*/
+        /*SOCIAL*/
+        .social p {
+            text-align: center;
+            width: 100%;
+        }
+
+        .social {
+            font-size: 20px;
+            color: var(--main-color);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .social i{
+            padding: 10px;
+            font-size: 40px;
+        }
+
+        /*SOCIAL END
+        /*BASE STYLES END*/
+
+        @media(min-width: 1024px) {
+            .menu ul {
+                flex-direction: row;
+                padding-top: 15px;
+            }
+
+            .bars {
+                display: none;
+            }
+
+            .close div {
+                width: 30%;
+            }
+
+            .menu-item {
+                width: 200px;
+            }
+
+            .image-section {
+                width: 50%;
+                display: block;
+            }
+
+            .image-section img {
+                width: 100%;
+            }
+
+            .top-section {
+                display: flex;
+                align-items: center;
+            }
+
+            .top-text-section {
+                width: 50%;
+            }
+
+            .about-section {
+                display: flex;
+                flex-direction: row-reverse;
+            }
+
+            .about-text-section {
+                width: 50%;
+            }
+
+            .services-section h2 {
+                width: 100%;
+                text-align: center;
+            }
+
+            .services-section .box {
+                width: 30%;
+            }
+
+            .services-section {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-evenly;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAV -->
+    <div class="menu">
+        <ul>
+            <li class="close">
+                <div>
+                    <img src="images/logo.png" class="logo" alt="">
+                </div>
+                <div class="bars">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </li>
+            <li class="menu-item">
+                <a href="">Home</a>
+            </li>
+            <li class="menu-item">
+                <a href="">About us</a>
+            </li>
+            <li class="menu-item">
+                <a href="">Contacts</a>
+            </li>
+        </ul>
+    </div>
+    <!-- NAV END-->
+    <!-- TOP SECTION -->
+    <div class="top-section section-padding">
+        <div class="image-section">
+            <img src="images/top-image.png" alt="">
+        </div>
+        <div class="top-text-section">
+            <h1>Design studio</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi assumenda doloribus quo itaque, quam
+                minima suscipit odio sunt quidem? Expedita voluptas minus optio. Quasi amet optio accusamus obcaecati
+                facere nam.</p>
+            <button>Learn more</button>
+        </div>
+    </div>
+    <!-- TOP SECTION END-->
+    <!--ABOUT US-->
+    <div class="about-section section-padding">
+        <div class="image-section">
+            <img src="images/about-us.png" alt="">
+        </div>
+        <div class="about-text-section">
+            <h2>About Us</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi assumenda doloribus quo itaque, quam
+                minima suscipit odio sunt quidem? Expedita voluptas minus optio. Quasi amet optio accusamus obcaecati
+                facere nam.</p>
+            <button>Learn more about us</button>
+        </div>
+    </div>
+    <!--ABOUT US END-->
+    <!--SERVICE SECTION-->
+    <div class="services-section section-padding">
+        <h2>Services</h2>
+        <div class="box">
+            <i class="fa fa-pencil"></i>
+            <h3>Websites</h3>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut eaque ratione dicta nesciunt ad cupiditate
+                dolores esse provident, voluptas placeat ut laboriosam architecto deleniti nemo ipsum fugiat
+                accusantium, saepe obcaecati!
+            </p>
+        </div>
+        <div class="box">
+            <i class="fa fa-pencil"></i>
+            <h3>Websites</h3>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut eaque ratione dicta nesciunt ad cupiditate
+                dolores esse provident, voluptas placeat ut laboriosam architecto deleniti nemo ipsum fugiat
+                accusantium, saepe obcaecati!
+            </p>
+        </div>
+        <div class="box">
+            <i class="fa fa-pencil"></i>
+            <h3>Websites</h3>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut eaque ratione dicta nesciunt ad cupiditate
+                dolores esse provident, voluptas placeat ut laboriosam architecto deleniti nemo ipsum fugiat
+                accusantium, saepe obcaecati!
+            </p>
+        </div>
+    </div>
+</div>
+    <!--SERVICE SECTION END-->
+    <!--SOCIAL-->
+    <div class="social section-padding">
+        <p>Copyright</p>
+        <i class="fa-brands fa-facebook"></i>
+        <i class="fa-brands fa-facebook"></i>
+        <i class="fa-brands fa-facebook"></i>
+        <i class="fa-brands fa-facebook"></i>
+        <i class="fa-brands fa-facebook"></i>
+    </div>
+    <!--SOCIAL END-->
+</body>
+
+</html>

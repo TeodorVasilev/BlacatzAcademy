@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="m-landing-page-styles.css">
+    <title>02. Mobile Landing Page</title>
+</head>
+<body>
+    <div class="header">
+        <div class="h-left">
+            <div class="logo">
+                <h2>ПРИРОДА</h2>
+            </div>
+        </div>
+        <div class="h-right">
+            <button onclick="toggle()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+        <div class="nav" id="nav">
+            <a href="">
+                <span>НАЧАЛО</span>
+                <i class="fa-solid fa-caret-right"></i>
+            </a>
+            <a href="">
+                <span>ЗА НАС</span>
+                <i class="fa-solid fa-caret-right"></i>
+            </a>
+            <a href="">
+                <span>КОНТАКТИ</span>
+                <i class="fa-solid fa-caret-right"></i>
+            </a>
+            <a href="">
+                <span>ПОМОГНИ</span>
+                <i class="fa-solid fa-caret-right"></i>
+            </a>
+        </div>
+    </div>
+    <div class="welcome-container">
+        <div class="welcome-inner">
+            <div class="welcome-msg">
+                <h1>Природа</h1>
+                <h4>Всичко в природата ни кани постоянно да бъдем това, което сме!</h4>
+                <button>Научи повече</button>
+            </div>
+        </div>
+    </div>
+    <div class="phrases-container">
+        <h3 class="phrase">Природата може без човек, но той не може без природата.</h3>
+        <p class="author">Али Абшерони</p>
+        <button>Още фрази</button>
+    </div>
+    <div class="menu-container">
+        <div class="heading-container">
+            <div class="heading">
+                <p>НАШИТЕ ЦЕЛИ:</p>
+                <h2>ДА ПОМОГНЕМ НА ПРИРОДАТА!</h2>
+            </div>
+        </div>
+        <div class="items-container">
+            <div class="item">
+                <div class="item-inner">
+                    <a href="">
+                        <i class="fa-solid fa-tree"></i>
+                        <p>ДЪРВЕТА</p>
+                    </a>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-inner">
+                    <a href="">
+                        <i class="fa-solid fa-bullseye"></i>
+                        <p>ПОСТАВЯНЕ НА ЦЕЛИ</p>
+                    </a>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-inner">
+                    <a href="">
+                        <i class="fa-solid fa-dog"></i>
+                        <p>ПРИЮТ ЗА ЖИВОТНИ</p>
+                    </a>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-inner">
+                    <a href="">
+                        <i class="fa-solid fa-arrow-up-right-dots"></i>
+                        <p>РАЗВИТИЕ</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="participate-container">
+        <div class="participate-inner">
+            <h2>Включи се и ти!</h2>
+            <button>Запиши се!</button>
+        </div>
+    </div>
+    <div class="last-activity-container">
+        <h2>Последната ни дейност</h2>
+        <div class="img-container">
+            <div class="img-1">
+                <div class="img-text">
+                    <h6>ЗАСАДИХМЕ 50 000 ДЪРВЕТА!</h6>
+                    <p>С много усилия го направихме!</p>
+                </div>
+            </div>
+            <div class="img-2">
+                <div class="img-text">
+                    <h6>СЪБРАХМЕ 100 000 000 КАПАЧКИ!</h6>
+                    <p>С много усилия го направихме!</p>
+                </div>
+            </div>
+            <div class="img-3">
+                <div class="img-text">
+                    <h6>СПАСИХМЕ ЖИВОТНИ!</h6>
+                    <p>С много усилия го направихме!</p>
+                </div>
+            </div>
+            <div class="img-4">
+                <div class="img-text">
+                    <h6>ПОЧИСТИХМЕ ОКЕАНА!</h6>
+                    <p>С много усилия го направихме!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="help-container">
+        <div class="help-inner">
+            <h3>Невъзможно е да не помогнеш!</h3>
+            <button class="help-button-1">Свържи се с нас!</button>
+            <button class="help-button-2">Помогни!</button>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-container">
+            <div class="social-icons">
+                <div class="social-item">
+                    <a href="">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                </div>
+                <div class="social-item">
+                    <a href="">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                </div>
+                <div class="social-item">
+                    <a href="">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <p class="copyright">Teodor Vasilev &copy; Всички права запазени</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        function toggle() {
+            var nav = document.getElementById('nav');
+            if (nav.style.display == 'block') {
+                nav.style.display = 'none';
+            }
+            else {
+                nav.style.display = 'block';
+            }
+        }
+    </script>
+</body>

@@ -1,0 +1,370 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/*HEADER*/
+.header-container {
+    background: url('img/header.jpg');
+    width: 100%;
+    height: 609px;
+    background-size: cover;
+    background-position: center center;
+    padding-top: 10px;
+}
+
+/*TOP NAV*/
+.top-nav {
+    height: 50px;
+    width: 500px;
+    margin: auto;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 20px;
+}
+
+.top-nav-links {
+    padding: 9px 0px;
+}
+
+.top-nav-links a {
+    font-size: 23px;
+    text-decoration: none;
+    margin-left: 5px;
+    margin-right: 5px;
+    letter-spacing: 0.1px;
+    color: white;
+}
+
+.top-nav-links a:hover {
+    opacity: 0.7;
+}
+/*TOP NAV END*/
+
+.welcome-container {
+    text-align: center;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 800px;
+    margin-top: 150px;
+    padding: 25px 25px 15px 25px;
+    border-radius: 20px;
+}
+
+.welcome-msg h1 {
+    font-size: 50px;
+}
+
+.welcome-msg h4 {
+    margin: 7px 0px;
+    font-style: italic;
+}
+
+.welcome-msg button {
+    margin-top: 30px;
+    padding: 10px 5px;
+    width: 100px;
+    height: 35px;
+    background-color: #157543;
+    border: none;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+.welcome-msg button:hover {
+    opacity: 0.7;
+}
+
+.welcome-msg h1,
+h4,
+button {
+    color: white;
+    margin: 0;
+}
+/*HEADER END*/
+
+/*PHRASES*/
+.phrases-container {
+    background-color: white;
+    text-align: center;
+    padding: 60px;
+}
+
+.phrases-container h3 {
+    margin-bottom: 7px;
+    color: #157543;
+    text-shadow: 0.5px 0.5px black;
+}
+
+.phrases-container p {
+    font-size: 12px;
+    color: gray;
+    margin-top: 0;
+}
+
+.phrases-container button {
+    margin-top: 30px;
+    padding: 10px 5px;
+    width: 100px;
+    height: 35px;
+    background-color: #157543;
+    border: none;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+.phrases-container button:hover {
+    opacity: 0.7;
+}
+/*PHRASES END*/
+
+/*PARTICIPATE SECTION*/
+/*MENU*/
+.menu-container {
+    height: 260px;
+    background-color: #157543;
+    text-align: center;
+    color: white;
+}
+
+.heading-container {
+    padding-top: 60px;
+}
+
+.heading p {
+    font-size: 10px;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 0;
+    text-shadow: 0.5px 0.5px black;
+}
+
+.heading h2 {
+    margin-top: 0;
+    text-shadow: 0.5px 0.5px black;
+    font-size: 27px;
+}
+
+.items-container {
+    justify-content: center;
+    display: flex;
+}
+
+.item-inner {
+    margin-top: 23px;
+}
+
+.item {
+    width: 220px;
+    height: 120px;
+}
+
+.item:hover {
+    opacity: 0.7;
+}
+
+.item a {
+    text-decoration: none;
+    color: white;
+}
+
+.item i {
+    font-size: 50px;
+}
+
+.item p {
+    margin-top: 10px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: bold;
+}
+/*MENU END*/
+
+.participate-container {
+    background: url('img/beach.jpg');
+    width: 100%;
+    height: 600px;
+    background-size: cover;
+    background-position: center center;
+    text-align: center;
+}
+
+.participate-inner {
+    padding-top: 150px;
+}
+
+.participate-inner h2 {
+    margin: 0;
+    color: white;
+    text-shadow: 0.5px 0.5px black;
+    font-weight: bold;
+}
+
+.participate-inner button {
+    margin-top: 30px;
+    padding: 10px 5px;
+    width: 100px;
+    height: 35px;
+    background-color: #157543;
+    border: none;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+.participate-inner button:hover {
+    opacity: 0.7;
+}
+/*PARTICIPATE SECTION END*/
+
+/*LAST ACTIVITY*/
+
+.last-activity-container h2{
+    color: #157543;
+    text-shadow: 0.5px 0.5px black;
+    margin-top: 70px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.img-container{
+    padding-left: 15%;
+    color: white;
+}
+
+.img-1{
+    background: url('img/1.jpg');
+    width: 42%;
+    height: 280px;
+    background-size: cover;
+    background-position: center center;
+    float: left;
+}
+.img-2{
+    background: url('img/2.jpg');
+    width: 42%;
+    height: 280px;
+    background-size: cover;
+    background-position: center center;
+    float: left;
+}
+.img-3{
+    background: url('img/3.jpg');
+    width: 42%;
+    height: 280px;
+    background-size: cover;
+    background-position: center center;
+    float: left;
+}
+.img-4{
+    background: url('img/4.jpg');
+    width: 42%;
+    height: 280px;
+    background-size: cover;
+    background-position: center center;
+    float: left;
+}
+
+.img-text{
+    padding: 180px 0 20px 60px;
+}
+
+.img-text h6{
+    margin: 0;
+    text-shadow: 0.5px 0.5px black;
+}
+
+.img-text p{
+    opacity: 0.9;
+}
+/*LAST ACTIVITY END*/
+
+/*HELP*/
+.help-container{
+    color: white;
+    background-color: #157543;
+    text-align: center;
+    height: 200px;
+    margin-top: 70px;
+}
+
+.help-inner{
+    padding-top: 50px;
+}
+
+.help-inner h3{
+    margin-bottom: 5px;
+}
+
+.help-button-1{
+    color: black;
+    margin-top: 15px;
+    padding: 9px 5px;
+    width: 110px;
+    height: 30px;
+    border: none;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+.help-button-2{
+    color: black;
+    margin-top: 15px;
+    margin-left: 17px;
+    padding: 9px 5px;
+    width: 70px;
+    height: 30px;
+    border: none;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+.help-button-1:hover, .help-button-2:hover{
+    opacity: 0.7;
+}
+/*HELP END*/
+
+/*FOOTER*/
+.footer-container{
+    height: 200px;
+    text-align: center;
+}
+
+.social-icons{
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    padding-top: 80px;
+}
+
+.social-item{
+    text-align: center;
+    padding-top: 10px;
+    background-color: #157543;
+    color: white;
+    height: 40px;
+    width: 50px;
+    border-radius: 30px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.social-item a{
+    text-decoration: none;
+    color: white;
+}
+
+.social-item a:hover{
+    opacity: 0.7;
+}
+
+.social-item i{
+    font-size: 30px;
+}
+
+.copyright{
+    font-size: 8px;
+    opacity: 0.7;
+}
+/*FOOTER END*/

@@ -22,7 +22,7 @@ namespace MyMobile.DAL.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("MyMobile.DAL.Models.CarAd.CarAd", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -30,98 +30,99 @@ namespace MyMobile.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ColorId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ConditionId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CurrencyId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("DateAdded")
-                        .HasColumnType("datetime2");
-
-                    b.Property<decimal>("DefaultPriceBgn")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("EngineId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("EurostandardId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("GearboxId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("HorsePower")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MakeId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ManufactureMonth")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ManufactureYear")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Mileage")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ModelId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Modification")
-                        .IsRequired()
+                    b.Property<string>("ClaimType")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
+                    b.Property<string>("ClaimValue")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("RegionId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TownId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("UserPrice")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("VehicleCategoryId")
+                    b.Property<int>("RoleId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
+                    b.HasIndex("RoleId");
 
-                    b.HasIndex("ColorId");
+                    b.ToTable("AspNetRoleClaims", (string)null);
+                });
 
-                    b.HasIndex("ConditionId");
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
 
-                    b.HasIndex("CurrencyId");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.HasIndex("EngineId");
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasIndex("EurostandardId");
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasIndex("GearboxId");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
-                    b.HasIndex("MakeId");
+                    b.HasKey("Id");
 
-                    b.HasIndex("ModelId");
+                    b.HasIndex("UserId");
 
-                    b.HasIndex("RegionId");
+                    b.ToTable("AspNetUserClaims", (string)null);
+                });
 
-                    b.HasIndex("TownId");
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
+                {
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.HasIndex("VehicleCategoryId");
+                    b.Property<string>("ProviderKey")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.ToTable("CarAds");
+                    b.Property<string>("ProviderDisplayName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("LoginProvider", "ProviderKey");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserLogins", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<int>", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetUserRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId", "LoginProvider", "Name");
+
+                    b.ToTable("AspNetUserTokens", (string)null);
                 });
 
             modelBuilder.Entity("MyMobile.DAL.Models.CarAd.CarAdArgs.Category", b =>
@@ -224,6 +225,113 @@ namespace MyMobile.DAL.Migrations
                             CourseToDefault = 1.95m,
                             Name = "EUR"
                         });
+                });
+
+            modelBuilder.Entity("MyMobile.DAL.Models.CarAd.CarAdArgs.Listing", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int?>("AppUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ColorId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ConditionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CurrencyId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateAdded")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("DefaultPriceBgn")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("EngineId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EurostandardId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("GearboxId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("HorsePower")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MakeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ManufactureMonth")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ManufactureYear")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Mileage")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ModelId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Modification")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RegionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TownId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("UserPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("VehicleCategoryId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("ColorId");
+
+                    b.HasIndex("ConditionId");
+
+                    b.HasIndex("CurrencyId");
+
+                    b.HasIndex("EngineId");
+
+                    b.HasIndex("EurostandardId");
+
+                    b.HasIndex("GearboxId");
+
+                    b.HasIndex("MakeId");
+
+                    b.HasIndex("ModelId");
+
+                    b.HasIndex("RegionId");
+
+                    b.HasIndex("TownId");
+
+                    b.HasIndex("VehicleCategoryId");
+
+                    b.ToTable("CarAds");
                 });
 
             modelBuilder.Entity("MyMobile.DAL.Models.CarAd.CarAdArgs.Region", b =>
@@ -814,8 +922,170 @@ namespace MyMobile.DAL.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MyMobile.DAL.Models.CarAd.CarAd", b =>
+            modelBuilder.Entity("MyMobile.DAL.Models.Identity.AppRole", b =>
                 {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
+
+                    b.ToTable("AspNetRoles", (string)null);
+                });
+
+            modelBuilder.Entity("MyMobile.DAL.Models.Identity.AppUser", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Adress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
+                {
+                    b.HasOne("MyMobile.DAL.Models.Identity.AppRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
+                {
+                    b.HasOne("MyMobile.DAL.Models.Identity.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
+                {
+                    b.HasOne("MyMobile.DAL.Models.Identity.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<int>", b =>
+                {
+                    b.HasOne("MyMobile.DAL.Models.Identity.AppRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MyMobile.DAL.Models.Identity.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
+                {
+                    b.HasOne("MyMobile.DAL.Models.Identity.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("MyMobile.DAL.Models.CarAd.CarAdArgs.Listing", b =>
+                {
+                    b.HasOne("MyMobile.DAL.Models.Identity.AppUser", "AppUser")
+                        .WithMany("CarAds")
+                        .HasForeignKey("AppUserId");
+
                     b.HasOne("MyMobile.DAL.Models.CarAd.CarAdArgs.Category", "Category")
                         .WithMany("CarAds")
                         .HasForeignKey("CategoryId")
@@ -888,6 +1158,8 @@ namespace MyMobile.DAL.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("AppUser");
+
                     b.Navigation("Category");
 
                     b.Navigation("Color");
@@ -926,7 +1198,7 @@ namespace MyMobile.DAL.Migrations
 
             modelBuilder.Entity("MyMobile.DAL.Models.CarAd.CarArgs.CarAdComfort", b =>
                 {
-                    b.HasOne("MyMobile.DAL.Models.CarAd.CarAd", "CarAd")
+                    b.HasOne("MyMobile.DAL.Models.CarAd.CarAdArgs.Listing", "CarAd")
                         .WithMany("CarAdComforts")
                         .HasForeignKey("CarAdId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -945,7 +1217,7 @@ namespace MyMobile.DAL.Migrations
 
             modelBuilder.Entity("MyMobile.DAL.Models.CarAd.CarArgs.CarAdInterior", b =>
                 {
-                    b.HasOne("MyMobile.DAL.Models.CarAd.CarAd", "CarAd")
+                    b.HasOne("MyMobile.DAL.Models.CarAd.CarAdArgs.Listing", "CarAd")
                         .WithMany("CarAdInteriors")
                         .HasForeignKey("CarAdId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -964,7 +1236,7 @@ namespace MyMobile.DAL.Migrations
 
             modelBuilder.Entity("MyMobile.DAL.Models.CarAd.CarArgs.CarAdSecurity", b =>
                 {
-                    b.HasOne("MyMobile.DAL.Models.CarAd.CarAd", "CarAd")
+                    b.HasOne("MyMobile.DAL.Models.CarAd.CarAdArgs.Listing", "CarAd")
                         .WithMany("CarAdSecurities")
                         .HasForeignKey("CarAdId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -992,15 +1264,6 @@ namespace MyMobile.DAL.Migrations
                     b.Navigation("Make");
                 });
 
-            modelBuilder.Entity("MyMobile.DAL.Models.CarAd.CarAd", b =>
-                {
-                    b.Navigation("CarAdComforts");
-
-                    b.Navigation("CarAdInteriors");
-
-                    b.Navigation("CarAdSecurities");
-                });
-
             modelBuilder.Entity("MyMobile.DAL.Models.CarAd.CarAdArgs.Category", b =>
                 {
                     b.Navigation("CarAds");
@@ -1014,6 +1277,15 @@ namespace MyMobile.DAL.Migrations
             modelBuilder.Entity("MyMobile.DAL.Models.CarAd.CarAdArgs.Currency", b =>
                 {
                     b.Navigation("CarAds");
+                });
+
+            modelBuilder.Entity("MyMobile.DAL.Models.CarAd.CarAdArgs.Listing", b =>
+                {
+                    b.Navigation("CarAdComforts");
+
+                    b.Navigation("CarAdInteriors");
+
+                    b.Navigation("CarAdSecurities");
                 });
 
             modelBuilder.Entity("MyMobile.DAL.Models.CarAd.CarAdArgs.Region", b =>
@@ -1076,6 +1348,11 @@ namespace MyMobile.DAL.Migrations
                 });
 
             modelBuilder.Entity("MyMobile.DAL.Models.CarAd.CarArgs.VehicleCategory", b =>
+                {
+                    b.Navigation("CarAds");
+                });
+
+            modelBuilder.Entity("MyMobile.DAL.Models.Identity.AppUser", b =>
                 {
                     b.Navigation("CarAds");
                 });

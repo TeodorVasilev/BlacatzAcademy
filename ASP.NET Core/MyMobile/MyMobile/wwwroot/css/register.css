@@ -1,0 +1,51 @@
+﻿.main-container {
+    margin-top: 80px;
+    border: 1px solid red;
+    width: 100%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.login-register-links-container {
+    margin-left: 98px;
+    border: 1px solid black;
+    width: 38%;
+    height: 60px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+    .login-register-links-container a {
+        text-decoration: none;
+        color: #0099FF;
+        font-weight: bold;
+        font-size: 16px;
+        border: 1px solid red;
+    }
+
+.register-container {
+    margin: auto;
+    border: 1px solid black;
+    width: 74%;
+    height: 320px;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.form-box {
+    border: 1px solid orange;
+    width: 49%;
+}
+
+.email-validation-msg {
+    width: 300px;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+}
+
+.checkbox-text {
+    font-size: 12px;
+    width: 200px;
+}

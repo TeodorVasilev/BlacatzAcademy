@@ -1,4 +1,6 @@
-﻿@model HomePageViewModel
+﻿@model MyMobile.DAL.Models.ViewModels.Pages.HomePageViewModel
+@*remove all inline styles*@
+
 <h4>Търсене в обявите</h4>
 <div class="form-container">
     <form method="get" action="Listings\Search">
@@ -12,9 +14,16 @@
                 <td>
                     <select style="width:220px; height:26px;" name="CategoryId" class="form-control">
                         <option></option>
-                        @foreach (var category in Model.AdQuickSearchViewModel.Categories)
+                        @for (int i = 0; i < Model.AdQuickSearchViewModel.Categories.Count; i++)
                         {
-                            <option value="@category.Id">@category.Type</option>
+                            if (Model.AdQuickSearchViewModel.Categories[i].Id == 1)
+                            {
+                                <option value="@Model.AdQuickSearchViewModel.Categories[i].Id" selected>@Model.AdQuickSearchViewModel.Categories[i].Type</option>
+                            }
+                            else
+                            {
+                                <option value="@Model.AdQuickSearchViewModel.Categories[i].Id">@Model.AdQuickSearchViewModel.Categories[i].Type</option>
+                            }
                         }
                     </select>
                 </td>
@@ -58,9 +67,9 @@
                         <td>
                             <select name="Year" class="form-control">
                                 <option></option>
-                                @foreach (var year in Model.AdQuickSearchViewModel.Years)
+                                @for (int i = DateTime.Now.Year; i >= 1950; i--)
                                 {
-                                    <option value="@year">@year</option>
+                                    <option value="@i">@i</option>
                                 }
                             </select>
                         </td>
@@ -135,9 +144,81 @@
                 </table>
             </div>
             <input style="margin-top: 33px;" type="submit" value="ТЪРСИ" />
+            <div class="condition-checkboxes" style="height:20px; width:100%; clear: both;">
+                @foreach (var condition in Model.AdQuickSearchViewModel.Conditions)
+                {
+                    if (condition.Id == 1 || condition.Id == 2)
+                    {
+                        <input checked type="checkbox" value="@condition.Id" /> <span>@condition.Type</span>
+                    }
+                    else
+                    {
+                        <input type="checkbox" value="@condition.Id" /> <span>@condition.Type</span>
+                    }
+                }
+            </div>
         </div>
     </form>
 </div>
 <h4 style="margin-bottom: 0; padding-bottom: 4px;">Най-новите обяви за Автомобили и Джипове</h4>
 <div class="listings-container" style="border: 1px solid #0099FF; border-top: 3px solid #0099FF;">
+    <table>
+        @*displaying only six ads on the home page sorted by date added*@
+        @if (@Model.CarAdViewModel.CarAds.Count > 0) @*fix if*@
+        {
+            @for (int i = 0; i < 1; i++) @*fix for to not throw index out of range when there are less than six ads  < 3*@
+            {
+                <tr>
+                    <td>
+                        <a class="item" name="carAdId" asp-controller="CarAds" asp-action="CarAd" asp-route-id="@Model.CarAdViewModel.CarAds[i].Id">
+                            <table style="border-bottom: 1px solid #ccc; margin-right: 10px;">
+                                <tr>
+                                    <td>
+                                        <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Image not found" width="180px" height="129px">
+                                    </td>
+                                    <td class="item-details">
+                                        <span class="make">@Model.CarAdViewModel.CarAds[i].Name</span>
+                                        <br>
+                                        <br>
+                                        <span class="price">@Model.CarAdViewModel.CarAds[i].DefaultPriceBgn<span>лв</span></span>
+                                        <br>
+                                        <span class="others">@Model.CarAdViewModel.CarAds[i].Mileage<span>км</span></span>
+                                        <br>
+                                        <span class="others">@Model.CarAdViewModel.CarAds[i].Town.Name</span>
+                                        <br>
+                                        @*fix date created*@
+                                        <span class="date">@Model.CarAdViewModel.CarAds[i].DateAdded.ToString("HH:mm") на @Model.CarAdViewModel.CarAds[i].DateAdded.ToString("dd.MM.yyyy")</span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="item" name="carAdId" asp-controller="CarAds" asp-action="CarAd" asp-route-id="@Model.CarAdViewModel.CarAds[i + 1].Id">
+                            <table style="border-bottom: 1px solid #ccc;">
+                                <tr>
+                                    <td>
+                                        <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Image not found" width="180px" height="129px">
+                                    </td>
+                                    <td class="item-details">
+                                        <span class="make">@Model.CarAdViewModel.CarAds[i + 1].Name</span>
+                                        <br>
+                                        <br>
+                                        <span class="price">@Model.CarAdViewModel.CarAds[i + 1].DefaultPriceBgn<span>лв</span></span>
+                                        <br>
+                                        <span class="others">@Model.CarAdViewModel.CarAds[i + 1].Mileage<span>км</span></span>
+                                        <br>
+                                        <span class="others">@Model.CarAdViewModel.CarAds[i + 1].Town.Name</span>
+                                        <br>
+                                        @*fix date created*@
+                                        <span class="date">@Model.CarAdViewModel.CarAds[i + 1].DateAdded.ToString("HH:mm") на @Model.CarAdViewModel.CarAds[i + 1].DateAdded.ToString("dd.MM.yyyy")</span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </a>
+                    </td>
+                </tr>
+            }
+        }
+    </table>
 </div>
