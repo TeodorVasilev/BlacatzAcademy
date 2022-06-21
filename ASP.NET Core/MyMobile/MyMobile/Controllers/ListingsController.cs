@@ -32,6 +32,12 @@ namespace MyMobile.Controllers
             return View(listingsPageService.LoadListing(id));
         }
 
+        public IActionResult ListModelsById(int makeId)
+        {
+            var listingsPageService = new ListingsPageService();
+            return Json(listingsPageService.ListModelsById(makeId));
+        }
+
         public IActionResult Create()
         {
             var listingPageService = new ListingsPageService();

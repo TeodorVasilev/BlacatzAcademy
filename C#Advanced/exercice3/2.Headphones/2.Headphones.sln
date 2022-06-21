@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.Headphones", "2.Headphones\2.Headphones.csproj", "{3F65F8CC-8545-4D3A-8850-BA48FF0D9145}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3F65F8CC-8545-4D3A-8850-BA48FF0D9145}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F65F8CC-8545-4D3A-8850-BA48FF0D9145}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F65F8CC-8545-4D3A-8850-BA48FF0D9145}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F65F8CC-8545-4D3A-8850-BA48FF0D9145}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {73F93EAF-5714-4ED6-8011-7CEEEF1FE257}
+	EndGlobalSection
+EndGlobal

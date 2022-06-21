@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5.Muffin", "5.Muffin\5.Muffin.csproj", "{03013D0C-3CB0-48BA-8D8C-394BFC018152}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{03013D0C-3CB0-48BA-8D8C-394BFC018152}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03013D0C-3CB0-48BA-8D8C-394BFC018152}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03013D0C-3CB0-48BA-8D8C-394BFC018152}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03013D0C-3CB0-48BA-8D8C-394BFC018152}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {981E9D55-0782-479D-8C0A-13A08BE748B6}
+	EndGlobalSection
+EndGlobal

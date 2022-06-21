@@ -61,6 +61,15 @@ namespace MyMobile.Service.ListingsPageServices
             return searchPageViewModel;
         }
 
+        public List<Model> ListModelsById(int makeId)
+        {
+            var searchPageViewModel = new SearchPageViewModel();
+            using (var context = new MyMobileContext())
+            {
+                return context.Models.Where(m => m.MakeId == makeId).ToList();
+            }
+        }
+
         public ListingViewModel LoadListing(int id)
         {
             var listingViewModel = new ListingViewModel();
