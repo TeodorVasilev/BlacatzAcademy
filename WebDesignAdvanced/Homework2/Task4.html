@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 4</title>
+</head>
+<style>
+    body, html{
+        padding: 0;
+        margin: 0;
+    }
+
+    .container{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: 6.7vh;
+        gap:10px;
+    }
+
+    .box{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: silver;
+        font-size: 35px;
+    }
+
+    .box1{
+        grid-column: 1/2;
+        grid-row: 1/5
+    }
+    
+    .box4{
+        grid-column: 2/3;
+        grid-row: 2/6
+    }
+
+    .box5{
+        grid-column: 3/4;
+        grid-row: 2/6;
+    }
+
+    .box6{
+        grid-column: 1/2;
+        grid-row: 5/9;
+    }
+
+    .box7{
+        grid-column: 2/4;
+        grid-row: 6/8;
+    }
+
+    .box8{
+        grid-column: 1/2;
+        grid-row: 9/13;
+    }
+
+    .box9{
+        grid-column: 2/3;
+        grid-row: 8/12;
+    }
+
+    .box10{
+        grid-column: 3/3;
+        grid-row: 8/12;
+    }
+
+</style>
+<body>
+    <div class="container">
+        <div class="box box1">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box box4">4</div>
+        <div class="box box5">5</div>
+        <div class="box box6">6</div>
+        <div class="box box7">7</div>
+        <div class="box box8">8</div>
+        <div class="box box9">9</div>
+        <div class="box box10">10</div>
+        <div class="box">11</div>
+        <div class="box">12</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+
+:root{
+    --linear-gradient: linear-gradient(to right, #b76cd4, #4c3bb7);
+    --border-radius: 1.5rem;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,body {
+    margin: 0;
+    padding: 0;
+    background-color: #eee;
+}
+
+.pricing-table {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: 150px auto;
+    font-family: Roboto;
+}
+
+.pricing-table li{
+    list-style-type: none;
+    margin-top: 1rem;
+}
+
+.box {
+    width: 30%;
+    min-height: 27rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0px 0px 3px black;
+    display: flex;
+    flex-direction: column;
+}
+
+.header{
+    background: var(--linear-gradient);
+    min-height: 80%;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    color: white;
+    position: relative;
+}
+
+.title{
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: bold;
+    padding-top: 5rem;
+    letter-spacing: 0.3rem;
+}
+
+.price{
+    text-align: center;
+    padding: 1rem;
+    font-size: 2rem;
+}
+
+.per-month{
+    font-size: 1rem;
+}
+
+.pricing-button{
+    border:unset;
+    padding: 12px 16px;
+    color: white;
+    background: var(--linear-gradient);
+    border-radius: var(--border-radius);
+    margin-top: 1.2rem;
+}
+
+.pricing-button:hover{
+    opacity: 0.7;
+}
+
+.footer{
+    text-align: center;
+    background-color: white;
+    height: 20%;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+.recommended{
+    background: white;
+    position: absolute;
+    color: black;
+    box-shadow: 0 0 3px rgba(0,0,0,0.5);
+    padding: 2px;
+    top: 2.1rem;
+    left: -5%;
+    width: 110%;
+    text-align: center;
+    cursor: pointer;
+}
+
+.box:hover{
+    transform: scale(1.1);
+}
+
+@media(max-width:1200px){
+    html{
+        font-size: 14px;
+    }
+
+    .pricing-table{
+        width: 80%;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .box{
+        width: calc(45%-2rem);
+        margin-top: 2rem;
+        margin-left: 2rem;
+    }
+}
+
+@media(max-width:768px){
+
+    .pricing-table{
+        width: 70%;
+    }
+
+    .box{
+        width: 100%;
+    }
+}
