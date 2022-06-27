@@ -289,7 +289,6 @@
 </div>
 
 <script>
-
     function loadModels(){
         let makeDropdownEl = document.getElementById('make-dropdown')
         let makeId = makeDropdownEl.value;
@@ -304,6 +303,7 @@
         let modelList = JSON.parse(this.responseText);
 
         $('#model-dropdown').empty();
+        $('#model-dropdown').append($('<option>' + '</option>'));
         for (let model of modelList) {
             $('#model-dropdown').append($('<option value="' + model.id + '">' + model.name + '</option>'));
         }

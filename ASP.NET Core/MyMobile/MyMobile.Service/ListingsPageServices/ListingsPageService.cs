@@ -63,7 +63,6 @@ namespace MyMobile.Service.ListingsPageServices
 
         public List<Model> ListModelsById(int makeId)
         {
-            var searchPageViewModel = new SearchPageViewModel();
             using (var context = new MyMobileContext())
             {
                 return context.Models.Where(m => m.MakeId == makeId).ToList();
