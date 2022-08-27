@@ -3,6 +3,7 @@ using MyMobile.DAL.Data;
 using MyMobile.DAL.Models.Identity;
 using MyMobile.Service.AccountService;
 using MyMobile.Service.AdministrationService;
+using MyMobile.Service.CarAdService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,7 @@ builder.Services.AddIdentity<AppUser, AppRole>(options =>
 //builder.Services.ConfigureApplicationCookie(options => options.LoginPath = "/Account/LoginPage");
 
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IListingService, ListingService>();
 //builder.Services.AddScoped<IRoleService, RoleService>();
 
 var app = builder.Build();

@@ -9,7 +9,7 @@ namespace MyMobile.DAL.Models.ViewModels.Listings
 {
     public class EditListingViewModel
     {
-        public ListingViewModel ListingViewModel { get; set; }
+        public ListingsViewModel ListingViewModel { get; set; }
         public CreateListingViewModel CreateListingViewModel { get; set; }
     }
 }

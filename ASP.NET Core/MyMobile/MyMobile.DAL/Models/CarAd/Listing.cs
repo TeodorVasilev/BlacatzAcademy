@@ -42,7 +42,17 @@ namespace MyMobile.DAL.Models.CarAd.CarAdArgs
         public VehicleCategory VehicleCategory { get; set; }
         public int ColorId { get; set; }
         public Color Color { get; set; }
+        public bool IsApproved { get; set; }
 
+        /// ///////////////////////////////////////////////
+        public bool IsPromoted { get; set; }
+        public int? PromotionId { get; set; }
+        public Promotion? Promotion { get; set; }
+        public int? PromoDuration { get; set; }
+        public DateTime? PromoStart { get; set; }
+        public DateTime? PromoEnd { get; set; }
+        /// ///////////////////////////////////////////////
+        
         public int? AppUserId { get; set; }
         public AppUser? AppUser { get; set; }
 

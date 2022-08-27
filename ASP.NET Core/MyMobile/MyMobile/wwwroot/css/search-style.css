@@ -1,4 +1,4 @@
-﻿.search-header {
+﻿/*.search-header {
     margin-bottom: 0;
 }
 
@@ -15,11 +15,7 @@
     background: gray;
 }
 
-.results-container {
-    border-top: 1px solid #0099FF;
-    margin-top: 10px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
+
 
 .result-container {
     overflow: hidden;
@@ -52,3 +48,4 @@
 .listing-details {
     font-size: 13px;
 }
+*/

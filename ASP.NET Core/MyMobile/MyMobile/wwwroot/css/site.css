@@ -1,5 +1,150 @@
-body{
-    margin:auto;
+:root {
+    --main-font: Verdana, Geneva, Tahoma, sans-serif;
+    --main-color: #0099FF;
+    --secondary-color: #605D5D;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: auto;
     margin-top: 15px;
     width: 80%;
 }
+
+a {
+    text-decoration: none;
+}
+
+p{
+    margin: 0;
+}
+
+.main-button {
+    font-family: var(--main-font);
+    font-size: 15px;
+    border: 2px solid black;
+    padding: 0.2rem 0.7rem;
+    border-radius: 20px 20px;
+    color: black;
+}
+
+    .main-button:hover {
+        color: white;
+        background: var(--secondary-color);
+        border: 2px solid var(--secondary-color);
+    }
+
+/*LAYOUT*/
+/*LOGO*/
+.logo-login-container {
+    display: flex;
+    column-gap: 2rem;
+    align-items: center;
+    width: 55.5%;
+}
+
+.main-logo {
+    border: 3px solid black;
+    width: 28%;
+    height: 42px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 29px;
+    font-weight: bolder;
+}
+
+.logo-link {
+    text-decoration: none;
+    color: black;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+    .logo-link span {
+        color: var(--main-color);
+    }
+/*LOGO END*/
+/*LOGIN*/
+.login-account-links {
+    width: 67%;
+    display: flex;
+    font-size: 15px;
+    font-family: var(--main-font);
+}
+
+    .login-links a {
+        color: var(--main-color);
+        font-weight:bold;
+    }
+
+.account-logout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 5px;
+}
+
+.account {
+    color: black;
+}
+
+.logout {
+    color: red;
+}
+
+.user-role-links {
+    margin-left: auto;
+}
+/*LOGIN END*/
+/*NAVBAR*/
+.navbar-container {
+    margin: auto;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.navbar-container {
+    margin-top: 40px;
+}
+
+.navbar-menu {
+    margin-top: 25px;
+}
+
+.bottom-line {
+    background-color: var(--main-color);
+    height: 6px;
+    width: 99.85%
+}
+
+.nav-link {
+    width: 85px;
+    height: 34px;
+    font-size: 16px;
+    margin: 0px 1px 0px 0px;
+    padding: 4px 11px 0px;
+    border-radius: 7px 7px 0px 0px;
+    color: white;
+    background-color: var(--secondary-color);
+    font-family: var(--main-font);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.myads {
+    margin-left: 37.8px;
+}
+
+.nav-link:hover {
+    background-color: var(--main-color);
+    padding-bottom: 6px;
+}
+
+.active {
+    background-color: var(--main-color);
+    padding-bottom: 6px;
+}
+/*NAVBAR END*/
+/*LAYOUT END*/

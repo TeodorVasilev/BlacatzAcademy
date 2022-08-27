@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using MyMobile.DAL.Data;
+using MyMobile.DAL.Models.Identity;
 using MyMobile.DAL.Models.ViewModels.Account;
 using MyMobile.DAL.Models.ViewModels.Pages;
 using MyMobile.Service.CarAdService;
@@ -14,26 +15,97 @@ namespace MyMobile.Service.AccountService
 {
     public class UserService : IUserService
     {
-        private readonly IHttpContextAccessor _httpContext;
+        private readonly IHttpContextAccessor httpContext;
+        private readonly IListingService listingService;
 
-        public UserService(IHttpContextAccessor httpContext)
+        public UserService(IHttpContextAccessor httpContext, IListingService listingService)
         {
-            _httpContext = httpContext;
+            this.httpContext = httpContext;
+            this.listingService = listingService;
         }
 
         public int GetUserId()
         {
-            return int.Parse(_httpContext.HttpContext.User?.FindFirstValue(ClaimTypes.NameIdentifier));
+            return int.Parse(httpContext.HttpContext.User?.FindFirstValue(ClaimTypes.NameIdentifier));
         }
 
-        //loading user page
-        //fix looks of the userpage
+        public int GetUsersCount()
+        {
+            int count = 0;
+
+            using (var context = new MyMobileContext())
+            {
+                count = context.Users.Count();
+            }
+
+            return count;
+        }
+
+        public AppUser FindByEmail(string email)
+        {
+            var user = new AppUser();
+
+            using(var context = new MyMobileContext())
+            {
+                user = context.Users.Where(u => u.Email == email).FirstOrDefault();
+            }
+
+            return user;
+        }
+
+        public AppUser GetUserById(int id)
+        {
+            var user = new AppUser();
+
+            using (var context = new MyMobileContext())
+            {
+                user = context.Users.Where(u => u.Id == id).FirstOrDefault();
+            }
+
+            return user;
+        }
+
+        public List<AppUser> GetUsers()
+        {
+            ///////////////////////////////////////////////////////////////////////////////
+            List<AppUser> users = new List<AppUser>();
+
+            using(var context = new MyMobileContext())
+            {
+                users = context.Users.ToList();
+            }
+
+            return users;
+            //////////////////////////////////////////////////////////////////////////////
+        }
+
+        public List<string> GetUserRoles(int userId)
+        {
+            ////////////////////////////////////////////////////////////////////////////
+            List<int> userRolesIds = new List<int>();
+            List<string> userRolesNames = new List<string>();
+            List<AppRole> roles = new List<AppRole>();
+            using (var context = new MyMobileContext())
+            {
+                userRolesIds = context.UserRoles.Where(ur => ur.UserId == userId).Select(r => r.RoleId).ToList();
+                roles = context.Roles.ToList();
+            }
+
+            foreach (var userRoleId in userRolesIds)
+            {
+                userRolesNames.Add(roles.Where(r => r.Id == userRoleId).Select(r => r.Name).FirstOrDefault());
+            }
+
+            return userRolesNames;
+            ////////////////////////////////////////////////////////////////////////////
+        }
+
         public MyAdsViewModel LoadMyAds()
         {
+           
             MyAdsViewModel model = new MyAdsViewModel();
-            var listingService = new ListingService();
 
-            model.CarAdViewModel.CarAds = listingService.GetUserListings(GetUserId());
+            model.CarAdViewModel.CarAds = this.listingService.GetUserListings(GetUserId());
 
             return model;
         }

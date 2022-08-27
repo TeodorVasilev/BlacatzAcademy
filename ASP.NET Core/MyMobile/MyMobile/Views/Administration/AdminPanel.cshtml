@@ -1,0 +1,14 @@
+﻿@using MyMobile.DAL.Models.ViewModels.Administration
+@model AdminPanelViewModel
+<div>
+    <a asp-action="ListUsers" asp-controller="Administration">Настройки на потребители</a>
+</div>
+<div>
+    <a asp-action="ListRoles" asp-controller="Administration">Настройки на правата на потребителите</a>
+</div>
+<div>
+    <a asp-action="ListAds" asp-controller="Administration">Настройки на обяви</a>
+</div>
+<div>
+    <a asp-action="ListPendingAds" asp-controller="Administration">Изчакващи обяви</a>
+</div>

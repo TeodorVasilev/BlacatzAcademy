@@ -1,0 +1,70 @@
+﻿@model MyMobile.DAL.Models.ViewModels.Listings.ListingsViewModel
+<style>
+    #ads {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+        #ads td, #ads th {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        #ads tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #ads tr:hover {
+            background-color: #ddd;
+        }
+
+        #ads th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            background-color: #328fc5;
+            color: white;
+        }
+</style>
+
+<div>
+    <table id="ads">
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Име
+            </th>
+            <th>
+                Потребител
+            </th>
+            <th>
+                Действия
+            </th>
+        </tr>
+        @foreach (var ad in @Model.CarAds)
+        {
+            <tr>
+                <td>
+                    @ad.Id
+                </td>
+                <td>
+                    @ad.Name
+                </td>
+                <td>
+                    @if (ad.AppUser != null)
+                    {
+                        @ad.AppUser.UserName
+                    }
+                </td>
+                <td>
+                    <a>Преглед</a>
+                    <span> | </span>
+                    <a>Изтриване</a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>

@@ -7,73 +7,95 @@ using MyMobile.DAL.Models.ViewModels.Create;
 using MyMobile.DAL.Models.ViewModels.Listings;
 using MyMobile.Service.AccountService;
 using MyMobile.Service.CarAdService;
-using MyMobile.Service.ListingsPageServices;
 
 namespace MyMobile.Controllers
 {
     public class ListingsController : Controller
     {
-        private readonly IUserService _userService;
+        private readonly IUserService userService;
+        private readonly IListingService listingService;
 
-        public ListingsController(IUserService userService)
+        public ListingsController(IUserService userService, IListingService listingService)
         {
-            _userService = userService;
-        }
-
-        public IActionResult Search(QuickSearchStoreViewModel formData, int? page)
-        {
-            var listingsPageService = new ListingsPageService();
-            return View(listingsPageService.LoadListings(formData, page));
-        }
-
-        public IActionResult Listing(int id)
-        {
-            var listingsPageService = new ListingsPageService();
-            return View(listingsPageService.LoadListing(id));
-        }
-
-        public IActionResult ListModelsById(int makeId)
-        {
-            var listingsPageService = new ListingsPageService();
-            return Json(listingsPageService.ListModelsById(makeId));
+            this.userService = userService;
+            this.listingService = listingService;
         }
 
         public IActionResult Create()
         {
-            var listingPageService = new ListingsPageService();
-            return View(listingPageService.LoadCreateForm());
+            return View(this.listingService.LoadCreateForm());
         }
-
-        [Authorize]
-        public IActionResult Edit(int id)
+        public IActionResult Delete(int id)
         {
-            var listingPageService = new ListingsPageService();
-            return View(listingPageService.LoadeEditListingPage(id));
+            this.listingService.Delete(id);
+            return RedirectToAction("ListPendingAds", "Administration");
         }
-
-        public IActionResult EditStore(int id, StoreListingViewModel formData)
+        public IActionResult ListModelsByMakeId(int makeId)
         {
-            var listingService = new ListingService();
-            listingService.Update(id, formData);
-            return RedirectToAction("MyAds", "Account");
+            return Json(this.listingService.ListModelsById(makeId));
         }
-
+        public IActionResult ListTownsByRegionId(int regionId)
+        {
+            return Json(this.listingService.ListTownsById(regionId));
+        }
         public IActionResult Store(StoreListingViewModel formData)
         {
-            var listingsPageService = new ListingsPageService();
             if (User.Identity.IsAuthenticated)
             {
-                formData.userId = _userService.GetUserId();
-                listingsPageService.StoreListing(formData);
+                formData.userId = this.userService.GetUserId();
+                this.listingService.Create(formData);
                 return RedirectToAction("MyAds", "Account");
             }
             else
             {
-                listingsPageService.StoreListing(formData);
+                this.listingService.Create(formData);
             }
-            //fix method if condition and redirection when adding new listing as logged user or as unlogeduser
+            //fix method if condition and redirection when adding new listing as logged user or as annon
 
             return RedirectToAction("Index","Home");
+        }
+        [Authorize]
+        public IActionResult Edit(int id)
+        {
+            return View(this.listingService.LoadEditListingPage(id));
+        }
+        public IActionResult EditStore(int id, StoreListingViewModel formData)
+        {
+            this.listingService.Update(id, formData);
+            return RedirectToAction("MyAds", "Account");
+        }
+        public IActionResult Search(QuickSearchStoreViewModel formData, int? page)
+        {
+            return View(this.listingService.LoadListings(formData, page));
+        }
+        public IActionResult Listing(int id)
+        {
+            return View(this.listingService.LoadListing(id));
+        }
+        [Authorize(Roles = "SuperAdmin")]
+        public IActionResult PendingListing(int id)
+        {
+            return View(this.listingService.LoadPendingListing(id));
+        }
+        public IActionResult ApproveListing(int id)
+        {
+            this.listingService.Approve(id);
+            return RedirectToAction("ListPendingAds", "Administration");
+        }
+
+        [Authorize]
+        public IActionResult Promote(int id)
+        {
+            var model = this.listingService.LoadPromoPage(id);
+            return View(model);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public IActionResult PromoteStore(int promoId, int listingId)
+        {
+            this.listingService.Promote(promoId, listingId);
+            return RedirectToAction("MyAds", "Account");
         }
     }
 }

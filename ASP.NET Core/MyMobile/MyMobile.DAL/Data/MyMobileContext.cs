@@ -30,6 +30,9 @@ namespace MyMobile.DAL.Data
         public DbSet<Security> Securities { get; set; }
         public DbSet<CarAdSecurity> CarAdSecurities { get; set; }
         public DbSet<AppUser> AppUsers { get; set; }
+        public DbSet<AppRole> AppRoles { get; set; }
+
+        public DbSet<Promotion> Promotions { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -42,8 +45,9 @@ namespace MyMobile.DAL.Data
         //fix relationships in configuration and in both listing and appuser classes
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder); //?
+            base.OnModelCreating(modelBuilder);
 
+            modelBuilder.ApplyConfiguration(new PromotionConfiguration());
             modelBuilder.ApplyConfiguration(new AppUserConfiguration());
             modelBuilder.ApplyConfiguration(new AppRoleConfiguration());
             modelBuilder.ApplyConfiguration(new CarAdConfiguration());//listing

@@ -64,6 +64,10 @@ namespace MyMobile.DAL.Configuration
                 .HasOne<AppUser>(ca => ca.AppUser)
                 .WithMany(au => au.CarAds)
                 .HasForeignKey(ca => ca.AppUserId);
+            builder
+                .HasOne<Promotion>(ca => ca.Promotion)
+                .WithMany(p => p.CarAds)
+                .HasForeignKey(ca => ca.PromotionId);
         }
     }
 }

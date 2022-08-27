@@ -4,7 +4,7 @@ namespace MyMobile.DAL.Models.ViewModels.Pages
 {
     public class HomePageViewModel
     {
-        public ListingViewModel CarAdViewModel { get; set; }
+        public ListingsViewModel CarAdViewModel { get; set; }
         public QuickSearchViewModel AdQuickSearchViewModel { get; set; }
     }
 }

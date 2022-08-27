@@ -81,6 +81,6 @@
             </tr>
         </table>
     </div>
-    <div class="additional-info">
-    </div>
+    <a asp-action="ApproveListing" asp-controller="Listings" asp-route-id="@Model.Listing.Id">Одобри</a>
+    <a asp-action="Delete" asp-controller="Listings" asp-route-id="@Model.Listing.Id">Изтрий</a>
 </div>

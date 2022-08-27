@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyMobile.DAL.Data;
 
@@ -11,9 +12,10 @@ using MyMobile.DAL.Data;
 namespace MyMobile.DAL.Migrations
 {
     [DbContext(typeof(MyMobileContext))]
-    partial class MyMobileContextModelSnapshot : ModelSnapshot
+    [Migration("20220712124748_UpdateListing")]
+    partial class UpdateListing
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -271,9 +273,6 @@ namespace MyMobile.DAL.Migrations
                     b.Property<bool>("IsApproved")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("IsPromoted")
-                        .HasColumnType("bit");
-
                     b.Property<int>("MakeId")
                         .HasColumnType("int");
 
@@ -296,18 +295,6 @@ namespace MyMobile.DAL.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("PromoDuration")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("PromoEnd")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("PromoStart")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("PromotionId")
-                        .HasColumnType("int");
 
                     b.Property<int>("RegionId")
                         .HasColumnType("int");
@@ -343,8 +330,6 @@ namespace MyMobile.DAL.Migrations
 
                     b.HasIndex("ModelId");
 
-                    b.HasIndex("PromotionId");
-
                     b.HasIndex("RegionId");
 
                     b.HasIndex("TownId");
@@ -352,35 +337,6 @@ namespace MyMobile.DAL.Migrations
                     b.HasIndex("VehicleCategoryId");
 
                     b.ToTable("CarAds");
-                });
-
-            modelBuilder.Entity("MyMobile.DAL.Models.CarAd.CarAdArgs.Promotion", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Promotions");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "VIP"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "TOP"
-                        });
                 });
 
             modelBuilder.Entity("MyMobile.DAL.Models.CarAd.CarAdArgs.Region", b =>
@@ -1189,10 +1145,6 @@ namespace MyMobile.DAL.Migrations
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("MyMobile.DAL.Models.CarAd.CarAdArgs.Promotion", "Promotion")
-                        .WithMany("CarAds")
-                        .HasForeignKey("PromotionId");
-
                     b.HasOne("MyMobile.DAL.Models.CarAd.CarAdArgs.Region", "Region")
                         .WithMany("CarAds")
                         .HasForeignKey("RegionId")
@@ -1230,8 +1182,6 @@ namespace MyMobile.DAL.Migrations
                     b.Navigation("Make");
 
                     b.Navigation("Model");
-
-                    b.Navigation("Promotion");
 
                     b.Navigation("Region");
 
@@ -1341,11 +1291,6 @@ namespace MyMobile.DAL.Migrations
                     b.Navigation("CarAdInteriors");
 
                     b.Navigation("CarAdSecurities");
-                });
-
-            modelBuilder.Entity("MyMobile.DAL.Models.CarAd.CarAdArgs.Promotion", b =>
-                {
-                    b.Navigation("CarAds");
                 });
 
             modelBuilder.Entity("MyMobile.DAL.Models.CarAd.CarAdArgs.Region", b =>

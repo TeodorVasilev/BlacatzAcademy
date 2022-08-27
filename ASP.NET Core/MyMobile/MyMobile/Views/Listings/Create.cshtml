@@ -213,7 +213,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <select name="RegionId" class="form-control">
+                        <select id="region-dropdown" name="RegionId" class="form-control" onchange="loadTowns()">
                             <option></option>
                             @foreach (var region in Model.Regions)
                             {
@@ -222,12 +222,8 @@
                         </select>
                     </td>
                     <td>
-                        <select name="TownId" class="form-control">
+                        <select id="town-dropdown" name="TownId" class="form-control">
                             <option></option>
-                            @foreach (var town in Model.Towns)
-                            {
-                                <option value="@town.Id">@town.Name</option>
-                            }
                         </select>
                     </td>
                 </tr>
@@ -280,25 +276,3 @@
         </div>
     </form>
 </div>
-
-<script>
-    function loadModels(){
-        let makeDropdownEl = document.getElementById('make-dropdown')
-        let makeId = makeDropdownEl.value;
-
-        let xhr = new XMLHttpRequest();
-        xhr.addEventListener('load', requestHandler);
-        xhr.open('GET', 'https://localhost:44349/Listings/ListModelsById?makeId=' + makeId);
-        xhr.send();
-    }
-
-    function requestHandler(){
-        let modelList = JSON.parse(this.responseText);
-
-        $('#model-dropdown').empty();
-        $('#model-dropdown').append($('<option>' + '</option>'));
-        for (let model of modelList) {
-            $('#model-dropdown').append($('<option value="' + model.id + '">' + model.name + '</option>'));
-        }
-    }
-</script>

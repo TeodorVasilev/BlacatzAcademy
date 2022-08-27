@@ -1,77 +1,170 @@
 ﻿@model MyMobile.DAL.Models.ViewModels.Pages.SearchPageViewModel
 @*make new view model*@
+<style>
+
+    .search-details-container {
+        font-family: Verdana,Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 11px;
+        display: flex;
+        flex-wrap: wrap;
+        height: 150px;
+        background-color: #efefef;
+        padding: 1rem;
+    }
+
+    .page-details {
+        border: 1px solid black;
+        width: 100%;
+        height: 20%;
+        align-self: flex-end;
+    }
+
+    .res-container {
+        border-top: 1px solid #0099FF;
+        margin-top: 1rem;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        align-items: center;
+    }
+
+    .result {
+        width: 100%;
+        display: flex;
+        background: linear-gradient(white, lightgray);
+        padding: 10px 0 10px 0;
+        align-items: flex-start;
+        border-bottom: 1px solid var(--main-color);
+    }
+
+    .listing-img {
+        border: 1px solid gray;
+        width: 30%;
+        height: 205.48px;
+        padding: 5px;
+    }
+
+        .listing-img img {
+            height: 100%;
+            width: 100%;
+        }
+
+        .listing-img:hover {
+            opacity: 0.7;
+            border: 1px solid var(--main-color);
+        }
+
+    .listing-details {
+        width: 40%;
+        height: 205.48px;
+        display: flex;
+        justify-content: flex-start;
+        font-size: 14px;
+        padding-left: 1rem;
+    }
+
+    .ad-name {
+        font-size: 20px;
+        font-weight: bold;
+        color: black;
+        display: inline-block;
+        width: 330px;
+        white-space: nowrap;
+        overflow: hidden !important;
+        text-overflow: ellipsis;
+    }
+
+        .ad-name:hover {
+            color: var(--main-color);
+        }
+
+    .listing-price {
+        width: 30%;
+        height: 205.48px;
+        font-size: 25px;
+        font-weight: bold;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+</style>
+
 <h4 class="search-header">Обяви за автомобили и джипове</h4>
 <div class="search-details-container">
-    <div class="search-details" style="font-family: Verdana,Verdana, Geneva, Tahoma, sans-serif; font-size: 11px;">
+    <div class="search-details">
         @*
             the search filters here if there are no filters only the default
             set default values
             fix object not set when click to other page
         *@
-        <b>Резултат от Вашето търсене на:</b>
-        <span style="display:block;">
-            Рубрика:
-            @if (Model.SearchDetailsViewModel != null && Model.SearchDetailsViewModel.Category != null)
-                {
-                    <b>@Model.SearchDetailsViewModel.Category.Type</b>
-                } @*todo*@
-        </span>
-        <span>, </span>
-        <span>
-            Състояние:
-        </span>
-        <span>
-            Подредени по:
-        </span>
+        Резултат от Вашето търсене на:
+        Рубрика: Автомобили и Джипове,
+        Състояние: Употребявани, Нови,
+        Подредени по: Марка/Модел/Цена
+
+        <a>Запази Търсенето</a>
+
+        <label>Страница на резултатите от търсенето</label>
+        <input readonly value="link" />
+    </div>
+    <div class="page-details">
     </div>
 </div>
-<div class="page-details-container">
-</div>
-<div class="results-container">
+<div class="res-container">
     @foreach (var carAd in Model.ListingViewModel.CarAds)
     {
-        <div class="result-container">
-            <div class="listing-img-container">
-                <img style="" src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Image not foud" width="250">
+        <div class="result">
+            <div class="listing-img">
+                <a name="carAdId" asp-controller="Listings" asp-action="Listing" asp-route-id="@carAd.Id">
+                    <img src="~/images/car-1.jpg" alt="Image not found">
+                </a>
             </div>
-            <div class="listing-details-container">
-                @*how to hide too long text with ...*@
-                <div class="name-price">
-                    <div style="font-size:21px; font-weight: bold; float: left;"><a style="text-decoration: none;" name="carAdId" asp-controller="Listings" asp-action="Listing" asp-route-id="@carAd.Id">@carAd.Name</a></div>
-                    <div style="font-size:25px; font-weight:bold; float: right;">@carAd.DefaultPriceBgn лв.</div>
-                </div>
-                <div class="listing-details" style="font-size: 13px;">
-                    <table>
-                        <tr>
-                            <td>Мощност [к.с.]</td>
-                            <td>@carAd.HorsePower</td>
-                        </tr>
-                        <tr>
-                            <td>Дата на произв.</td>
-                            <td>@carAd.ManufactureMonth<span>/</span>@carAd.ManufactureYear<span>г.</span></td>
-                        </tr>
-                        <tr>
-                            <td>Регион:</td>
-                            <td>@carAd.Region.Name<span>, гр. </span>@carAd.Town.Name</td>
-                        </tr>
-                        <tr>
-                            <td>Пробег:</td>
-                            <td>@carAd.Mileage<span>км</span></td>
-                        </tr>
-                        <tr>
-                            <td>Цвят:</td>
-                            <td>@carAd.Color.Name</td>
-                        </tr>
-                        <tr>
-                            <td>Тип двигател:</td>
-                            <td>@carAd.Engine.Type</td>
-                        </tr>
-                        <tr>
-                            <td>Скоростна кутия:</td>
-                            <td>@carAd.Gearbox.Type</td>
-                        </tr>
-                    </table>
-                </div>
+            <div class="listing-details">
+                <table>
+                    <tr>
+                        <td colspan="2">
+                            <a class="ad-name" name="carAdId" asp-controller="Listings" asp-action="Listing" asp-route-id="@carAd.Id">@carAd.Name</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Мощност [к.с.]</td>
+                        <td>@carAd.HorsePower</td>
+                    </tr>
+                    <tr>
+                        <td>Дата на произв.</td>
+                        <td>@carAd.ManufactureMonth<span>/</span>@carAd.ManufactureYear<span>г.</span></td>
+                    </tr>
+                    <tr>
+                        <td>Регион:</td>
+                        <td>@carAd.Region.Name<span>, гр. </span>@carAd.Town.Name</td>
+                    </tr>
+                    <tr>
+                        <td>Пробег:</td>
+                        <td>@carAd.Mileage<span>км</span></td>
+                    </tr>
+                    <tr>
+                        <td>Цвят:</td>
+                        <td>@carAd.Color.Name</td>
+                    </tr>
+                    <tr>
+                        <td>Тип двигател:</td>
+                        <td>@carAd.Engine.Type</td>
+                    </tr>
+                    <tr>
+                        <td>Скоростна кутия:</td>
+                        <td>@carAd.Gearbox.Type</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="listing-price">
+                <p>@carAd.DefaultPriceBgn лв.</p>
+
+                @if (@carAd.IsPromoted)
+                {
+                    <p>@carAd.Promotion.Name Обява</p>
+                }
+
+                <a class="main-button" name="carAdId" asp-controller="Listings" asp-action="Listing" asp-route-id="@carAd.Id">Преглед</a>
             </div>
         </div>
     }

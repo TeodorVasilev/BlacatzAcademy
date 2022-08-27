@@ -1,4 +1,5 @@
-﻿using MyMobile.DAL.Models.ViewModels.Listings;
+﻿using MyMobile.DAL.Data;
+using MyMobile.DAL.Models.ViewModels.Listings;
 using MyMobile.DAL.Models.ViewModels.Pages;
 using MyMobile.Service.CarAdService;
 
@@ -9,12 +10,12 @@ namespace MyMobile.Service.HomePageServices
         public HomePageViewModel LoadHome()
         {
             var homepageViewModel = new HomePageViewModel();
-            homepageViewModel.CarAdViewModel = new ListingViewModel();
+            homepageViewModel.CarAdViewModel = new ListingsViewModel();
             homepageViewModel.AdQuickSearchViewModel = new QuickSearchViewModel();
             var listingService = new ListingService();
 
             ////sorted by date added
-            homepageViewModel.CarAdViewModel.CarAds = listingService.GetNewestCarAds();
+            homepageViewModel.CarAdViewModel.CarAds = listingService.GetNewestListings();
 
             using (MyMobile.DAL.Data.MyMobileContext context = new DAL.Data.MyMobileContext())
             {

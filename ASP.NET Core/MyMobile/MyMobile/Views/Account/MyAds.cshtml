@@ -32,10 +32,30 @@
                                         <span class="date">@carAd.DateAdded.ToString("HH:mm") на @carAd.DateAdded.ToString("dd.MM.yyyy")</span>
                                         <br>
                                         <a asp-controller="Listings" asp-action="Edit" asp-route-id="@carAd.Id">Редактирай</a>
+
+                                        @if (carAd.IsApproved == false)
+                                        {
+                                            <div>
+                                                ИЗЧАКВАЩА ОБЯВА
+                                            </div>
+                                        }
                                     </td>
                                 </tr>
                             </table>
                         </a>
+                    </td>
+                    <td>
+                        @if (@carAd.IsPromoted == true)
+                        {
+                            <span>Вашата обява е: </span> @carAd.Promotion.Name
+                            <div>
+                                <span>До: </span> @carAd.PromoEnd
+                            </div>
+                        }
+                        else
+                        {
+                            <a asp-action="Promote" asp-controller="Listings" asp-route-id="@carAd.Id">Промотирай</a>
+                        }
                     </td>
                 </tr>
             }

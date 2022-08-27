@@ -38,7 +38,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <select name="MakeId" class="form-control">
+                            <select id="make-dropdown" name="MakeId" class="form-control" onchange="loadModels()">
                                 <option></option>
                                 @foreach (var make in Model.AdQuickSearchViewModel.Makes)
                                 {
@@ -47,12 +47,8 @@
                             </select>
                         </td>
                         <td>
-                            <select name="ModelId" class="form-control">
+                            <select id="model-dropdown" name="ModelId" class="form-control">
                                 <option></option>
-                                @foreach (var carModel in Model.AdQuickSearchViewModel.Models)
-                                {
-                                    <option value="@carModel.Id">@carModel.Name</option>
-                                }
                             </select>
                         </td>
                     </tr>
@@ -108,7 +104,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <select name="RegionId" class="form-control">
+                            <select id="region-dropdown" name="RegionId" class="form-control" onchange="loadTowns()">
                                 <option></option>
                                 @foreach (var region in Model.AdQuickSearchViewModel.Regions)
                                 {
@@ -117,12 +113,8 @@
                             </select>
                         </td>
                         <td>
-                            <select name="TownId" class="form-control">
+                            <select id="town-dropdown" name="TownId" class="form-control">
                                 <option></option>
-                                @foreach (var town in Model.AdQuickSearchViewModel.Towns)
-                                {
-                                    <option value="@town.Id">@town.Name</option>
-                                }
                             </select>
                         </td>
                     </tr>

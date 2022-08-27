@@ -16,44 +16,43 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+
+    </style>
 </head>
-<body>
+<body id="body">
     <div style="width: 990px;">
         <header>
-            <nav class="navbar">
-                <div class="logo-login-container">
-                    <div class="main-logo">
-                        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">my<span>.</span>mobile</a>
-                    </div>
+            <div class="logo-login-container">
+                <div class="main-logo">
+                    <a class="logo-link" asp-area="" asp-controller="Home" asp-action="Index">my<span>.</span>mobile</a>
+                </div>
+                <div class="login-account-links">
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <div>
-                            <a asp-area="" asp-controller="Account" asp-action="AccountPage">@User.Identity.Name</a>
-                            <a asp-area="" asp-controller="Account" asp-action="Logout">изход</a>
+                        <div class="account-logout">
+                            <a class="account" asp-area="" asp-controller="Account" asp-action="MyAds">@User.Identity.Name</a>
+                            <a class="logout" asp-area="" asp-controller="Account" asp-action="Logout">изход</a>
                         </div>
-                        <div>
-                            @if(User.IsInRole("SuperAdmin"))
-                            {
-                                <a href>Administration Panel</a>
-                            }
-                        </div>
+                        @if (User.IsInRole("SuperAdmin"))
+                        {
+                            <div class="user-role-links">
+                                <a  class="main-button" asp-area="" asp-controller="Administration" asp-action="AdminPanel">Administration</a>
+                            </div>
+                        }
                     }
                     else
                     {
-                        <div class="login-links-container">
-                            <div class="login-links-left">
-                                <a class="login" asp-area="" asp-controller="Account" asp-action="Register">Вход</a>
-                                <span class="slash">|</span>
-                                <a class="register" asp-area="" asp-controller="Account" asp-action="Register">Нова регистрация</a>
-                            </div>
+                        <div class="login-links">
+                            <a class="login" asp-area="" asp-controller="Account" asp-action="Register">Вход</a>
+                            <span class="slash">|</span>
+                            <a class="register" asp-area="" asp-controller="Account" asp-action="Register">Нова регистрация</a>
                         </div>
                     }
                 </div>
+            </div>
+            <nav class="navbar">
                 <div class="navbar-container">
-                    @*fix*@
-
-                    @*fix*@
-                    @*/todo: add links and buttons login; new registration; update ad; add ad*@
                     <div id="navbar-menu" class="navbar-menu">
                         <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Начало</a>
                         <a class="nav-link" asp-area="" asp-controller="Listings" asp-action="Create">Публикуване</a>
@@ -80,11 +79,6 @@
             </div>
         </footer>
     </div>
-    <script>
-        $(document).ready(function(){
-            $('.navbar-menu').find('[href="'+window.location.pathname+'"]').closest('a').addClass('active');
-        });
-    </script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

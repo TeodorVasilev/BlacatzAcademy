@@ -1,15 +1,46 @@
 ﻿@using MyMobile.DAL.Models.ViewModels.Administration
 @model ListRolesViewModel
+<style>
+        #roles {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
 
+        #roles td, #roles th {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        #roles tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #roles tr:hover {
+            background-color: #ddd;
+        }
+
+        #roles th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+        }
+</style>
 <h2>List of roles</h2>
 <a asp-action="CreateRole" asp-controller="Administration">Add role</a>
-<table class="roles-table">
+<table id="roles" class="roles-table">
     <tr>
         <td>
             Id
         </td>
         <td>
             RoleName
+        </td>
+        <td>
+            Действия
         </td>
     </tr>
 @foreach (var role in @Model.Roles)
@@ -23,9 +54,8 @@
         </td>
         <td>
             <a asp-action="EditRole" asp-controller="Administration" asp-route-id="@role.Id">Edit</a>
-        </td>
-         <td>
-            <a href="">Delete</a>
+            <span> | </span>
+            <a asp-action="DeleteRole" asp-controller="Administration" asp-route-id="@role.Id">Delete</a>
         </td>
     </tr>
 }

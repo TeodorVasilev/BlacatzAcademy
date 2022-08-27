@@ -5,7 +5,6 @@ using MyMobile.DAL.Models.Identity;
 using MyMobile.DAL.Models.ViewModels.Account;
 using MyMobile.DAL.Models.ViewModels.Create;
 using MyMobile.Service.AccountService;
-using MyMobile.Service.ListingsPageServices;
 
 namespace MyMobile.Controllers
 {
@@ -13,32 +12,32 @@ namespace MyMobile.Controllers
     {
         private UserManager<AppUser> UserManager { get; }
         private SignInManager<AppUser> SignInManager { get; }
-        private readonly IUserService _userService;
-        //interface for getting userid
+
+        private readonly IUserService userService;
 
         public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager,RoleManager<AppRole> roleManager, IUserService userPageService)//
         {
             UserManager = userManager;
             SignInManager = signInManager;
-            _userService = userPageService;
+            userService = userPageService;
         }
 
         [Authorize]
         public async Task<IActionResult> MyAds()
         {
-            return View(_userService.LoadMyAds());
+            return View(this.userService.LoadMyAds());
         }
 
         [Authorize]
         public async Task<IActionResult> Settings()
         {
-            return View(_userService.LoadSettings());
+            return View(this.userService.LoadSettings());
         }
 
         [Authorize]
         public async Task<IActionResult> SettingsStore(SettingsStoreViewModel formData)
         {
-            _userService.UpdateAccount(_userService.GetUserId(), formData);
+            this.userService.UpdateAccount(this.userService.GetUserId(), formData);
             return RedirectToAction("MyAds", "Account");
         }
 
@@ -58,7 +57,6 @@ namespace MyMobile.Controllers
             var result = await SignInManager.PasswordSignInAsync(formData.Username, formData.Password, false, false);
             if(result.Succeeded)
             {
-                //redirect to userAccPage
                 return RedirectToAction("MyAds", "Account");
             }
             else
@@ -78,9 +76,7 @@ namespace MyMobile.Controllers
         public async Task<IActionResult> Register(RegisterStoreVIewModel formData)
         {
             //return redirect to login form with user created msg
-            try
-            {
-                AppUser user = await UserManager.FindByEmailAsync(formData.Email);
+                AppUser user = userService.FindByEmail(formData.Email);
                 if(user == null && ModelState.IsValid)
                 {
                     user = new AppUser();
@@ -89,15 +85,10 @@ namespace MyMobile.Controllers
                     
                     IdentityResult result = await UserManager.CreateAsync(user, formData.Password);
 
-                    return Content("User was created");
+                    return Content("User was created.");
                 }
-            }
-            catch (Exception ex)
-            {
-                return Content(ex.Message);
-            }
-
-            return View();
+            
+                return Content("There is already a registered user with this email.");
         }
     }
 }

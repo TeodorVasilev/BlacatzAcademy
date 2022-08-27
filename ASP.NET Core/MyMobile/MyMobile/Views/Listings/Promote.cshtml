@@ -1,0 +1,71 @@
+﻿@model MyMobile.DAL.Models.ViewModels.Listings.PromoteViewModel
+<script src="https://www.paypal.com/sdk/js?client-id=AfAFYB8zmrdQvzubFe4m8a6V4WkfkGN04BHRkIpiCpDZ4DmXqU7iPMImXgC6eStNlouB-Fzx_XVubZkI&currency=USD"></script>
+<style>
+    .promotions-container {
+        border: 1px solid blue;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+
+<div class="promotions-container">
+    <div>
+        Промотиране на вашата обява: @Model.ListingId
+    </div>
+    @foreach (var promo in Model.Promotions)
+    {
+
+        <div type="submit" class="paypal-button" id="id-@promo.Id"
+         attr-promoId="@promo.Id" attr-price="@((promo.Id+1)*5)" attr-listingId="@Model.ListingId">
+            Направи @promo.Name
+        </div>
+
+    }
+    <p>test</p>
+
+    <div id="paypal-button-container">
+    </div>
+</div>
+<script>
+        $('.paypal-button').each((i, b) => {
+            createPayPalButton($(b).attr('attr-promoId'), $(b).attr('attr-price'), $(b).attr('attr-listingId'));
+        });
+
+        function createPayPalButton(id, price, listingId) {
+
+            let paypalButton = {
+                  createOrder: (data, actions) => {
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: {
+                                value: price
+                            }
+                        }]
+                    });
+                  },
+
+                  onApprove: (data, actions) => {
+                    return actions.order.capture().then(function(orderData) {
+                      console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                      const transaction = orderData.purchase_units[0].payments.captures[0];
+                      alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
+                      promoteAd(id, listingId);
+                    });
+                  }
+                }
+
+            paypal.Buttons(paypalButton).render(`#id-${id}`);
+        }
+
+        function promoteAd(id, listingId) {
+        let xhr = new XMLHttpRequest();
+
+        xhr.open('POST', 'https://localhost:44349/Listings/PromoteStore', true);
+        xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded; charset=UTF-8")
+        xhr.send(`promoId=${id}&listingId=${listingId}`);
+        console.log("updated");
+    }
+
+</script>

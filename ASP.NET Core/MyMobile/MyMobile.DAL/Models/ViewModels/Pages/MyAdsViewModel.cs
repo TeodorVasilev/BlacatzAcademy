@@ -11,9 +11,9 @@ namespace MyMobile.DAL.Models.ViewModels.Pages
     {
         public MyAdsViewModel()
         {
-            CarAdViewModel = new ListingViewModel();
+            CarAdViewModel = new ListingsViewModel();
         }
 
-        public ListingViewModel CarAdViewModel { get; set; }
+        public ListingsViewModel CarAdViewModel { get; set; }
     }
 }

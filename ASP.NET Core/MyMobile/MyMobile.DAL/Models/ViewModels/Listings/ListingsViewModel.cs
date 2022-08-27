@@ -2,15 +2,14 @@
 
 namespace MyMobile.DAL.Models.ViewModels.Listings
 {
-    public class ListingViewModel
+    public class ListingsViewModel
     {
-        public ListingViewModel()
+        public ListingsViewModel()
         {
             this.CarAds = new List<Listing>();
         }
 
         public List<Listing> CarAds { get; set; }
-
         public Listing Listing { get; set; }
         public double TotalPages { get; set; }
     }
