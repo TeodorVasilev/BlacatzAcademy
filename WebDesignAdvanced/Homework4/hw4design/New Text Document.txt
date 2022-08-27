@@ -1,0 +1,48 @@
+.navbar{
+            grid-column: 1/20;
+            display: grid;
+            grid-template-columns: repeat(19, 1fr);
+            width: 100%;
+        }
+
+        .logo{
+            grid-column: 2/4;
+            display: flex;
+            align-items: center;
+        }
+
+        .menu{
+            grid-column: 5/13;
+            display: flex;
+            align-items: center;
+        }
+
+        .menu ul li a{
+            text-decoration: none;
+            padding: 0 1.5rem;
+        }
+
+        .menu ul li{
+            list-style-type: none;
+            display: inline;
+        }
+
+        .user-menu{
+            grid-column: 15/19;
+            border: 1px solid red;
+            display: flex;
+            align-items: center;
+            font-size: 25px;
+        }
+
+        .user-menu i{
+            padding: 0 7% 0 0;
+        }
+
+        .pe-7s-config{
+            margin-left: 7%;
+        }
+
+        .main-logo{
+            grid-column: 5/9;
+        }

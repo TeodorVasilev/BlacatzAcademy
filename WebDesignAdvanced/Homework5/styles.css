@@ -1,0 +1,278 @@
+.section-heading{
+  padding: 6rem 7rem !important;
+  padding-bottom: 4rem !important;
+}
+
+.section {
+  padding-bottom: 6rem;
+}
+
+.btn{
+  border-radius: 0% !important;
+}
+
+.card-subtitle{
+  font-size: 10px !important;
+}
+
+/* NAVBAR */
+.navbar{
+  min-height: 4rem;
+}
+
+.nav-link{
+  font-size: 14px;
+  padding: 0 0.9rem 0 0.9rem !important;
+}
+
+.show{
+  text-align: center;
+}
+
+.show .nav-link{
+  padding: 0.5rem 0 0.5rem 0 !important;
+  font-size: 16px;
+}
+/* NAVBAR END */
+/* CAROUSEL */
+
+/*adjust pictures with media queries*/
+.carousel-inner .carousel-item img{
+  height: 90vh !important;
+}
+
+.carousel-indicators{
+  height: 3px p !important;
+  background: black !important;
+  align-items: flex-end !important;
+  margin: 0 !important;
+  position: unset;
+}
+
+.carousel-indicators button{
+  border: 0 !important;
+  width: 25% !important;
+  margin: 0 !important;
+}
+
+.carousel-caption{
+  bottom: 30% !important;
+  letter-spacing: 0.1rem;
+}
+/* CAROUSEL END */
+/* ABOUT US */
+.card{
+  border: 0 !important;
+}
+
+.card-body{
+  padding-left: 0 !important;
+}
+
+.card-text{
+  font-size: 14px;
+  color: gray;
+}
+
+.card-img-top{
+  border: 0 !important;
+  border-radius: 0% !important;
+}
+/* ABOUT US END */
+/* SERVICES */
+.part-bord{
+  width: 13%; 
+  border-bottom: 2px solid black;
+  margin-top: 1.5rem ;
+  margin-bottom: 1.5rem;
+}
+
+.services-content h5{
+  margin: 0;
+}
+
+.services-content p{
+  font-size: 14px;
+  color: gray;
+}
+/* SERVICES END*/
+/* WHY CHOOSE US */
+.wcu-container{
+  padding: 3rem 0;
+}
+
+.wcu-image{
+  background: url(/images/why-choose-img-1.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 70%;
+  height: 90vh;
+}
+
+.wcu-menu{
+  width: 50%;
+  height: 66.5%;
+  background: white;
+  margin-left: -40%;
+  margin-top: 15%;
+}
+
+.wcu-menu-title{
+  height: 50%;
+  border: 1px solid silver;
+  border-bottom: 0 ;
+}
+
+.wcu-menu-title h6{
+  color: gray;
+}
+
+.wcu-menu-title p{
+  color: gray;
+  font-size: 14px;
+}
+
+.wcu-menu-buttons .btn{
+  border: 1px solid silver;
+}
+
+.wcu-menu-buttons .btn svg{
+  margin: 3px;
+}
+
+.wcu-description{
+  width: 70%;
+  height: 30%;
+  background: black;
+  opacity: 0.7;
+  float: right;
+  margin-top: -12.5%;
+  color: white;
+}
+
+.wcu-description svg{
+  margin: 1rem;
+}
+
+.wcu-description p{
+  padding: 0 1rem;
+  font-size: 14px;
+}
+
+/* WHY CHOOSE US END */
+/* CONTACT US */
+.contact-us{
+  height: 45vh;
+  background: url(/images/bg/bg-1.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.contact-us-msg{
+  color: white;
+}
+
+.purchase-btn{
+  background: unset;
+  border: 1px solid white !important;
+}
+/* CONTACT US END */
+/* LATEST BLOG */
+.lb-img{
+  /* box-shadow: -12px -12px gray; */
+  box-shadow: -12px -12px white, 
+  -12px -12px 0px 0.5px silver;
+}
+
+.date{
+  color: white;
+  width: 10%;
+  height: 13vh;
+  font-size: 14px;
+}
+/* LATEST BLOG END */
+/* MAP */
+.map{
+      position: relative;
+  }
+
+  .map iframe{
+      width: 100%;
+      height: 45vh;
+  }
+
+  .map-overlay{
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.3);
+      position: absolute;
+      top: 0;
+  }
+/* MAP END */
+/* ADDRESS */
+.address-container{
+  height: 20vh;
+}
+
+.address{
+  font-size: 12px;
+  color: white;
+  background-color: rgb(62, 62, 62);
+}
+
+.copyright{
+  color: white;
+  background-color: rgb(50, 49, 49);
+}
+/* ADDRESS END */
+
+@media (max-width: 576px){
+  .carousel-inner .carousel-item img{
+    height: 40vh !important;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 768px){
+  .carousel-inner .carousel-item img{
+    height: 60vh !important;
+  }
+}
+
+@media (max-width: 768px){
+  .wcu-container{
+    display: flex !important;
+    justify-content: center !important;
+    width: 100%;
+  }
+
+  .wcu-image{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .wcu-menu{
+    margin: 0;
+    width: 80%;
+    height: 50%;
+    opacity: 0.8;
+    margin-top: 2rem;
+  }
+
+  .wcu-description{
+    margin: 0;
+    margin-top: 2rem;
+    height: 35%;
+    padding-bottom: 1rem;
+  }
+
+  .wcu-description p{
+    padding-bottom: 5px;
+  }
+
+  .tr-clients .row .col-12{
+    border: 0 !important;
+  }
+}
