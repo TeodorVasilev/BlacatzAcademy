@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 6</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .task {
+            border: 1px solid black;
+            width: 100%;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .img-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .img {
+            width: 300px;
+            height: 200px;
+            padding: 5px;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+
+        #move{
+            background-color: red;
+            width: 100px;
+            height: 100px;
+            display: block;
+        }
+
+        .t5-container{
+            width: 300px;
+            height: 300px;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="task">
+        <h3>Task 1</h3>
+        <p>Create text field for name and a button. Create function that returns "Hello" + the entered name</p>
+        <div>
+            <label for="name">Name: </label>
+            <input type="text" id="name">
+            <button onclick="sayHello()">Submit</button>
+        </div>
+        <div class="t1-result"></div>
+    </div>
+    <div class="task">
+        <h3>Task 2</h3>
+        <p>Create two images and button. When the button is clicked the images must change their positions</p>
+        <div class="img-container">
+            <div class="img">
+                <img src="1.jpg" id="img-1" alt="">
+            </div>
+            <div class="img">
+                <img src="2.jpg" id="img-2" alt="">
+            </div>
+            <div>
+                <button onclick="changeImg()">Change</button>
+            </div>
+        </div>
+    </div>
+    <div class="task">
+        <h3>Task 3</h3>
+        <p>Prime numbers. Create a number field and a button. Show in alert if the input number is prime or not.</p>
+        <div>
+            <input type="number" id="prime-number">
+            <button onclick="primeNumbers()">Check</button>
+        </div>
+    </div>
+    <div class="task">
+        <h3>Task 4</h3>
+        <p>Salary calculator.</p>
+        <div>
+            <input type="number" id="salary">
+            <button onclick="calculateSalary()">Calculate</button>
+            <div id="t4-result">
+
+            </div>
+        </div>
+    </div>
+    <div class="task">
+        <h3>Task 5</h3>
+        <p>Moving object. Create four buttons Up, Down, Left, Right and a div. When button is pressed the div must move in that direction.</p>
+        <div>
+            <button onclick="moveUp()">Up</button>
+            <button onclick="moveDown()">Down</button>
+            <button onclick="moveLeft()">Left</button>
+            <button onclick="moveRight()">Right</button>
+        </div>
+        <div class="t5-container">
+            <div id="move">
+
+            </div>
+        </div>
+    </div>
+    <script>
+        //Task 1
+        function sayHello() {
+            let nameEl = document.querySelector('#name');
+            console.log(nameEl.value);
+            let result = document.querySelector('.t1-result');
+            result.innerHTML = '';
+            result.innerHTML += 'Hello ' + nameEl.value;
+        }
+
+        //Task 2
+        function changeImg() {
+            let firstImg = document.querySelector('#img-1');
+            let secondImg = document.querySelector('#img-2');
+            if (firstImg.getAttribute('src') == '1.jpg' && secondImg.getAttribute('src') == '2.jpg') {
+                firstImg.setAttribute('src', '2.jpg');
+                secondImg.setAttribute('src', '1.jpg');
+            }
+            else {
+                firstImg.setAttribute('src', '1.jpg');
+                secondImg.setAttribute('src', '2.jpg');
+            }
+        }
+
+        //Task 3
+        function primeNumbers() {
+            let number = parseInt(document.querySelector('#prime-number').value);
+            let isPrime = true;
+
+            for (let i = 2; i <= number / 2; i++) {
+                if (number % i == 0) {
+                    isPrime = false;
+                    break;
+                }
+            }
+
+            if (isPrime) {
+                alert('IS PRIME');
+            }
+            else {
+                alert('NOT PRIME');
+            }
+        }
+
+        //Task 4
+        function calculateSalary() {
+            let salaryEl = document.querySelector('#salary');
+            let result = document.querySelector('#t4-result');
+            result.innerHTML = '';
+
+            let salary = parseFloat(salaryEl.value);
+
+            salary = salary - salary * 0.23;
+
+            result.innerHTML += salary;
+        }
+
+        //Task 5
+        let marginTop = 0;
+        let marginLeft = 0;
+        let move = document.querySelector('#move');
+
+        function moveUp(){
+            marginTop-=10;
+            move.style.marginTop = `${marginTop}px`;
+        }
+
+        function moveDown(){
+            marginTop+=10;
+            move.style.marginTop = `${marginTop}px`;
+        }
+
+        function moveLeft(){
+            marginLeft-=10;
+            move.style.marginLeft = `${marginLeft}px`;
+        }
+
+        function moveRight(){
+            marginLeft+=10;
+            move.style.marginLeft = `${marginLeft}px`
+        }
+    </script>
+</body>
+
+</html>
