@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+
+        * {
+            font-family: Raleway;
+        }
+
+        .progress {
+            border-radius: 0 !important;
+        }
+
+        .fa-camera {
+            font-size: 3rem;
+        }
+
+        .fa-bars{
+            color: white;
+        }
+
+        /*NAV START*/
+        .nav-container {
+            background: #2e2e2e;
+        }
+
+        .logo {
+            width: 5rem;
+        }
+
+        .nav-link {
+            color: white !important;
+            height: 4rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .nav-link:hover {
+            opacity: 0.7;
+        }
+
+        .navbar-nav li:first-child {
+            border-left: 1px solid silver;
+        }
+
+        .navbar-nav li {
+            border-right: 1px solid silver;
+            width: 9rem;
+        }
+
+        /*NAV END*/
+        /*CAROUSEL START*/
+        .carousel-item img {
+            height: 55vh;
+        }
+
+        .carousel-caption {
+            height: 90%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /*CAROUSEL END*/
+
+        /*BG SECTION*/
+        .bg-section {
+            background-position: center center;
+            background: cover;
+            background-attachment: fixed;
+            height: 25rem;
+        }
+
+        .bg-one {
+            background-image: url('/images/bg-section.jpg');
+        }
+
+        .bg-two {
+            background-image: url(/images/bg-section-1.jpg);
+        }
+
+        /*BG SECTION END*/
+
+        /**/
+        .price-box {
+            background-color: #2e2e2e;
+        }
+
+        /**/
+
+        @media (max-width: 1024px){
+            .navbar-nav li{
+                width: 100%;
+                border: unset;
+                border-bottom: 1px solid silver;
+            }
+
+            .navbar-nav li{
+                
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!--NAV START-->
+    <div class="container-fluid nav-container">
+        <nav class="container navbar navbar-expand-lg p-0">
+            <div class="logo">
+                <img src="/images/logo.png" class="img-fluid" alt="">
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#myNavBar"
+                aria-controls="myNavBar" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="myNavBar">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contacts</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <!--NAV END-->
+
+    <!--CAROUSEL START-->
+    <div class="container-fluid p-0">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="/images/slide1.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption">
+                        <h1 class="display-1">Lorem ipsum dolor sit amet.</h1>
+                        <p class="fs-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus!</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="/images/slide2.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption">
+                        <h1 class="display-1">Lorem ipsum dolor sit amet.</h1>
+                        <p class="fs-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus!</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+    <!--CAROUSEL END-->
+
+    <!--HOW IT WORKS-->
+    <div class="container pt-5 pb-5">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="display-1">HOW IT WORKS</h2>
+                <p class="fs-4">Lorem ipsum dolor sit amet.</p>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-12 col-md-6 col-lg-3 text-center">
+                <i class="fa-brands fa-android display-4"></i>
+                <h3>Android apps</h3>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam aut mollitia quos est maxime
+                    repudiandae porro ea culpa doloribus excepturi.</p>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 text-center">
+                <i class="fa-brands fa-android display-4"></i>
+                <h3>Android apps</h3>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam aut mollitia quos est maxime
+                    repudiandae porro ea culpa doloribus excepturi.</p>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 text-center">
+                <i class="fa-brands fa-android display-4"></i>
+                <h3>Android apps</h3>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam aut mollitia quos est maxime
+                    repudiandae porro ea culpa doloribus excepturi.</p>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 text-center">
+                <i class="fa-brands fa-android display-4"></i>
+                <h3>Android apps</h3>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam aut mollitia quos est maxime
+                    repudiandae porro ea culpa doloribus excepturi.</p>
+            </div>
+        </div>
+    </div>
+    <!--HOW IT WORKS-->
+
+    <!-- BG SECTION 1-->
+    <div class="container-fluid p-0">
+        <div class="bg-section bg-one text-center d-flex flex-column justify-content-center align-items-center">
+            <div class="display-1 text-white">Lorem ipsum dolor sit amet.</div>
+            <div>
+                <button class="btn btn-primary">
+                    <i class="fa-brands fa-facebook"></i> Share
+                </button>
+
+                <button class="btn btn-danger">
+                    <i class="fa-brands fa-instagram"></i> Share
+                </button>
+
+                <button class="btn btn-success">
+                    <i class="fa-brands fa-tiktok"></i> Share
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- BG SECTION 1 END-->
+
+    <!--PORTFOLIO-->
+    <div class="container pt-5 pb-5">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="display-1">OUR AWESOME PROJECTS</h2>
+                <p class="fs-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis.</p>
+            </div>
+        </div>
+        <div class="row mt-3 gx-3 gy-3">
+            <div class="col-12 col-md-6 col-lg-4">
+                <img src="/images/portfolio.jpg" alt="" class="img-fluid">
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <img src="/images/portfolio.jpg" alt="" class="img-fluid">
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <img src="/images/portfolio.jpg" alt="" class="img-fluid">
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <img src="/images/portfolio.jpg" alt="" class="img-fluid">
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <img src="/images/portfolio.jpg" alt="" class="img-fluid">
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <img src="/images/portfolio.jpg" alt="" class="img-fluid">
+            </div>
+        </div>
+    </div>
+    <!--PORTFOLIO END-->
+
+    <!-- BG SECTION 2-->
+    <div class="container-fluid p-0">
+        <div class="bg-section bg-two text-center d-flex flex-column justify-content-center align-items-center">
+            <div class="display-1 text-white">Lorem ipsum dolor sit amet.</div>
+            <div>
+                <button class="btn btn-outline-warning">
+                    LETS WORK TOGHETER
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- BG SECTION 2 END-->
+
+    <!--ABOUT US-->
+    <div class="container pt-5 pb-5">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="display-1">OUR AWESOME PROJECTS</h2>
+                <p class="fs-4">GREAT DESIGN COMES WITH UNDERSTANDING CUSTOMER NEEDS</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-8">
+                <div class="display-6">
+                    <p class="mt-3 fs-4">Lorem ipsum dolor sit amet.</p>
+                    <p class="mt-3 fs-4">Lorem ipsum dolor sit amet.</p>
+                    <p class="mt-3 fs-4">Lorem ipsum dolor sit amet.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-4">
+                    <div class="fw-bold">OUR SKILLS</div>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint, similique.</p>
+                    <div>
+                        <div>Web Design - <span class="text-primary">90%</span></div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90"
+                                aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>Web Design - <span class="text-primary">90%</span></div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90"
+                                aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>Web Design - <span class="text-primary">90%</span></div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90"
+                                aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>Web Design - <span class="text-primary">90%</span></div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90"
+                                aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="fw-bold">WHY CHOOSE US</div>
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Accordion Item #1
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <strong>This is the first item's accordion body.</strong> It is shown by default,
+                                    until the collapse plugin adds the appropriate classes that we use to style each
+                                    element. These classes control the overall appearance, as well as the showing and
+                                    hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+                                    our default variables. It's also worth noting that just about any HTML can go within
+                                    the <code>.accordion-body</code>, though the transition does limit overflow.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Accordion Item #2
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <strong>This is the second item's accordion body.</strong> It is hidden by default,
+                                    until the collapse plugin adds the appropriate classes that we use to style each
+                                    element. These classes control the overall appearance, as well as the showing and
+                                    hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+                                    our default variables. It's also worth noting that just about any HTML can go within
+                                    the <code>.accordion-body</code>, though the transition does limit overflow.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Accordion Item #3
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <strong>This is the third item's accordion body.</strong> It is hidden by default,
+                                    until the collapse plugin adds the appropriate classes that we use to style each
+                                    element. These classes control the overall appearance, as well as the showing and
+                                    hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+                                    our default variables. It's also worth noting that just about any HTML can go within
+                                    the <code>.accordion-body</code>, though the transition does limit overflow.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="fw-bold">OUR FEATURED SERVICES</div>
+                    <div class="row">
+                        <div class="col-2">
+                            <i class="fa fa-camera"></i>
+                        </div>
+                        <div class="col-10">
+                            <div class=fw-bold>PHOTOGRAPHY</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mt-5">
+            <hr>
+        </div>
+    </div>
+    </div>
+    <!--ABOUT US END-->
+
+    <!--MEET OUR TEAM-->
+    <div class="container mb-5">
+        <div class="row">
+            <div class="fw-bold">MEET OUR TEAM</div>
+        </div>
+        <div class="row text-center">
+            <div class="col-12 col-md-4">
+                <img src="/images/team-1.jpg" class="img-fluid" alt="">
+                <div class="fw-bold">LOREM IPSUM</div>
+                <div>UI/UX Designer</div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores, et.</p>
+                <div>
+                    <button class="btn btn-outline-info">
+                        <i class="fa-brands fa-twitter"></i>
+                    </button>
+                    <button class="btn btn-outline-primary">
+                        <i class="fa-brands fa-facebook"></i>
+                    </button>
+                    <button class="btn btn-outline-danger">
+                        <i class="fa-brands fa-pinterest"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <img src="/images/team-2.jpg" class="img-fluid" alt="">
+                <div class="fw-bold">LOREM IPSUM</div>
+                <div>UI/UX Designer</div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores, et.</p>
+                <div>
+                    <button class="btn btn-outline-info">
+                        <i class="fa-brands fa-twitter"></i>
+                    </button>
+                    <button class="btn btn-outline-primary">
+                        <i class="fa-brands fa-facebook"></i>
+                    </button>
+                    <button class="btn btn-outline-danger">
+                        <i class="fa-brands fa-pinterest"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <img src="/images/team-3.jpg" class="img-fluid" alt="">
+                <div class="fw-bold">LOREM IPSUM</div>
+                <div>UI/UX Designer</div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores, et.</p>
+                <div>
+                    <button class="btn btn-outline-info">
+                        <i class="fa-brands fa-twitter"></i>
+                    </button>
+                    <button class="btn btn-outline-primary">
+                        <i class="fa-brands fa-facebook"></i>
+                    </button>
+                    <button class="btn btn-outline-danger">
+                        <i class="fa-brands fa-pinterest"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--MEET OUR TEAM END-->
+
+    <!--BG SECTION 3-->
+    <div class="container-fluid p-0">
+        <div class="bg-section bg-two text-center d-flex flex-column justify-content-center align-items-center">
+            <div class="display-1 text-white">Lorem ipsum dolor sit amet.</div>
+            <div>
+                <button class="btn btn-outline-warning">
+                    LETS WORK TOGHETER
+                </button>
+            </div>
+        </div>
+    </div>
+    <!--BG SECTION 3 END-->
+
+    <!--PRICES-->
+    <div class="container pt-5 pb-5">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="display-1">OUR PRICES</h2>
+                <p class="fs-4">Lorem ipsum dolor sit amet.</p>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-12 col-md-3 border price-box text-white">
+                <div class="display-4">BRONZE</div>
+                <div class="text-warning">
+                    <span class="display-3">5</span>
+                    <sup class="display-6">$</sup>
+                </div>
+                <div class="mt-3 border-bottom">Option #1</div>
+                <div class="mt-3 border-bottom">Option #2</div>
+                <div class="mt-3 border-bottom">Option #3</div>
+                <div class="mt-3">
+                    <button class="btn btn-primary">SELECT PLAN</button>
+                </div>
+            </div>
+            <div class="col-12 col-md-3 border price-box text-white">
+                <div class="display-4">BRONZE</div>
+                <div class="text-warning">
+                    <span class="display-3">5</span>
+                    <sup class="display-6">$</sup>
+                </div>
+                <div class="mt-3 border-bottom">Option #1</div>
+                <div class="mt-3 border-bottom">Option #2</div>
+                <div class="mt-3 border-bottom">Option #3</div>
+                <div class="mt-3">
+                    <button class="btn btn-primary">SELECT PLAN</button>
+                </div>
+            </div>
+            <div class="col-12 col-md-3 border price-box text-white">
+                <div class="display-4">BRONZE</div>
+                <div class="text-warning">
+                    <span class="display-3">5</span>
+                    <sup class="display-6">$</sup>
+                </div>
+                <div class="mt-3 border-bottom">Option #1</div>
+                <div class="mt-3 border-bottom">Option #2</div>
+                <div class="mt-3 border-bottom">Option #3</div>
+                <div class="mt-3">
+                    <button class="btn btn-primary">SELECT PLAN</button>
+                </div>
+            </div>
+            <div class="col-12 col-md-3 border price-box text-white">
+                <div class="display-4">BRONZE</div>
+                <div class="text-warning">
+                    <span class="display-3">5</span>
+                    <sup class="display-6">$</sup>
+                </div>
+                <div class="mt-3 border-bottom">Option #1</div>
+                <div class="mt-3 border-bottom">Option #2</div>
+                <div class="mt-3 border-bottom">Option #3</div>
+                <div class="mt-3">
+                    <button class="btn btn-primary">SELECT PLAN</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--PRICES END-->
+
+    <!--BG SECTION 4-->
+    <div class="container-fluid p-0">
+        <div class="bg-section bg-two text-center d-flex flex-column justify-content-center align-items-center">
+            <div class="display-6 text-white">Lorem ipsum dolor sit amet.</div>
+        </div>
+    </div>
+    <!--BG SECTION 4 END-->
+
+    <!--CONTACTS-->
+    <div class="container pt-5 pb-5">
+        <div class="row">
+            <div class="col-6">
+                <label for="">Name</label>
+                <input type="text" placeholder="Enter name" class="form-control">
+            </div>
+            <div class="col-6">
+                <label for="">Email</label>
+                <input type="text" placeholder="Enter email" class="form-control">
+            </div>
+            <div class="col-12 mt-3">
+                <label for="">Message</label>
+                <textarea placeholder="Enter message..." class="form-control" rows="10"></textarea>
+            </div>
+            <div class="col-12 mt-3">
+                <button class="btn btn-primary">SEND MESSAGE</button>
+            </div>
+        </div>
+    </div>
+    <!--CONTACTS END-->
+
+    <!--FOOTER-->
+    <div class="container-fluid pt-5 pb-5 footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--FOOTER END-->
+
+    <div style="height: 1000px"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>

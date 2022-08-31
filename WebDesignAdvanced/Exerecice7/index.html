@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 7</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+        .task {
+            border: 1px solid black;
+            min-height: 20vh;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="task">
+        <h3>Task 1</h3>
+        <p>Create table with two cols. In the first col input grade number and it has to appear in words in the second
+        </p>
+        <div id="table-container">
+
+        </div>
+    </div>
+    <div class="task">
+        <h3>Task 2</h3>
+        <p>
+            Create registration form with 3 fields. Create validations: Username: min 6 letters and max 16 letters
+            Password: min 6 letters and max 32 letters, Confirm password has to be same as password;
+        </p>
+        <div id="form-container">
+            <div>
+                <label for="">Username:</label>
+                <input type="text" id="username">
+                <span id="user-msg"></span>
+            </div>
+            <div>
+                <label for="">Password:</label>
+                <input type="text" id="password">
+                <span id="pass-msg"></span>
+            </div>
+            <div>
+                <label for="">Confirm password:</label>
+                <input type="text" id="confirm-password">
+                <span id="result"></span>
+            </div>
+            <button onclick="validateUserData()">Submit</button>
+        </div>
+    </div>
+    <div class="task">
+        <h3>Task 3</h3>
+        <p>
+            Create 5 number input fields and button. Create function that sum all the numbers.
+        </p>
+        <div>
+            <div>
+                <input type="number" class="number-input">
+            </div>
+            <div>
+                <input type="number" class="number-input">
+            </div>
+            <div>
+                <input type="number" class="number-input">
+            </div>
+            <div>
+                <input type="number" class="number-input">
+            </div>
+            <div>
+                <input type="number" class="number-input">
+            </div>
+            <button onclick="sumNumbers()">calc</button>
+            <div id="t3-result"></div>
+        </div>
+    </div>
+    <div class="task">
+        <h3>Task 5</h3>
+        <p>Create function that adds and removes text fields with buttons.</p>
+        <div>
+            <div class="text-container">
+                <input type="text" id="field">
+            </div>
+            <div>
+                <button onclick="addField()">Add</button>
+            </div>
+        </div>
+    </div>
+    <div class="task">
+        <h3>Task 6</h3>
+        <p>Input number and power and calculate</p>
+        <div>
+            <div>
+                <label for="">Number:</label>
+                <input type="number" id="number">
+            </div>
+            <div>
+                <label for="">Power:</label>
+                <input type="number" id="power">
+            </div>
+            <button onclick="power()">Calculate</button>
+            <div id="t6-result">
+
+            </div>
+        </div>
+    </div>
+    <div class="task">
+        <h3>Task 7</h3>
+        <p>
+            Create calories calculator with gender, age, height, weight, physical activity
+            <br>
+            with options: work at office 1.2, weak activity 1.375, normal activity 1.725, intense activity 1.9.
+            <br>
+            Caloryminimum = man 66 + (13.7 * weight) + (5 * height) - (6.8 * age);
+            <br>
+
+            Caloryminimum = woman 65.5 + (9.6 * weight) + (1.8 * height) - (4.7 * age);
+            <br>
+
+            Daily calories = activity * Caloryminimum
+            <br>
+
+            IBW = weight/(0.1 * height)pow2
+        </p>
+        <div id="calculator-container">
+            <div>
+                <label for="">Gender:</label>
+                <input type="radio" name="gender" id="gender" value="1">
+                <label for="">Man</label>
+                <input type="radio" name="gender" id="gender" value="2">
+                <label for="">Woman</label>
+            </div>
+            <div>
+                <label for="">Age:</label>
+                <input id="age" type="number">
+            </div>
+            <div>
+                <label for="">Height:</label>
+                <input id="height" type="range" min="1" max="200" value="50" class="slider" id="myRange">
+                <span id="height-val"></span>
+            </div>
+            <div>
+                <label for="">Weight:</label>
+                <input id="weight" type="number">
+            </div>
+            <div>
+                <select name="activity" id="activity">
+                    <option value="1.2">Work at desk</option>
+                    <option value="1.375">Weak activity</option>
+                    <option value="1.725">Normal activity</option>
+                    <option value="1.9">Instense activity</option>
+                </select>
+            </div>
+            <div>
+                <button onclick="calloryCalculator()">Calculate</button>
+            </div>
+            <div class="t7-result">
+            </div>
+        </div>
+    </div>
+    <script>
+        //Task 1
+        function createTable() {
+            let html = '<table>';
+
+            let result = '';
+
+            for (let i = 0; i < 5; i++) {
+                html += '<tr>';
+                html += '<td>';
+                html += `<input oninput="inputGrade('grade${i}', this)" type="number">`;
+                html + '</td>';
+                html += '<td>';
+                html += `<span id="grade${i}"></span>`;
+                html + '</td>';
+                html += '</tr>';
+            }
+
+            html += '<table';
+
+            document.querySelector('#table-container').innerHTML = html;
+        }
+
+        function inputGrade(id, inputElement) {
+            let el = document.getElementById(id);
+            let grade = inputElement.value;
+
+            el.innerHTML = '';
+
+            let result = '';
+
+            if (grade == '2') {
+                result = 'Failed'
+            }
+            else if (grade == '3') {
+                result = 'Statisfactory'
+            }
+            else if (grade == '4') {
+                result = 'Good'
+            }
+            else if (grade == '5') {
+                result = 'Very Good'
+            }
+            else if (grade == '6') {
+                result = 'Excellent'
+            }
+            else if (grade == '') {
+                result = ''
+            }
+            else {
+                result = 'Invalid grade'
+            }
+
+            el.innerHTML += result;
+        }
+
+        createTable();
+
+        //Task 2
+        function validateUserData() {
+            let usernameEl = document.querySelector('#username');
+            let passwordEl = document.querySelector('#password');
+            let confirmPasswordEl = document.querySelector('#confirm-password');
+
+            let usernameLength = usernameEl.value.length;
+            let passwordLength = passwordEl.value.length;
+            let password = passwordEl.value;
+            let passwordConfirm = confirmPasswordEl.value;
+
+            document.querySelector('#user-msg').innerHTML = '';
+            document.querySelector('#pass-msg').innerHTML = '';
+            document.querySelector('#cp-msg').innerHTML = '';
+
+            if (usernameLength < 6 || usernameLength > 16) {
+                document.querySelector('#user-msg').innerHTML += 'Username has to be between 6 and 16 symbols';
+                return;
+            }
+
+            if (passwordLength < 6 || passwordLength > 32) {
+                document.querySelector('#pass-msg').innerHTML += 'Password has to be between 6 and 32 symbols';
+                return;
+            }
+
+            if (password !== passwordConfirm) {
+                document.querySelector('#cp-msg').innerHTML += 'Password doesn\'t match';
+                return;
+            }
+        }
+
+        //Task 3
+        function sumNumbers() {
+            let numbers = document.querySelectorAll('.number-input');
+            document.querySelector('#t3-result').innerHTML = '';
+
+            let result = 0;
+
+            for (let i = 0; i < numbers.length; i++) {
+                if (!isNaN(parseFloat(numbers[i].value))) {
+                    result += parseFloat(numbers[i].value);
+                }
+                console.log(result);
+            }
+
+            document.querySelector('#t3-result').innerHTML += result;
+        }
+
+        //Task 5
+        let textFieldsEl = document.querySelector('.text-container');
+        let cnt = 1;
+        function addField() {
+            textFieldsEl.innerHTML += `<div id="field-${cnt}"><input type="text"><button value="${cnt}" onclick="removeField(this)">X</button></div>`;
+            cnt++;
+        }
+
+        function removeField(el) {
+            document.querySelector(`#field-${el.value}`).remove();
+        }
+
+        //Task 6
+        function power() {
+            let num = parseFloat(document.querySelector('#number').value);
+            let power = parseFloat(document.querySelector('#power').value);
+            document.querySelector('#t6-result').innerHTML = '';
+
+            if (!isNaN(Math.pow(num, power))) {
+                document.querySelector('#t6-result').innerHTML += Math.pow(num, power);
+            }
+        }
+
+        //Task 7
+
+        let slider = document.querySelector('#height');
+        let heightVal = document.querySelector('#height-val');
+        heightVal.innerHTML = slider.value;
+
+        slider.oninput = function(){
+            heightVal.innerHTML = this.value;
+        }
+
+        function calloryCalculator() {
+            document.querySelector('.t7-result').innerHTML = "";
+            let gender = document.querySelectorAll('#gender');
+
+            for (let i = 0; i < gender.length; i++) {
+                if (gender[i].checked) {
+                    gender = gender[i].value;
+                }
+            }
+
+            let age = parseInt(document.querySelector('#age').value);
+            let height = parseInt(document.querySelector('#height').value);
+            let weight = parseInt(document.querySelector('#weight').value);
+            let activity = parseFloat(document.querySelector('#activity').value);
+
+            // console.log(age);
+            // console.log(height);
+            // console.log(weight);
+            // console.log(activity);
+
+            let caloryMin;
+
+            switch (gender) {
+                case "1":
+                    caloryMin = 66 + (13.7 * weight) + (5 * height) - (6.8 * age);
+                    break;
+                    case "2":
+                    caloryMin = 65.5 + (9.6 * weight) + (1.8 * height) - (4.7 * age);
+                    break;
+            }
+
+            let dailyCalories = activity * caloryMin;
+            let ibw = weight/Math.pow((0.1 * height), 2);
+
+            document.querySelector('.t7-result').innerHTML+=
+            `<p>Callory minimum: ${caloryMin}</p>` +
+            `<p>Daily calories: ${dailyCalories}</p>` +
+            `<p>Index body weight: ${ibw}</p>`;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 4</title>
+    <style>
+        #container{
+            width: 1024px;
+            height: 768px;
+            background: url(/images/bg.jpg);
+            margin: 50px auto;
+            border: 15px solid red;
+            position: relative;
+        }
+
+        #warrior{
+            position: absolute;
+            bottom: 12rem;
+            left: 5rem;
+            z-index: 2;
+        }
+
+        .btn{
+            position: absolute;
+            border-radius: 50%;
+            width: 5rem;
+            height: 5rem;
+            background: red;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .warrior-attack{
+            bottom: 2rem;
+            left: 5rem;
+        }
+
+        .dragon-attack{
+            bottom: 2rem;
+            right: 5rem;
+        }
+
+        #dragon{
+            position: absolute;
+            right: 5rem;
+            bottom: 12rem;
+        }
+
+        .hb{
+            position: absolute;
+            width: 15rem;
+            height: 3rem;
+            border: 5px solid silver;
+        }
+
+        .hb-warrior{
+            top: 3rem;
+            left:  2rem;
+        }
+
+        .hb-dragon{
+            top: 3rem;
+            right: 3rem;
+        }
+
+        .hb-inner{
+            width: 100%;
+            height: 100%;
+            background: red;
+        }
+
+        #winner{
+            text-align: center;
+            color: white;
+            font-size: 2rem
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="winner">
+        </div>
+        <!-- WARRIOR -->
+        <div class="hb hb-warrior">
+            <div class="hb-inner" id="warrior-hb"></div>
+        </div>
+        <div class="warrior" id="warrior">
+            <img src="/images/normal.png" alt="">
+        </div>
+        <button class="warrior-attack btn" onclick="warriorAttack()">
+            Warrior atack
+        </button>
+        <!-- WARRIOR END-->
+
+        <!-- DRAGON -->
+        <div class="hb hb-dragon">
+            <div class="hb-inner" id="dragon-hb"></div>
+        </div>
+        <div class="dragon" id="dragon">
+            <img src="/images/dragon-normal.png" alt="">
+        </div>
+        <button class="dragon-attack btn" onclick="dragonAttack()">
+            dragon-attack
+        </button>
+        <!-- DRAGON END -->
+    </div>
+    <script>
+        const warriorElement = document.querySelector('#warrior');
+        const warriorImage = document.querySelector('#warrior img');
+        const dragonElement = document.querySelector('#dragon');
+        const dragonImage = document.querySelector('#dragon img');
+        const warriorHbElement = document.querySelector('#warrior-hb');
+        const dragonHbElement = document.querySelector('#dragon-hb');
+
+        let warriorHP = 100;
+        let dragonHP = 100;
+        let winnerElement = document.querySelector('#winner');
+
+        function randomHP(){
+            return Math.floor(Math.random() * 100);
+        }
+
+        function sleep(time) {
+            let promise = new Promise(r => {
+                setTimeout(() => {
+                    r(1)
+                }, time);
+            });
+
+            return promise;
+        }
+
+        async function warriorAttack(){
+            await warriorForward();
+            await warriorJump();
+            await warriorBackward();
+        }
+
+        async function warriorForward(){
+            let startPos = 5;
+            let endPos = 45;
+
+            while(startPos <= endPos) {
+                startPos += 0.2;
+                warriorElement.style.left = `${startPos}rem`;
+                await sleep(1);
+            }
+        }
+
+        async function warriorJump(){
+            let startPos = 12;
+            let endPos = 20;
+            
+            warriorImage.setAttribute('src', '/images/jump.png');
+            while (startPos <= endPos) {
+                startPos += 0.3;
+                warriorElement.style.bottom = `${startPos}rem`
+                await sleep(1);
+            }
+            warriorImage.setAttribute('src', '/images/attack.png');
+            while (startPos >= 12) {
+                startPos -= 0.3;
+                warriorElement.style.bottom = `${startPos}rem`
+                await sleep(1);
+            }
+
+            dragonHP -= randomHP();
+
+            if(dragonHP <= 0){
+                dragonHP = 0;
+                winnerElement.innerHTML += 'WARRIOR IS THE WINNER!';
+            }
+
+            dragonHbElement.style.width = `${dragonHP}%`;
+
+            warriorImage.setAttribute('src', '/images/n-b.png');
+        }
+
+        async function warriorBackward(){
+            let startPos = 45;
+            let endPos = 5;
+
+            while (endPos <= startPos) {
+                startPos -= 0.2;
+                warriorElement.style.left = `${startPos}rem`;
+                await sleep(1);
+            }
+
+            warriorImage.setAttribute('src', '/images/normal.png');
+        }
+    
+        async function dragonAttack(){
+            let startPos = 5;
+            let endPos = 42;
+
+            while(startPos <= endPos) {
+                startPos += 0.2;
+                dragonElement.style.right = `${startPos}rem`;
+                await sleep(1);
+            }
+
+            dragonImage.setAttribute('src', '/images/dragon-attack-1.png');
+            await sleep(250);
+            dragonImage.setAttribute('src', '/images/dragon-attack-2.png');
+            await sleep(250);
+            dragonImage.setAttribute('src', '/images/dragon-attack-1.png');
+            await sleep(250);
+
+            warriorHP -= randomHP();
+            
+            if(warriorHP <= 0){
+                warriorHP = 0;
+                winnerElement.innerHTML += 'DRAGON IS THE WINNER!';
+            }
+
+            warriorHbElement.style.width = `${warriorHP}%`;
+
+            dragonImage.setAttribute('src', '/images/d-b.png');
+            
+            while(startPos >= 5) {
+                startPos -= 0.2;
+                dragonElement.style.right = `${startPos}rem`;
+                await sleep(1);
+            }
+
+            dragonImage.setAttribute('src', '/images/dragon-normal.png');
+        }
+    </script>
+</body>
+</html>

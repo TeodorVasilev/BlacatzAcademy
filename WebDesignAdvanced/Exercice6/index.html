@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .task {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid black;
+        }
+
+        .img-box {
+            width: 40%;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        img {
+            width: 70%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body id="body">
+    <div class="task">
+        <h3>Task 2</h3>
+        <input type="text" id="A">
+        <span>+</span>
+        <input type="text" id="B">
+        <span>=</span>
+        <span id="result"></span>
+        <div>
+            <p></p>
+            <button onclick="getNumbers()">sum</button>
+        </div>
+    </div>
+    <div class="task">
+        <h3>Task 3</h3>
+        <div id="example" data-id="123" data-name="Gosho">
+            <p>Get div attributes with getAttribute()</p>
+            <button onclick="getDivAttributes()">Get Div Attributes</button>
+        </div>
+    </div>
+    <div class="task">
+        <h3>Task 4</h3>
+        <p id="p1">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores, quam1.
+        </p>
+        <p id="p2">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores, quam2.
+        </p>
+        <p id="p3">
+
+        </p>
+
+        <button onclick="combineParagraphs()">Combine 2 paragraphs in one</button>
+    </div>
+    <div class="task">
+        <h3>Task 5</h3>
+        <p>Enter a number and click Check if the number is greater than 10 is valid if not it is not valid</p>
+        <div class="result"></div>
+        <input type="text" id="number">
+        <button onclick="checkNumber()">Check</button>
+    </div>
+    <div class="task">
+        <h3>Task 6</h3>
+        <p>Enter a vehicle (car, motorcycle, bicycle) and check what is the minimum age for driving</p>
+        <input type="text" id="vehicle">
+        <button onclick="checkVehicle()">Check</button>
+        <span class="t6-result"></span>
+    </div>
+    <div class="task">
+        <h3>Task 7</h3>
+        <p>Check if the input is number or text</p>
+        <input type="text" oninput="checkInput(this)">
+        <span class="t7-result"></span>
+    </div>
+    <div class="task">
+        <h3>Task 8</h3>
+        <p>Box with images. Images are changed when buttons are pressed.</p>
+        <div class="img-box">
+            <button onclick="previous()">Previous</button>
+            <img id="img" src="1.jpg" alt="">
+            <button onclick="next()">Next</button>
+        </div>
+    </div>
+    <div class="task">
+        <h3>Task 9</h3>
+        <p>Dropdown with images</p>
+        <div>
+            <select onchange="changeImg(this)">
+                <option value="1">First</option>
+                <option value="2">Second</option>
+                <option value="3">Third</option>
+            </select>
+        </div>
+        <br>
+        <div class="img-box">
+            <img id="t9-img" src="1.jpg" alt="">
+        </div>
+    </div>
+    <div class="task">
+        <h3>Task 10</h3>
+        <p>Calculator</p>
+        <div class="calculator">
+            <input type="number" id="a">
+            <input type="text" id="operator">
+            <input type="number" id="b">
+            <button onclick="calculator()">Calc</button>
+            <div class="t10-result"></div>
+        </div>
+    </div>
+    <script>
+        //Task 1
+        let body = document.getElementById('body');
+        body.addEventListener(' onload', hello());
+        function hello() {
+            alert('Task 1: Hello!')
+        }
+
+        //Task 2
+        function getNumbers() {
+            let a = document.getElementById('A');
+            let b = document.getElementById('B');
+            let result = document.getElementById('result');
+
+            let sum = sumNumbers(a.value, b.value)
+
+            result.innerHTML = ' ' + sum;
+        }
+
+        function sumNumbers(parOne, parTwo) {
+            return parseInt(parOne) + parseInt(parTwo);
+        }
+
+        //Task 3
+        let el = document.querySelector('#example');
+        function getDivAttributes() {
+            el.innerHTML = '';
+            el.innerHTML += '<div>' + el.getAttribute('data-id') + ' ' + el.getAttribute('data-name') + '</div>';
+        }
+
+        //Task 4
+        function combineParagraphs() {
+            let pOne = document.querySelector('#p1');
+            let pTwo = document.querySelector('#p2');
+            document.querySelector('#p3').innerHTML = pOne.innerHTML + " " + pTwo.innerHTML;
+
+            pOne.remove();
+            pTwo.remove();
+        }
+
+        //Task 5
+        function checkNumber() {
+            let num = parseInt(document.querySelector('#number').value);
+            let result = document.querySelector('.result');
+            result.innerHTML = '';
+            if (num > 10) {
+                result.innerHTML += 'Valid'
+                result.style.color = 'green';
+            }
+            else {
+                result.innerHTML += 'Not Valid'
+                result.style.color = 'red';
+            }
+        }
+
+        //Task 6
+        function checkVehicle() {
+            let vehicle = document.querySelector('#vehicle');
+            let result = document.querySelector('.t6-result');
+            result.innerHTML = '';
+            result.style.color = '';
+            if (vehicle.value == 'car' || vehicle.value == 'motorcycle') {
+                result.innerHTML += '18';
+            }
+            else if (vehicle.value == 'bicycle') {
+                result.innerHTML += '5';
+            }
+            else {
+                result.innerHTML += 'Invalid input'
+                result.style.color = 'red';
+            }
+        }
+
+        //Task 7
+        function checkInput(element) {
+            let result = document.querySelector('.t7-result');
+            result.innerHTML = '';
+            if (isNaN(element.value)) {
+                result.innerHTML += 'Not a number'
+            }
+            else {
+                result.innerHTML = 'Is number'
+            }
+        }
+
+        //Task 8
+        let currentImage = 1;
+        function next() {
+            if (currentImage < 3) {
+                currentImage++;
+            }
+            else {
+                currentImage = 1;
+            }
+
+            document.querySelector('#img').setAttribute("src", currentImage + ".jpg");
+        }
+
+        function previous() {
+            if (currentImage > 1) {
+                currentImage--;
+            }
+            else {
+                currentImage = 3;
+            }
+
+            document.querySelector('#img').setAttribute("src", currentImage + ".jpg");
+        }
+
+        setInterval(next, 3000)
+
+        //Task 9
+        function changeImg(el) {
+            let img = document.querySelector('#t9-img');
+
+            img.setAttribute("src", el.value + ".jpg");
+        }
+
+        //Task 10
+        function calculator() {
+            let operators = ["+", "-", "*", "/"];
+
+            let a = document.querySelector('#a');
+            let b = document.querySelector('#b');
+            let operator = document.querySelector('#operator');
+
+            let fn = parseFloat(a.value);
+            let sn = parseFloat(b.value);
+            let sign = operator.value;
+            let result = '';
+
+            document.querySelector('.t10-result').innerHTML = result;
+
+            switch (sign) {
+                case "+":
+                    result = fn + sn;
+                    break;
+                case "-":
+                    result = fn - sn;
+                    break;
+                case "*":
+                    result = fn * sn;
+                    break;
+                case "/":
+                    result = fn / sn;
+                    break;
+                default:
+                    result = 'Invalid operation';
+                    break;
+            }
+
+            document.querySelector('.t10-result').innerHTML += result;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+        :root{
+            --main-color: #ff7214;
+            --black-bg: #333333;
+            --linear: --linear-gradient(165deg, rgba(255,62,0,1) 0%, rgba(255,194,51,1) 100%);
+
+        }
+
+        body,html,p,h1,h2,h3,h4,h5, h6,ul,li {
+            padding: 0;
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body,html{
+            height: 100%;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /*others*/
+        .main-button{
+            margin-top: 1.5rem;
+            align-self: center;
+            border: unset;
+            padding: 12px 35px;
+            border-radius: 1rem;
+            background: linear-gradient(165deg, rgba(255,62,0,1) 0%, rgba(255,194,51,1) 100%);
+            letter-spacing: 3px;
+            font-weight: 700;
+            color: white;
+            text-shadow: 1px 1px 1px black;
+        }
+
+        .main-button:hover{
+            opacity: 0.7;
+            cursor: pointer;
+        }
+
+        .img-fluid{
+            width: 100%;
+            margin: auto;
+        }
+
+        .w-100{
+            width: 100%;
+        }
+        /*others end*/
+
+        /*NAV START*/
+        .nav {
+            display: flex;
+            background-color: #232323;
+            height: 5rem;
+            align-items: center;
+            position: fixed;
+            z-index: 7;
+        }
+
+        .nav ul{
+            width: 80%;
+            display: flex;
+            list-style-type: none;
+            justify-content: flex-end;
+            margin-right: 5%;
+        }
+
+        .nav ul li{
+            min-width: 7rem;
+        }
+
+        .nav ul li a{
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .nav ul li a:hover{
+            color: var(--main-color);
+        }
+
+        .nav .logo{
+            width: 20%;
+            margin-left: 5%;
+        }
+
+        .logo img {
+            width: 100%;
+        }
+
+        /*NAV END*/
+        /*MAIN*/
+        .main{
+            padding-top: 5rem;
+            background-color: var(--black-bg);
+            min-height: 80%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            padding-bottom: 9rem;
+        }
+
+        .m-intro{
+            font-size: 2rem;
+        }
+        
+        .main h1{
+            font-size: 4rem;
+            padding: 2rem;
+        }
+
+        .m-after-intro{
+            font-size: 1.5rem;
+        }
+
+        /*MAIN END*/
+        /*LASTEST EVENTS*/
+        .latest-events{
+            padding: 2rem;
+        }
+
+        .le-intro, .le-after-intro{
+            text-align: center;
+        }
+
+        .le-after-intro{
+            font-size: 1.6rem;
+            font-weight: 700;
+            padding: 2rem;
+        }
+
+        .events-grid{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .single-event{
+            position: relative;
+        }
+
+        .event-date{
+            background:linear-gradient(165deg, rgba(255,62,0,1) 0%, rgba(255,194,51,1) 100%);
+            color: white;
+            font-size: 1.5rem;
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            display: flex;
+            width: 5rem;
+            height: 5rem;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        /*LASTEST EVENTS END*/
+
+        /*ABOUT US*/
+        .about{
+            background: #f7f7f7;
+            display: grid;
+            padding: 7rem 2rem;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 1rem;
+            grid-auto-rows: 18rem;
+        }
+
+        .a-box{
+            background: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .a-box:nth-child(2){
+            grid-column: 3;
+            grid-row: 1;
+        }
+
+        .a-box:nth-child(3){
+            grid-column: 4;
+            grid-row: 1;
+        }
+
+        .a-box:nth-child(4){
+            grid-column: 5;
+            grid-row: 1;
+        }
+
+        .a-box:nth-child(5){
+            grid-column: 3;
+            grid-row: 2;
+        }
+
+        .a-box:nth-child(6){
+            grid-column: 4;
+            grid-row: 2;
+        }
+
+        .a-box:nth-child(7){
+            grid-column: 5;
+            grid-row: 2;
+        }
+
+        .a-first{
+            background: transparent;
+            grid-column: 2/3;
+            grid-row: 1/3;
+            justify-content: space-evenly;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .a-first div{
+            padding: 0;
+        }
+        
+        .a-box div:first-of-type{
+            font-weight: 700;
+        }
+
+        .a-box svg{
+            color: var(--main-color);
+            transition: transform 1.5s;
+        }
+
+        .a-box:hover{
+            background:linear-gradient(165deg, rgba(255,62,0,1) 0%, rgba(255,194,51,1) 100%);
+            color: white;
+            cursor: pointer;
+        }
+
+        .a-box:hover svg{
+            color: white;
+            transform:scale(1.3);
+        }
+
+        .a-first:hover{
+            cursor: auto;
+            color: black;
+            background: #f7f7f7;
+        }
+
+        .a-box div{
+            padding: 1rem;
+        }
+
+        /*ABOUT US END*/
+        /*HOTELS*/
+        .hotels{
+            background: #333333;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+        }
+
+        .h-list{
+            grid-column: 2/4;
+        }
+
+        .h-img img{
+            width: 6rem;
+            height: 6rem;
+        }
+
+        .h-item{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid silver;
+        }
+
+        .h-item:hover{
+            cursor: pointer;
+            background: linear-gradient(165deg, rgba(255,62,0,1) 0%, rgba(255,194,51,1) 100%);
+        }
+
+        .h-info{
+            margin-left: 1rem;
+            color: white;
+        }
+
+        .h-info div{
+            padding: 3px;
+        }
+
+        .h-price{
+            color: gold;
+        }
+
+        .h-preview{
+            background: url(/images/e1.jpg);
+            grid-column: 4/6;
+            background-size: cover;
+            background-position: center center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .h-rating{
+            background: #84b400;
+            text-align: center;
+            padding-top: 0.7rem;
+            width: 4rem;
+            height: 5rem;
+            font-size: 1.5rem;
+            color:white;
+            position:absolute;
+            top: -0.5rem;
+            left: 1rem;
+        }
+        /*HOTELS END*/
+        /*MAP START*/
+        .map{
+            position: relative;
+        }
+
+        .map iframe{
+            width: 100%;
+        }
+
+        .map-overlay{
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.3);
+            position: absolute;
+            top: 0;
+        }
+
+        .map-info{
+            position: absolute;
+            top:6rem;
+            left:24%;
+            width: 12rem;
+            height: 12rem;
+            background: linear-gradient(165deg, rgba(255,62,0,1) 0%, rgba(255,194,51,1) 100%);
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            z-index: 2;
+        }
+
+        /*MAP END*/
+
+        /*FOOTER START*/
+        .footer{
+            background: #333333;
+            display: grid;
+            grid-template-columns: repeat(12,1fr);
+            padding: 3.5rem 2rem;
+            grid-auto-rows: 24rem;
+        }
+
+        .f-box:nth-child(1){
+            grid-column: 3/5;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+        }
+
+        .f-box:nth-child(1) p {
+            color: silver;
+            font-size: 0.8rem;
+        }
+
+        .f-loc{
+            display: flex;
+            color: white;
+            font-size: 1.1rem;
+            align-items: center;
+            align-self: flex-start;
+            width: 100%;
+        }
+
+        .f-loc span{
+            width: 80%;
+        }
+
+        .f-loc svg{
+            width: 20%;
+        }
+
+        .f-box:nth-child(2){
+            grid-column: 6/8;
+            padding: 3.5rem 2rem;
+        }
+
+        .footer-links-title{
+            color: white;
+            font-size: 2rem;
+            margin-top: 0.3rem;
+        }
+
+        .footer-menu{
+            margin-top: 1rem;
+        }
+
+        .footer-menu a{
+            text-decoration: none;
+            color: white;
+        }
+
+        .footer-menu li{
+            list-style-type: none;
+            border-bottom: 1px solid silver;
+            margin-bottom: 0.7rem;
+        }
+
+        .f-box:nth-child(3){
+            grid-column: 9/13;
+        }
+
+        .footer-gallery{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 6rem;
+            gap: 1rem;
+            margin-top: 3.5rem;
+
+        }
+
+        .footer-gallery div{
+            height: 100%;
+            width: 100%;
+            background: url('/images/e1.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+        /*FOOTER END*/
+    </style>
+</head>
+
+<body>
+    <!--NAV START-->
+    <div class="nav">
+        <div class="logo">
+            <img src="/images/logo.png" alt="">
+        </div>
+            <ul>
+                <li><a href="">Home</a></li>
+                <li><a href="">About us</a></li>
+                <li><a href="">Events</a></li>
+                <li><a href="">Gallery</a></li>
+                <li><a href="">Speakers</a></li>
+                <li><a href="">Contact us</a></li>
+            </ul>
+    </div>
+    <!--NAV END-->
+    <!--MAIN-->
+    <div class="main">
+        <div class="m-intro">ONE STOP</div>
+        <h1>EVENT PLANNER</h1>
+        <div class="m-after-intro">EVERY EVENT SHOULD BE PERFECT</div>
+        <button class="main-button">GET STARTED</button>
+    </div>
+    <!--MAIN END-->
+    <!--LATEST EVENTS-->
+        <div class="latest-events">
+            <div class="le-intro">UPCOMING EVENTS</div>
+            <div class="le-after-intro">LATEST AWESOME EVENTS</div>
+            <div class="events-grid">
+                <div class="single-event">
+                    <img  class="img-fluid" src="/images/e1.jpg" alt="">
+                    <div class="event-date">
+                        25 <br/>
+                        JUN
+                    </div>
+                </div>
+                <div class="single-event">
+                    <img class="img-fluid" src="/images/e1.jpg" alt="">
+                    <div class="event-date">
+                        25 <br/>
+                        JUN
+                    </div>
+                </div>
+                <div class="single-event">
+                    <img class="img-fluid" src="/images/e1.jpg" alt="">
+                    <div class="event-date">
+                        25 <br/>
+                        JUN
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!--LATEST EVENTS END-->
+    <!--ABOUT-->
+    <div class="about">
+        <div class="a-box a-first">
+            <div>WE ARE DEVELOPERS</div>
+            <h3>N1 Event Management</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat quam cumque temporibus facilis magni dolorum quis sequi iste mollitia commodi facere aut, fuga, nam molestiae ad deleniti fugiat? Impedit, vero.</p>
+            <button class="main-button w-100">ABOUT</button>
+        </div>
+        <div class="a-box">
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="60" fill="currentColor" class="bi bi-balloon-fill" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8.48 10.901C11.211 10.227 13 7.837 13 5A5 5 0 0 0 3 5c0 2.837 1.789 5.227 4.52 5.901l-.244.487a.25.25 0 1 0 .448.224l.04-.08c.009.17.024.315.051.45.068.344.208.622.448 1.102l.013.028c.212.422.182.85.05 1.246-.135.402-.366.751-.534 1.003a.25.25 0 0 0 .416.278l.004-.007c.166-.248.431-.646.588-1.115.16-.479.212-1.051-.076-1.629-.258-.515-.365-.732-.419-1.004a2.376 2.376 0 0 1-.037-.289l.008.017a.25.25 0 1 0 .448-.224l-.244-.487ZM4.352 3.356a4.004 4.004 0 0 1 3.15-2.325C7.774.997 8 1.224 8 1.5c0 .276-.226.496-.498.542-.95.162-1.749.78-2.173 1.617a.595.595 0 0 1-.52.341c-.346 0-.599-.329-.457-.644Z"/>
+            </svg>
+            <div>Friendly Team</div>
+            <div>More Than 200 Teams</div>              
+        </div>
+        <div class="a-box">
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="60" fill="currentColor" class="bi bi-balloon-fill" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8.48 10.901C11.211 10.227 13 7.837 13 5A5 5 0 0 0 3 5c0 2.837 1.789 5.227 4.52 5.901l-.244.487a.25.25 0 1 0 .448.224l.04-.08c.009.17.024.315.051.45.068.344.208.622.448 1.102l.013.028c.212.422.182.85.05 1.246-.135.402-.366.751-.534 1.003a.25.25 0 0 0 .416.278l.004-.007c.166-.248.431-.646.588-1.115.16-.479.212-1.051-.076-1.629-.258-.515-.365-.732-.419-1.004a2.376 2.376 0 0 1-.037-.289l.008.017a.25.25 0 1 0 .448-.224l-.244-.487ZM4.352 3.356a4.004 4.004 0 0 1 3.15-2.325C7.774.997 8 1.224 8 1.5c0 .276-.226.496-.498.542-.95.162-1.749.78-2.173 1.617a.595.595 0 0 1-.52.341c-.346 0-.599-.329-.457-.644Z"/>
+            </svg>
+            <div>Friendly Team</div>
+            <div>More Than 200 Teams</div>              
+        </div>
+        <div class="a-box">
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="60" fill="currentColor" class="bi bi-balloon-fill" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8.48 10.901C11.211 10.227 13 7.837 13 5A5 5 0 0 0 3 5c0 2.837 1.789 5.227 4.52 5.901l-.244.487a.25.25 0 1 0 .448.224l.04-.08c.009.17.024.315.051.45.068.344.208.622.448 1.102l.013.028c.212.422.182.85.05 1.246-.135.402-.366.751-.534 1.003a.25.25 0 0 0 .416.278l.004-.007c.166-.248.431-.646.588-1.115.16-.479.212-1.051-.076-1.629-.258-.515-.365-.732-.419-1.004a2.376 2.376 0 0 1-.037-.289l.008.017a.25.25 0 1 0 .448-.224l-.244-.487ZM4.352 3.356a4.004 4.004 0 0 1 3.15-2.325C7.774.997 8 1.224 8 1.5c0 .276-.226.496-.498.542-.95.162-1.749.78-2.173 1.617a.595.595 0 0 1-.52.341c-.346 0-.599-.329-.457-.644Z"/>
+            </svg>
+            <div>Friendly Team</div>
+            <div>More Than 200 Teams</div>              
+        </div>
+        <div class="a-box">
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="60" fill="currentColor" class="bi bi-balloon-fill" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8.48 10.901C11.211 10.227 13 7.837 13 5A5 5 0 0 0 3 5c0 2.837 1.789 5.227 4.52 5.901l-.244.487a.25.25 0 1 0 .448.224l.04-.08c.009.17.024.315.051.45.068.344.208.622.448 1.102l.013.028c.212.422.182.85.05 1.246-.135.402-.366.751-.534 1.003a.25.25 0 0 0 .416.278l.004-.007c.166-.248.431-.646.588-1.115.16-.479.212-1.051-.076-1.629-.258-.515-.365-.732-.419-1.004a2.376 2.376 0 0 1-.037-.289l.008.017a.25.25 0 1 0 .448-.224l-.244-.487ZM4.352 3.356a4.004 4.004 0 0 1 3.15-2.325C7.774.997 8 1.224 8 1.5c0 .276-.226.496-.498.542-.95.162-1.749.78-2.173 1.617a.595.595 0 0 1-.52.341c-.346 0-.599-.329-.457-.644Z"/>
+            </svg>
+            <div>Friendly Team</div>
+            <div>More Than 200 Teams</div>              
+        </div>
+        <div class="a-box">
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="60" fill="currentColor" class="bi bi-balloon-fill" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8.48 10.901C11.211 10.227 13 7.837 13 5A5 5 0 0 0 3 5c0 2.837 1.789 5.227 4.52 5.901l-.244.487a.25.25 0 1 0 .448.224l.04-.08c.009.17.024.315.051.45.068.344.208.622.448 1.102l.013.028c.212.422.182.85.05 1.246-.135.402-.366.751-.534 1.003a.25.25 0 0 0 .416.278l.004-.007c.166-.248.431-.646.588-1.115.16-.479.212-1.051-.076-1.629-.258-.515-.365-.732-.419-1.004a2.376 2.376 0 0 1-.037-.289l.008.017a.25.25 0 1 0 .448-.224l-.244-.487ZM4.352 3.356a4.004 4.004 0 0 1 3.15-2.325C7.774.997 8 1.224 8 1.5c0 .276-.226.496-.498.542-.95.162-1.749.78-2.173 1.617a.595.595 0 0 1-.52.341c-.346 0-.599-.329-.457-.644Z"/>
+            </svg>
+            <div>Friendly Team</div>
+            <div>More Than 200 Teams</div>              
+        </div>
+        <div class="a-box">
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="60" fill="currentColor" class="bi bi-balloon-fill" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8.48 10.901C11.211 10.227 13 7.837 13 5A5 5 0 0 0 3 5c0 2.837 1.789 5.227 4.52 5.901l-.244.487a.25.25 0 1 0 .448.224l.04-.08c.009.17.024.315.051.45.068.344.208.622.448 1.102l.013.028c.212.422.182.85.05 1.246-.135.402-.366.751-.534 1.003a.25.25 0 0 0 .416.278l.004-.007c.166-.248.431-.646.588-1.115.16-.479.212-1.051-.076-1.629-.258-.515-.365-.732-.419-1.004a2.376 2.376 0 0 1-.037-.289l.008.017a.25.25 0 1 0 .448-.224l-.244-.487ZM4.352 3.356a4.004 4.004 0 0 1 3.15-2.325C7.774.997 8 1.224 8 1.5c0 .276-.226.496-.498.542-.95.162-1.749.78-2.173 1.617a.595.595 0 0 1-.52.341c-.346 0-.599-.329-.457-.644Z"/>
+            </svg>
+            <div>Friendly Team</div>
+            <div>More Than 200 Teams</div>              
+        </div>
+    </div>
+    <!--ABOUT END-->
+    <!--HOTELS-->
+    <div class="hotels">
+        <div class="h-list">
+            <div class="h-list-container">
+                <div class="h-item">
+                    <div class="h-img">
+                        <img src="/images/e1.jpg" alt="">
+                    </div>
+                    <div class="h-info">
+                        <div><b>Hotel Name</b></div>
+                        <div>Hotel information</div>
+                        <div class="h-price">Price from 50$/night</div>
+                    </div>
+                </div>
+                <div class="h-item">
+                    <div class="h-img">
+                        <img src="/images/e1.jpg" alt="">
+                    </div>
+                    <div class="h-info">
+                        <div><b>Hotel Name</b></div>
+                        <div>Hotel information</div>
+                        <div class="h-price">Price from 50$/night</div>
+                    </div>
+                </div>
+                <div class="h-item">
+                    <div class="h-img">
+                        <img src="/images/e1.jpg" alt="">
+                    </div>
+                    <div class="h-info">
+                        <div><b>Hotel Name</b></div>
+                        <div>Hotel information</div>
+                        <div class="h-price">Price from 50$/night</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="h-preview">
+            <div class="h-rating">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                </svg>
+                <br/>
+                5.0
+            </div>
+            <button class="main-button">PREVIEW</button>
+        </div>
+    </div>
+    <!--HOTELS END-->
+    <!--MAP-->
+    <div class="map">
+        <div><!--todo--></div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8383.9929220876!2d24.87727774749477!3d42.017675073606284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14acd89374a5fc99%3A0x26c73ab4bdc6f496!2sAsenovgrad%2C%20Bulgaria!5e0!3m2!1sen!2sde!4v1656761956214!5m2!1sen!2sde" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="map-info">
+            WE ARE HERE TO ANSWER YOUR QUESTIONS
+        </div>
+        <div class="map-overlay"></div>
+    </div>
+    <!--MAP END-->
+    <!--FOOTER-->
+    <div class="footer">
+        <div class="f-box">
+            <img class="img-fluid" src="/images/logo.png" alt="">
+            <p>
+                Lorem ipsum dolor sit amet consectetur 
+                adipisicing elit. Dignissimos 
+                tenetur quo quibusdam fugiat sint hic sapiente? 
+                Ea magni consequuntur est.Ea magni consequuntur est.
+            </p>
+            <div class="f-loc">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                </svg>
+                <span>
+                    Asenovgrad, Bulgaria
+                </span>
+            </div>
+            <div class="f-loc">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                </svg>
+                <span>
+                    Asenovgrad, Bulgaria
+                </span>
+            </div>
+            <div class="f-loc">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                </svg>
+                <span>
+                    Asenovgrad, Bulgaria
+                </span>
+            </div>
+        </div>
+        <div class="f-box">
+            <div class="footer-links-title">Useful Links</div>
+            <ul class="footer-menu">
+                <li>
+                    <a href="">About</a>
+                </li>
+                <li>
+                    <a href="">About</a>
+                </li>
+                <li>
+                    <a href="">About</a>
+                </li>
+                <li>
+                    <a href="">About</a>
+                </li>
+                <li>
+                    <a href="">About</a>
+                </li>
+                <li>
+                    <a href="">About</a>
+                </li>
+            </ul>
+        </div>
+        <div class="f-box">
+            <div class="footer-links-title">Gallery</div>
+                <div class="footer-gallery">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+        </div>
+    </div>
+    <!--FOOTER END-->
+</body>
+
+</html>
