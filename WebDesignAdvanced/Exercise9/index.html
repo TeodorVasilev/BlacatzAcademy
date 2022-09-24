@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 9</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .task {
+            border: 1px solid black;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+</head>
+<body>
+    <div class="task">
+        <h3>Task 1</h3>
+        <p>Confirm function</p>
+        <a href="https://google.bg" onclick="return askForPermission()">Google</a>
+        <a href="https://google.bg" id="link">Google 2</a>
+    </div>
+    <div class="task">
+        <h3>Task 2</h3>
+        <p>Create text field and button. When button is clicked a select is created witn N options from 1 to N</p>
+        <div>
+            <div>
+                <input type="number" name="number">
+                <button id="t2-btn">Create</button>
+            </div>
+            <div class="t2-result">
+
+            </div>
+        </div>
+    </div>
+    <div class="task">
+        <h3>Task 3</h3>
+        <p>Create select with options from 1 to 5 and a div. When an option is selected the same number of text fields are added.</p>
+        <div>
+            <select name="" id="text-field-number">
+                <option value="">Select</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <div id="t3-result">
+
+            </div>
+        </div>
+    </div>
+    <div class="task">
+        <h3>Task 4</h3>
+        <p>Create JSON object from text fields (name, price, quantity) and show it in the console.</p>
+        <div>
+            <div>
+                <label for="">Name</label>
+                <input type="text" name="name">
+            </div>
+            <div>
+                <label for="">Price</label>
+                <input type="text" name="price">
+            </div>
+            <div>
+                <label for="">Quantity</label>
+                <input type="text" name="quantity">
+            </div>
+            <button id="t4-btn">Create</button>
+        </div>
+    </div>
+    <div class="task">
+        <h3>Task 5</h3>
+        <p>Format string to JSON and JSON to string</p>
+        <div>
+
+        </div>
+    </div>
+    <div class="task">
+        <h3>Task 6</h3>
+        <p>Create array with JSON objects (users). Create function that onloand outputs the data in a table.</p>
+        <div id="t6-result">
+
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script>
+        //Task 1
+        function askForPermission() {
+            let result = confirm('Are you sure?')
+
+            return result;
+        }
+
+        $(function(){
+            $('#link').click(function(event){
+                if(!confirm('Are you sure?')){
+                    event.preventDefault();
+                }
+            })
+        })
+
+        //Task 2
+        $(function(){
+            $('#t2-btn').click(()=>{
+                let number = parseInt($('input[name=number]').val());
+
+                let html = '<div>';
+                html += '<select>';
+
+                for(let i = 1; i <= number; i++){
+                    html += `<option value="${i}">${i}</option>`
+                }
+
+                html += '</select>'
+                html += '</div>';
+
+                $('.t2-result').html(html);
+            });
+        })
+
+        //Task 3
+        $(function(){
+            $('#text-field-number').on('change', () => {
+                let n = parseInt(this.value);
+                console.log(n);
+
+                let number = parseInt($('#text-field-number').val());
+                let html = '';
+                for(let i = 0; i < number; i++){
+                    html += '<div><input type="text"/></div>';
+                }
+
+                $('#t3-result').html(html);
+            });
+        })
+
+        //Task 4
+        $(function(){
+            $('#t4-btn').click(()=>{
+                let name = $('input[name=name]').val();
+                let price = parseFloat($('input[name=price]').val());
+                let quantity = parseInt($('input[name=quantity]').val());
+
+                let product = {
+                    Name: name,
+                    Price: price,
+                    Quantity: quantity
+                };
+
+                console.log(product);
+            });
+        })
+
+        //Task 5
+        $(function(){
+            let jsonData = '{"name":"Gosho","age":27}';
+            console.log(jsonData);
+            let obj = JSON.parse(jsonData);
+            console.log(obj);
+            let objToString = JSON.stringify(obj);
+            console.log(objToString);
+        })
+
+        //Task 6
+        let users = [
+                {name: "Gosho", age: 27, email: "gosho@gosho.bg", role: "Admin"},
+                {name: "Pesho", age: 28, email: "pesho@pesho.bg", role: "User"},
+                {name: "Tosho", age: 29, email: "tosho@tosho.bg", role: "User"},
+            ]
+
+        function createTable(){
+            let html = '<table class="table table-bordered">';
+                html += '<tr>';
+                html += '<th>Name</th><th>Age</th><th>Email</th><th>Role</th>';
+                html += '</tr>';
+
+                for(let i = 0; i < users.length; i++){
+                    html+= '<tr>';
+                    html += `<td>${users[i].name}</td>`
+                    html += `<td>${users[i].age}</td>`
+                    html += `<td>${users[i].email}</td>`
+                    html += `<td>${users[i].role}</td>`
+                    html+= '</tr>';
+                }
+
+                html += '</table>';
+
+            $('#t6-result').html(html);
+        }
+        $(function(){
+            createTable();
+        })
+    </script>
+</body>
+
+</html>

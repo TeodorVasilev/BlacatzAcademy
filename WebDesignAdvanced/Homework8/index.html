@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 8</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <style>
+        .modal-popup {
+            border: 1px solid black;
+            width: 400px;
+            height: 400px;
+            position: absolute;
+            margin: auto;
+            left: 35%;
+            bottom: 20%;
+        }
+
+        .hide {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="task container border border-dark my-3 p-3">
+        <h4>Task 1</h4>
+        <p>
+            Create button "Add more". Onclick a new row with img, text field and delete button is added.
+        </p>
+        <button class="btn btn-primary" id="add-more">Add More</button>
+        <div class="row my-2">
+            <div class="col-12 d-flex flex-wrap" id="t1-result">
+
+            </div>
+        </div>
+    </div>
+    <div class="task container border border-dark my-3 p-3">
+        <h4>Task 2</h4>
+        <p>Create modal popup</p>
+        <div>
+            <button class="btn btn-success modal-btn">Show</button>
+            <div class="modal-popup d-flex justify-content-center align-items-center fs-5 bg-info hide">
+                <p>This is a modal popup</p>
+            </div>
+        </div>
+    </div>
+    <div class="task container border border-dark my-3 p-3">
+        <h4>Task 3</h4>
+        <p>
+            Create calculator for average grades. First the calculator has 3 rows with course name and grade.
+            Create button + to add new rows.
+        </p>
+        <div id="calculator-container">
+            <div>
+                <label for="">Course: </label>
+                <input type="text" name="" id="">
+                <label for="">Grade:</label>
+                <input type="number" name="grade" id="">
+            </div>
+            <div>
+                <label for="">Course: </label>
+                <input type="text" name="" id="">
+                <label for="">Grade:</label>
+                <input type="number" name="grade" id="">
+            </div>
+            <div>
+                <label for="">Course: </label>
+                <input type="text" name="" id="">
+                <label for="">Grade:</label>
+                <input type="number" name="grade" id="">
+            </div>
+        </div>
+        <div class="my-3">
+            <button class="btn btn-success add-grade">Add Grade</button>
+            <button class="btn btn-primary calculate">Calculate</button>
+        </div>
+        <div id="t3-result">
+
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
+        </script>
+    <script>
+        //Task 1
+        let cnt = 0;
+        $(function () {
+            let cnt = 0;
+            $('#add-more').click(() => {
+                let html = `<div id="${cnt}-card" class="card mx-2" style="width: 13rem">`;
+                html += '<img src="1.png" class="card-img-top">';
+                html += '<div class="card-body p-2">';
+                html += '<input type="text" style="width: 100%;"/>';
+                html += `<button class="btn btn-danger my-2" onclick="removeCard(${cnt})">Delete</button>`;
+                html += '</div>';
+                html += '</div>';
+
+                $('#t1-result').append(html);
+                cnt++;
+            })
+        })
+
+        function removeCard(id) {
+            $(`#${id}-card`).remove();
+        }
+
+        //Task 2
+        $(function () {
+            $('.modal-btn').click(() => {
+                ($('.modal-popup')).toggleClass('hide');
+            })
+        })
+
+        //Task 3
+        let counter = 3;
+        let gradeCnt = 3;
+
+        $(function () {
+            
+            $('.add-grade').click(() => {
+                let html = `<div id="${counter}-grade">`;
+                html += `<label for="">Course: </label>
+                            <input type="text" name="" id="">
+                            <label for="">Grade:</label>
+                            <input type="number" name="grade" id="">
+                            <button class="btn btn-danger" onclick="removeGrade(${counter})">X</button>`
+                html += `</div>`;
+
+                $('#calculator-container').append(html);
+                counter++;
+                gradeCnt++;
+            });
+
+            $('.calculate').click(() => {
+                let grades = $('input[name=grade]');
+                let sum = 0;
+                for (let i = 0; i < grades.length; i++) {
+                    sum += parseFloat(grades[i].value);
+                }
+                let result = sum / gradeCnt;
+                $('#t3-result').html(result);
+                console.log(counter);
+            })
+        })
+
+        function removeGrade(number){
+                $(`#${number}-grade`).remove();
+                gradeCnt--;
+            }
+
+    </script>
+</body>
+
+</html>

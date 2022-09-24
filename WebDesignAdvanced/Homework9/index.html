@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 9</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <style>
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="task border mt-3 p-3">
+            <h4>Task 1</h4>
+            <p>Create fields for name, age, specialty and button. After button is clicked from the input data create JSON and show it in console.</p>
+            <div class="row">
+                <div class="col-12 d-flex flex-column w-25">
+                    <label for="">Name:</label>
+                    <input type="text" name="name">
+                    <label for="">Age:</label>
+                    <input type="number" name="age">
+                    <label for="">Specialty:</label>
+                    <input type="text" name="specialty">
+                    <button class="btn btn-primary mt-3 send">Send</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="task border mt-3 p-3">
+            <h4>Task 2</h4>
+            <p>Create JSON array with a few products. When the page is loaded show them in table</p>
+            <div class="row">
+                <div class="col-12 t2-result">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="task border mt-3 p-3">
+            <h4>Task 3</h4>
+            <p>The user inputs in text field JSON as string. Create function that parses the string and outputs it as JSON in the console.</p>
+            <div class="row">
+                <div class="col-12 d-flex gap-3">
+                    <input type="text" name="js-string" class="w-50">
+                    <button class="btn btn-primary t3-send">Send</button>
+                    <span class="t3-error text-danger">
+
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script>
+        //Task 1
+        $(function(){
+
+            $('.send').click(function(){
+                    
+                let person = {
+                    name: $('input[name="name"]').val(),
+                    age: parseInt($('input[name="age"]').val()),
+                    specialty: $('input[name="specialty"]').val()
+                }
+
+                console.log(person);
+            })
+        })
+
+        let products = [
+            {name:"Milk", price: 5, quantity: 5},
+            {name:"Bread", price: 2, quantity: 17},
+            {name:"Egg", price: 1, quantity: 23},
+            {name:"Salam", price: 3, quantity: 35},
+            {name:"Nadenica", price: 6, quantity: 67}
+        ];
+
+        //Task 2
+        $(function(){
+            let html = '<table class="table table-bordered table-light table-hover">';
+                html += '<tr>';
+                html += '<th>Name</th>';
+                html += '<th>Price</th>';
+                html += '<th>Quantity</th>';
+                html += '</tr>';
+
+                products.forEach(function(product){
+                    html += '<tr>';
+                    html += `<td>${product.name}</td>`;
+                    html += `<td>${product.price}</td>`;
+                    html += `<td>${product.quantity}</td>`;
+                    html += '</tr>';
+                })
+                html += '</table>';
+
+            $('.t2-result').html(html);
+        })
+
+        //Task 3
+        $(function(){
+
+            $('.t3-send').click(function(){
+                $('.t3-error').html('');
+                try{
+                    let object = JSON.parse($('input[name="js-string"]').val());
+                    console.log(object);
+                } catch (ex) {
+                    $('.t3-error').html('Invalid JSON');
+                }
+            });
+        })
+    </script>
+</body>
+</html>

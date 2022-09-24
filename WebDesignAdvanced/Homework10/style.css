@@ -1,0 +1,46 @@
+.category-select {
+    text-transform: capitalize;
+}
+
+.box {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+ul,
+li {
+    list-style-type: none !important;
+    padding: 0;
+}
+
+.listing {
+    height: 55vh;
+}
+
+.listing:hover {
+    border: 1px solid #0d6efd !important;
+    cursor: pointer;
+}
+
+.card-title {
+    text-overflow: ellipsis !important;
+    overflow: hidden !important;
+    width: 80% !important;
+    height: 1.2em !important;
+    white-space: nowrap !important;
+    height: 3.7vh !important;
+    text-align: center;
+}
+
+.cart-item {
+    text-overflow: ellipsis !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+}
+
+#product-img {
+    width: 29rem;
+    height: 15rem;
+}

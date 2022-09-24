@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 3</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-4" >
+                <label for="">Select Country</label>
+                <select name="" id="countries" class="form-control"></select>
+            </div>
+            <div class="col-4">
+                <label for="">Select City</label>
+                <select name="" id="cities" class="form-control"></select>
+            </div>
+            <div class="col-4">
+                <br>
+                <button class="btn btn-primary" id="send">Send</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script>
+        const countries = [
+            {
+                name: "Bulgaria",
+                cities: [
+                    "Plovdiv", "Sofia", "Stara Zagora"
+                ]
+            },
+            {
+                name: "USA",
+                cities: [
+                    "New York", "Chicago" 
+                ]
+            },
+        ];
+        
+        function load(){
+            let html = '<option>Select Country</option>';
+            countries.forEach(function(value){
+                html += `<option>${value.name}</option>`
+            })
+
+            $('#countries').html(html);
+        }
+
+        $(function(){
+            load();
+
+            $('#countries').change(function(){
+                let selected = $(this).val();
+                let country = countries.find(function(country){
+                    return country.name == selected;
+                });
+
+                if(country === undefined){
+                    $('#cities').html('');
+                    return;
+                }
+
+                let html = '<option>Select City</option>';
+
+                country.cities.forEach(city => {
+                    html +=  `<option>${city}</option>`;
+                })
+
+                $('#cities').html(html);
+            });
+
+            $('#send').click(function(){
+                let country = $('#countries').val();
+                let city = $('#cities').val();
+                $.ajax({
+                    url: 'https://jsonplaceholder.typicode.com/posts',
+                    type: 'POST',
+                    data: {country, city},
+                    success: function(){
+                        console.log('sent')
+                    }
+                })
+            });
+        });
+    </script>
+</body>
+</html>

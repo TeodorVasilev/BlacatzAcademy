@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exersice 8</title>
+    <style>
+        .task{
+            box-sizing: border-box;
+            width: 100%;
+            padding: 20px;
+            border: 1px solid black;
+            margin-bottom: 20px;
+        }
+
+        .hide{
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="task">
+        <h3>Task 1</h3>
+        <p></p>
+        <div>
+            <input type="number" class="number"></br>
+            <input type="number" class="number"></br>
+            <input type="number" class="number"></br>
+            <input type="number" class="number"></br>
+            <input type="number" class="number"></br>
+            <button onclick="calc()">Calculate</button>
+            <span id="t1-result"></span>
+        </div>
+    </div>
+    <div class="task">
+        <h3>Task 2</h3>
+        <p>Add and remove text fields with buttons</p>
+        <div>
+            <button onclick="add()">Add</button>
+            <div id="container">
+
+            </div>
+        </div>
+    </div>
+    <div class="task">
+        <h3>Task 3</h3>
+        <p>Create two elements and move the first into the second using jQuery</p>
+        <div>
+            <div id="firstElement">
+                Element
+            </div>
+            <div id="secondElement">
+                Element 2
+            </div>
+            <button id="btn">Transfer</button>
+        </div>
+    </div>
+    <div class="task">
+        <h3>Task 4</h3>
+        <p>Get value from input field using jQuery</p>
+        <div>
+            <input type="text" id="text-field">
+            <button id="t4-btn">Get text</button>
+        </div>
+    </div>
+    <div class="task">
+        <h3>Task 5</h3>
+        <p>
+            Create p and class hide. When button is clicked the class is added to p;
+        </p>
+        <div>
+            <p id="text">Lorem ipsum dolor sit amet.</p>
+        </div>
+        <button id="hide">Hide</button>
+        <button id="show">Show</button>
+        <button id="toggle">Toggle</button>
+    </div>
+    <div class="task">
+        <h3>Task 6</h3>
+        <p>
+            Create text field and the input must be outputed in p
+        </p>
+        <div>
+            <input type="text" id="t6-text">
+            <p id="t6-result">
+
+            </p>
+        </div>
+    </div>
+    <div class="task">
+        <h3>Task 7</h3>
+        <p>
+            Change the background of a div with jQuery
+        </p>
+        <div id="background">
+            This is div
+        </div>
+        <button id="change-bg">Change</button>
+    </div>
+    <div class="task">
+        <h3>Task 8</h3>
+        <p>
+            Callories calculator with jQuery.
+            <br>
+            with gender, age, height, weight, physical activity
+            <br>
+            with options: work at office 1.2, weak activity 1.375, normal activity 1.725, intense activity 1.9.
+            <br>
+            Caloryminimum = man 66 + (13.7 * weight) + (5 * height) - (6.8 * age);
+            <br>
+            Caloryminimum = woman 65.5 + (9.6 * weight) + (1.8 * height) - (4.7 * age);
+            <br>
+            Daily calories = activity * Caloryminimum
+            <br>
+            IBW = weight/(0.1 * height)pow2
+        </p>
+        <div id="calc-container">
+            <div>
+                <label for="">Male</label>
+                <input type="radio" name="gender" value="M">
+                <label for="">Female</label>
+                <input type="radio" name="gender" value="F">
+            </div>
+            <div>
+                <label for="">Age</label>
+                <input type="number" name="age">
+            </div>
+            <div>
+                <label for="">Height</label>
+                <input type="range" min="1" max="200" value="120" name="height">
+                <span id="slider-val"></span>
+            </div>
+            <div>
+                <label for="">Weight</label>
+                <input type="number" name="weight">
+            </div>
+            <div>
+                <select name="activity" id="">
+                    <option value="0"></option>
+                    <option value="1.2">Work at desk</option>
+                    <option value="1.375">Weak activity</option>
+                    <option value="1.55">Normal activity</option>
+                    <option value="1.725">Intense activity</option>
+                    <option value="1.9">Very intense activity</option>
+                </select>
+            </div>
+            <div>
+                <button id="calculate">Calculate</button>
+            </div>
+            <div class="t8-result">
+
+            </div>
+        </div>
+    </div>
+    <div class="task">
+        <h3>Task 9</h3>
+        <p>Change font size with jQuery</p>
+        <div>
+            <p id="t9">This font size is changed with jQuery</p>
+            <button id="change">Change</button>
+        </div>
+    </div>
+    <div class="task">
+        <h3>Task 10</h3>
+        <p>Take the value from radio button, checkbox and dropdown with jQuery</p>
+        <div>
+            <label for="">Radio button: </label>
+            <input type="radio" name="radio" value="Radio value">
+            <span id="radio-result"></span>
+            <br>
+            <label for="">Checkbox: </label>
+            <input type="checkbox" name="checkbox" value="Checkbox value">
+            <input type="checkbox" name="checkbox" value="Checkbox value 2">
+            <span id="checkbox-result"></span>
+            <br>
+            <label for="">Dropdown</label>
+            <select name="dropdown" id="">
+                <option value="Dropdown value">Dropdown value</option>
+            </select>
+            <span id="dropdown-result"></span>
+            <br>
+            <button id="t10-btn">Values</button>
+        </div>
+    </div>
+    <div class="task">
+        <h3>Task 11</h3>
+        <p>Add attribute to element with jQuery</p>
+        <div>
+            <img id="t11-img" src="" alt="">
+        </div>
+        <button id="t11-btn">Add attribute</button>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script>
+        //Task 1
+        function calc(){
+            let elements = document.querySelectorAll('.number');
+            let result = 0;
+            debugger;
+            document.querySelector('#t1-result').innerHTML = "";
+            for(let i = 0; i < elements.length; i++){
+                if(elements[i].value.length > 0){
+                    let number = parseFloat(elements[i].value);
+                    result += number;
+                }
+            }
+
+            document.querySelector('#t1-result').innerHTML += result;
+        }
+
+        //Task 2
+        let cnt = 0;
+        function add(){
+            let el = document.querySelector('#container');
+            el.insertAdjacentHTML('beforeEnd', `<div id="item-${cnt}"><input type="text"/><button onclick="removeItem(${cnt})">X</button></div>`)
+            cnt++;
+        }
+
+        function removeItem(num){
+            document.querySelector(`#item-${num}`).remove();
+        }
+
+        //Task 3
+        $(function(){
+            $('#btn').click(function(){
+                $('#secondElement').append($('#firstElement').html());
+                $('#firstElement').remove();
+            });
+        })
+
+        //Task 4
+        $(function(){
+            $('#t4-btn').click(function(){
+                let val = $('#text-field').val();
+                alert(val);
+            });
+        })
+
+        //Task 5
+        $(function(){
+            $('#hide').click(function(){
+                $('#text').addClass('hide');
+            });
+
+            $('#show').click(function(){
+                $('#text').removeClass('hide');
+            })
+
+            $('#toggle').click(function(){
+                $('#text').toggleClass('hide');
+            })
+        })
+
+        //Task 6
+        $(function(){
+            $('#t6-text').on('input', function(){
+                $('#t6-result').html($(this).val());
+            });
+        })
+
+        //Task 7
+        $(function(){
+            $('#change-bg').click(function(){
+                $('#background').css('background', 'red');
+            });
+        })
+
+        //Task 8
+        $(function(){
+            $('input[name=height]').on('change', function(){
+                $('#slider-val').html($(this).val());
+            });
+
+            $('#calculate').click(function(){
+                let gender = $('input[name=gender]:checked').val();
+                let age = parseInt($('input[name=age]').val());
+                let height = parseInt($('input[name=height]').val());
+                let weight = parseFloat($('input[name=weight]').val());
+                let activity = parseFloat($('select[name=activity]').val());
+
+                if(gender == undefined || !(age > 0) || !(height > 0)
+                || !(weight > 0) || !(activity > 0)){
+                    alert('Please enter all values');
+                    return;
+                }
+
+                let calMin = 0;
+                if(gender == 'M'){
+                    calMin = 66 + (13.7 * weight) + (5 * height) - (6.8 * age);
+                }
+                else{
+                    calMin = 65.5 + (9.6 * weight) + (1.8 * height) - (4.7 * age);
+                }
+
+                let dailyCalories = activity * calMin;
+                let weightIndex = weight / Math.pow((0.1 * height), 2);
+
+                let html = `<div>Callory minimum: <b>${calMin}</b></div>`;
+                html += `<div>Daily callories: <b>${dailyCalories}</b></div>`;
+                html += `<div>Index body weight: <b>${weightIndex}</b></div>`;
+
+                $('.t8-result').html(html);
+            });
+        })
+
+        //Task 9
+        $(function(){
+            $('#change').click(()=>{
+                $('#t9').css('font-size', '20px');
+            })
+        })
+
+        //Task 10
+        $(function(){
+            $('#t10-btn').click(() => {
+                let radio = $('input[name=radio]:checked').val();
+                let checkbox = $('input[name=checkbox]:checked');
+
+                // fix console.log(checkbox);
+
+                let dropdown = $('select[name=dropdown]').val();
+
+                $('#radio-result').html(radio);
+                $('#checkbox-result').html(checkbox);
+                $('#dropdown-result').html(dropdown);
+            })
+        })
+
+        //Task 11
+        $(function(){
+            $('#t11-btn').click(function(){
+                $('#t11-img').attr('src', '1.png');
+            })
+        })
+    </script>
+</body>
+
+</html>
