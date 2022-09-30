@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 2</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container">
+    <div class="accordion mt-5" id="accordionExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+            aria-expanded="true" aria-controls="collapseOne">
+            Какво е HTTP?
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            HTTP (Hypertext Transfer Protocol) е протокол за извличане на данни като HTML документи. HTTP е основата за
+            всяка обмяна на данни в Web като позволява на клиента (Web браузъра) да комуникира
+            с сървъра на който се намира уебсайта. Комуникацията се осъществява като клиента изпраща заявка към сървъра,
+            след което сървъра връща отговор който се визуализира през браузъра.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Какво е HTTPS?
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            HTTPS (Hypertext Transfer Protocol Secure) е криптираната версия на HTTP и се използва за безопасна/защитена
+            комуникация в мрежата.
+            HTTPS използва SSL (Secure Sockets Layer) сертификат като по този начин се създава криптирана връзка между
+            клиента и сървъра.
+            По този начин чувствителни данни (напр. кредитни карти) са защитени от извличане от трети лица.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            Каква е разликата между HTTP и HTTPS?
+          </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            Комуникацията през HTTP не е защитена и може да бъде лесно достъпена от трети лица. HTTPS използва
+            сертификати за сигурност които са предоставени от доставчик трето лице.
+            По този начин се създава криптирана връзка между клиента и сървъра. Когато имаме уебсайт който се базира на
+            истинската информация за потребителите трябва да се използва HTTPS.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingFour">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+            Каква е разликата между GET и POST заявка?
+          </button>
+        </h2>
+        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            При GET заявката данните които изпращаме към сървъра са видими в URL-a и има лимит на информацията която се
+            изпраща.
+            При POST заявките данните които се изпращат не са видими. Тези заявки се използват за изпращане на
+            поверителна информация. Лимита на данни при POST е много по голям
+            отколкото при GET заявката.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingFive">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+            Какво са HTTP хедъри?
+          </button>
+        </h2>
+        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            HTTP headers позволяват на клиента и сървъра да предоставят допълнителна информация заедно със заявката или
+            отговора като например:
+            вид и версия на браузъра, различните типове данни които браузъра приема.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingSix">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+            Възможно ли е с JavaScript да достъпваме бисквитките в сайта и как?
+          </button>
+        </h2>
+        <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            С JavaScript може да се четат, създават, променят и изтриват бисквитките на уебсайта с document.cookie.
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingSeven">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+              Възможно ли е да запишем функция в променлива?
+            </button>
+          </h2>
+          <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              В JavaScript функциите са обекти и е възможно да запишем функция в променлива.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingEight">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+              Каква е разликата между == и === ?
+            </button>
+          </h2>
+          <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              == сравнява само по стойност.
+              === сравнява по тип и по стойност.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingNine">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+              Какво е JSON и какво е AJAX?
+            </button>
+          </h2>
+          <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              JSON (JavaScript Object Notation) е формат на данни който е идентичен с кода използван за описване на
+              обекти в JavaScript. Използва се много често за прехвърляне на данни в Уеб.
+              Данните са в формат {"name": "value"}.
+              <br>
+              AJAX (Asynchronous JavaScript And XML) е начин за достъпване на уеб сървъри през уеб страница. Чрез AJAX
+              заявка може да се зареди информация от сървъра и
+              с JavaScript може да визуализираме информацията на страницата без да я презареждаме.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTen">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+              Какво е async и await?
+            </button>
+          </h2>
+          <div id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingTen"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              За да е една функция декларирана като асинхронна тя трябва да бъде декларирана с ключовата дума async.
+              Ключовата дума await може да бъде използвана само
+              в асинхронни функции. Когато се използва await кода спира и изчаква асинхронната функция да приключи след
+              което се изпълнява.
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingEleven">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
+                Какво е глобална променлива и какво е локална променлива?
+              </button>
+            </h2>
+            <div id="collapseEleven" class="accordion-collapse collapse" aria-labelledby="headingEleven"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                Глобалната променлива може да бъде достъпвана от всички функции. А локалната е променлива която е
+                декларирана във
+                фунцкия и тя може да бъде достъпвана само в рамките на функцията т.е. живее между скобите на функцията.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwelve">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseTwelve" aria-expanded="false" aria-controls="collapseTwelve">
+                Как може да се използва ключовата дума “this”?
+              </button>
+            </h2>
+            <div id="collapseTwelve" class="accordion-collapse collapse" aria-labelledby="headingTwelve"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                При хващане на event например "click" при console.log(this) ще се отпечата на конзолата самия елемент
+                върху който сме кликнали.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
