@@ -1,0 +1,230 @@
+:root {
+    --main-color: #fda403;
+    --secondary-color: #e8751a;
+}
+
+.navbar-toggler {
+    border: none !important;
+}
+
+.heading {
+    font-weight: bold;
+}
+
+.heading:nth-child(1) {
+    color: var(--main-color);
+}
+
+.heading:nth-child(2) {
+    color: var(--secondary-color);
+}
+
+.top-section-bg {
+    background: #e9eefc !important;
+}
+
+.main-button {
+    color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    padding: 6px 12px;
+    border: 1px solid var(--secondary-color);
+    background-color: transparent;
+    border-radius: 50rem;
+}
+
+.main-button:hover {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.search {
+    background: white !important;
+}
+
+.search-btn {
+    background-color: purple;
+    color: white;
+    border: 1px solid purple;
+}
+
+.search-btn:hover {
+    opacity: 0.7;
+}
+
+:focus {
+    outline: 0;
+    outline-color: transparent;
+    outline-style: none;
+}
+
+.b-left {
+    border-left: 4px solid var(--secondary-color);
+}
+
+/* PRICES */
+.price-abo {
+    background-color: var(--main-color);
+    color: white;
+}
+
+.price-abo h6 {
+    padding: 0;
+    margin: 0;
+}
+
+.price-card-body {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.abo-list,
+li {
+    list-style-type: none;
+    padding: 0;
+    padding-bottom: 1rem;
+    font-weight: 500;
+}
+
+.buy-button {
+    margin-top: 2rem;
+    font-weight: bold;
+    color: white;
+    font-size: 16px;
+    letter-spacing: 2px;
+    border-color: var(--secondary-color);
+    padding: 6px 24px;
+    border: 1px solid var(--secondary-color);
+    background-color: var(--main-color);
+    border-radius: 50rem;
+}
+
+.buy-button:hover {
+    color: var(--secondary-color);
+    background: transparent;
+}
+
+.b-bot {
+    border-bottom: 4px solid white;
+}
+
+/* PRICES END */
+/* WHY CHOOSE US */
+.why-us {
+    background: var(--main-color);
+    color: white;
+}
+
+.why-us .b-left {
+    border-color: white;
+}
+
+/* WHY CHOOSE US END*/
+/* CLIENT FEEDBACK */
+.client-bg {
+    background: var(--main-color);
+    height: 30vh;
+    width: 25%;
+    position: relative;
+}
+
+.client-img {
+    position: absolute;
+    top: 13.8%;
+    right: 25%;
+}
+
+.b-top {
+    border-top: 4px solid black;
+    width: 35px;
+    margin-left: 3px;
+    padding-bottom: 3.5px;
+}
+
+.carousel-control-next-icon {
+    margin-left: 3px !important;
+    margin-top: 3px !important;
+}
+
+.carousel-control-prev-icon {
+    margin-right: 3px !important;
+    margin-top: 3px !important;
+}
+
+.btn-warning {
+    background: var(--main-color);
+}
+
+/* CLIENT FEEDBACK END */
+/* CONTACT-US */
+.contact-us {
+    background: var(--main-color);
+}
+
+/* CONTACT-US END */
+/* FOOTER */
+.footer{
+    background:var(--main-color);
+    color: white;
+}
+
+.connections, .connections li{
+    padding: 0;
+    margin-bottom: 0;
+    font-weight: 400;
+}
+
+.connections a{
+    text-decoration: none;
+    color: white;
+}
+/* FOOTER END */
+
+@media screen and (min-width: 768px) {
+    .navbar-toggler {
+        color: white !important;
+    }
+
+    .navbar-nav .nav-item a {
+        color: white !important;
+    }
+
+    .top-section-bg {
+        background: url(/Task1/images/bg.jpg) no-repeat center center !important;
+        background-size: 100% 100% !important;
+    }
+
+    .mt-8-md {
+        margin-top: 8rem;
+    }
+
+    .client-bg {
+        background: var(--main-color);
+        height: 30vh;
+        width: 30%;
+        position: relative;
+    }
+
+    .client-img {
+        width: 15%;
+        position: absolute;
+        top: 30%;
+        right: 76%;
+    }
+
+    .b-top {
+        border-top: 4px solid black;
+        width: 35px;
+        margin-left: 3px;
+        padding-bottom: 3px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .w-90-sm {
+        width: 90% !important;
+    }
+
+    .mt-8-sm {
+        margin-top: 8rem;
+    }
+}

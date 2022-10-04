@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Exam Task 4</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12 mb-3">
+                <h5>Create an AJAX request to <a href="https://blacatzacademy.com/api/users">https://blacatzacademy.com/api/users</a> and show all the data in a table.</h5>
+                <h5>Create an search field with button which sents requets to server with GET Parameter and show the response.</h5>
+            </div>
+            <div class="col-6 offset-6 mb-3">
+                <div class="d-flex align-items-center">
+                    <input class="form-control me-2" id="search" type="number" placeholder="Search by ID">
+                    <button class="btn btn-outline-success" id="search-btn">Search</button>
+                    <button class="btn btn-outline-primary ms-2" id="reset">Reset</button>
+                </div>
+                <div class="col-6 mb-3">
+                    <div class="ps-3 text-danger" id="search-err"></div>
+                </div>
+            </div>
+            <div class="col-12" id="users-table">
+
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script>
+        function loadUsers() {
+            $.ajax({
+                url: 'https://blacatzacademy.com/api/users',
+                type: 'GET',
+                success: function (response) {
+                    showUsers(response);
+                }
+            });
+        }
+
+        function showUsers(userArr) {
+            let html = '<table class="table table-striped">';
+            html += '<tr>';
+            html += '<th>ID</th>';
+            html += '<th>Name</th>';
+            html += '<th>Last name</th>';
+            html += '<th>Age</th>';
+            html += '<th>Salary</th>';
+            html += '</tr>';
+
+            for (let i = 0; i < userArr.length; i++) {
+                html += `<tr>`;
+                html += `<td>${userArr[i].id}</td>`;
+                html += `<td>${userArr[i].name}</td>`;
+                html += `<td>${userArr[i].lastName}</td>`;
+                html += `<td>${userArr[i].age}</td>`;
+                html += `<td>${userArr[i].salary}$</td>`;
+                html += `</tr>`;
+            }
+
+            html += '</table>';
+
+            $('#users-table').html(html);
+        }
+
+        $(function () {
+            loadUsers();
+
+            $('body').on('click', '#search-btn', function () {
+                let id = parseInt($('#search').val());
+                console.log(id);
+                $('#search-err').html('');
+                $.ajax({
+                    url: `https://blacatzacademy.com/api/users?id=${id}`,
+                    type: 'GET',
+                    success: function (response) {
+                        console.log(response.length);
+                        console.log(response);
+                        if (response.length == 0 || id == 0) {
+                            $('#search-err').html(`User with ID: ${id} does not exist!`);
+                            return;
+                        }
+
+                        showUsers(response);
+                    }
+                });
+            });
+
+            $('body').on('click', '#reset', function () {
+                $('#search').val('');
+                $('#search-err').html('');
+                loadUsers();
+            });
+        });
+    </script>
+</body>
+
+</html>
